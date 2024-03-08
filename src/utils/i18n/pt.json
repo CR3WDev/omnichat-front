@@ -1,0 +1,128 @@
+{
+  "required_field": "Campo Obrigatório",
+  "login": {
+    "title": "Bem-Vindo ao OmniChat",
+    "login": "Login",
+    "password": "Senha",
+    "reset_password": "Redefinir Senha",
+    "no_account": "Não possui conta?",
+    "register": "cadastre-se",
+    "return": "Voltar",
+    "home": "home"
+  },
+
+  "register": {
+    "title": "Criar conta",
+    "login": "Login",
+    "password": "Senha",
+    "create_account": "Criar conta",
+    "already_have_an_account": "Já possui conta?",
+    "go_login": "Logue-se",
+    "user": "Usuário",
+    "lawyer": "Advogado",
+    "email": "Email",
+    "confirm_password": "Confirmar Senha",
+    "full_name": "Nome Completo",
+    "return_to": "Voltar a",
+    "home": "home",
+    "pick_a_password": "Defina uma senha",
+    "at_least_one_uppercase":"Uma letra  maiúscula",
+    "at_least_one_numeric":"Um número",
+    "at_least_one_special_characters":"Um caractere especial",
+    "at_least_eight_characters": "8 caracteres",
+    "choose_a_password":"Coloque uma senha",
+    "too_weak":"Senha fraca",
+    "average": "Senha mediana",
+    "strong_password":"Senha forte"
+  },
+  "register_lawyer": {
+    "title": "Torne-se um de nossos Advogados!",
+    "login": "Login",
+    "oab": "OAB",
+    "cpf": "CPF",
+    "date_birth": "Data de Nascimento",
+    "specialization": "Especialização",
+    "password": "Senha",
+    "create_account": "Criar conta",
+    "already_have_an_account": "Já possui conta?",
+    "go_login": "Logue-se",
+    "register": "Cadastre-se",
+    "user": "Usuário",
+    "lawyer": "Advogado",
+    "email": "Email",
+    "confirm_password": "Confirmar Senha",
+    "full_name": "Nome Completo",
+    "invalid_cpf": "CPF inválido"
+  },
+
+  "change_password": {
+    "title": "Redefinir senha",
+    "description": "Digite seu email para enviarmos sua nova senha!",
+    "email": "Email",
+    "cancel": "Cancelar",
+    "back": "Voltar",
+    "send": "Enviar"
+  },
+
+  "home": {
+    "login": "login",
+    "logout": "Encerrar sessão",
+    "find_lawyers": "Encontrar Advogados",
+    "become_one_of_lawyers": "Seja um de nossos advogados!",
+    "your_tool_for_searching_for_lawyers": "Sua ferramenta para a busca de advogados",
+    "looking_for_a_lawyer": "Procurando um Advogado?",
+    "advogapp_helps_you_find_the_lawyer_for_your_case": "O Advogapp te ajuda a encontrar o advogado para o seu caso!"
+  },
+
+  "not_found": {
+    "oops": "Oops...",
+    "erro404": "404",
+    "page_not_found": "Pagina não encontrada",
+    "return_to_home_page": "Voltar a pagina incial"
+  },
+
+  "toggle_menu": {
+    "home": "Início",
+    "profile": "Perfil",
+    "messages": "Mensagens",
+    "logout": "Sair",
+    "menu": "Menu"
+  },
+
+  "lawyer_profile": {
+    "title": "Perfil",
+    "user_name": "Nome de usuário",
+    "password": "Senha",
+    "cpf": "CPF",
+    "oab": "OAB",
+    "specialization": "Especialidade",
+    "about": "Sobre",
+    "save_changes": "Salvar alterações",
+    "edit": "Editar",
+    "delete": "Apagar",
+    "email": "Email",
+    "edit_user_info": "Editar informações do usuário",
+    "edit_user_services": "Editar serviços do usuário",
+    "save": "Salvar",
+    "chat": "Chat",
+    "contacts": "Contatos",
+    "services": "Serviços",
+    "add_a_service": "Adicione um serviço",
+    "concatc_email": "Emeil para contato"
+
+  },
+
+  "user_profile": {
+    "title": "Perfil",
+    "become_one_of_lawyers": "Seja um de nossos advogados!",
+    "user_name": "Nome de usuário",
+    "password": "Senha",
+    "specialization": "Especialização",
+    "about": "Sobre",
+    "save_changes": "Salvar alterações",
+    "edit": "Editar",
+    "email": "Email",
+    "edit_user_info": "Editar informações do usuário",
+    "save": "Salvar"
+  }
+}
