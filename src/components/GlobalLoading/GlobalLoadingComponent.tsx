@@ -2,7 +2,7 @@ import { ProgressSpinner } from 'primereact/progressspinner';
 import { useIsFetching, useIsMutating } from 'react-query';
 import './GlobalLoadingStyle.scss';
 
-export const GlobalLoalding = () => {
+export const GlobalLoadingComponent = () => {
   const excludedQueryKeys: string[] = [];
   const excludedMutationsKeys: string[] = [];
 
