@@ -4,9 +4,9 @@ import { classNames } from 'primereact/utils'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { getFormErrorMessage } from '@utils/hooks/useGetFormErrorMessage'
 import { getI18n } from '@utils/hooks/useGetI18n'
 import { useEffect } from 'react'
+import { ErrorMessageComponent } from '@components/ErrorMessage'
 
 export const ChangePasswordPage = () => {
   const changePasswordI18n = getI18n('change_password')
@@ -50,7 +50,7 @@ export const ChangePasswordPage = () => {
                 required: true,
               })}
             />
-            {getFormErrorMessage(errors.email)}
+            <ErrorMessageComponent errors={errors.email} />
           </div>
           <div className=" mb-3">
             <Button className="w-full " label={changePasswordI18n.send} />

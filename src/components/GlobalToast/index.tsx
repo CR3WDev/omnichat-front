@@ -1,1 +1,1 @@
-export * from "./GlobalToast.tsx"
+export * from "./GlobalToastComponent.tsx"

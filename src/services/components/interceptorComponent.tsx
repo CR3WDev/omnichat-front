@@ -1,10 +1,10 @@
-import { useGetLoginResponseDTO } from '@utils/hooks/useGetLoginResponseDTO'
-import { showToastError } from '../components/GlobalToast'
-import { api } from './axios'
-import { ErrorTypes } from './enum'
-import { ErrorResponse } from './ServicesInterfaces.ts'
+import { useGetLoginResponseDTO } from '@utils/hooks/useGetLoginResponseDTO.ts'
+import { showToastError } from '@components/GlobalToast'
+import { api } from '../axios.tsx'
+import { ErrorTypes } from '../enum.ts'
+import { ErrorResponse } from '../ServicesInterfaces.ts'
 
-export const Interceptor = ({ children }: any) => {
+export const InterceptorComponent = ({ children }: any) => {
   api.interceptors.request.use(
     (config) => {
       const LoginResponseDTO = useGetLoginResponseDTO()
