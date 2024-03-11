@@ -1,1 +1,1 @@
-export * from "./GlobalLoading.tsx"
+export * from "./GlobalLoadingComponent.tsx"

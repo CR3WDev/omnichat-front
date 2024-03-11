@@ -6,10 +6,10 @@ import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { getFormErrorMessage } from '@utils/hooks/useGetFormErrorMessage'
 import { getI18n } from '@utils/hooks/useGetI18n'
 import { Login } from './LoginInterfaces.ts'
 import { postLogin } from '@pages/Auth/Login/loginServices.ts'
+import { ErrorMessageComponent } from '@components/ErrorMessage'
 
 export const LoginPage = () => {
   const loginI18n = getI18n('login')
@@ -59,7 +59,7 @@ export const LoginPage = () => {
                 required: true,
               })}
             />
-            {getFormErrorMessage(errors.login)}
+            <ErrorMessageComponent errors={errors.login} />
           </div>
           <div className="mb-3">
             <Controller
@@ -78,7 +78,7 @@ export const LoginPage = () => {
                     toggleMask
                     inputStyle={{ width: '100%' }}
                   />
-                  {getFormErrorMessage(errors.password)}
+                  <ErrorMessageComponent errors={errors.password} />
                 </div>
               )}
             />

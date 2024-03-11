@@ -3,7 +3,7 @@ import { Toast, ToastProps } from 'primereact/toast'
 import { useEffect, useRef } from 'react'
 
 let getToastRef: ToastProps | any
-const GlobalToast = () => {
+const GlobalToastComponent = () => {
   const toast = useRef<ToastProps | any>()
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const showToastInfo = (message: string, title?: string) => {
       detail: message,
     })
 }
-export { GlobalToast, getToastRef, showToastError, showToastInfo, showToastSuccess, showToastWarn }
+export { GlobalToastComponent, getToastRef, showToastError, showToastInfo, showToastSuccess, showToastWarn }

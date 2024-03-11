@@ -1,4 +1,3 @@
-import { getFormErrorMessage } from '@utils/hooks/useGetFormErrorMessage.tsx'
 import { getI18n } from '@utils/hooks/useGetI18n.ts'
 import { UseValidateEmail } from '@utils/hooks/useValidateEmail.ts'
 import { UseValidatePassword } from '@utils/hooks/useValidatePassword.ts'
@@ -11,6 +10,7 @@ import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { Register } from '../../RegisterInterfaces.ts'
 import { postRegister } from '../../RegisterServices.ts'
+import { ErrorMessageComponent } from '@components/ErrorMessage'
 
 export const UserRegister = () => {
   const registerI18n = getI18n('register')
@@ -63,7 +63,7 @@ export const UserRegister = () => {
             required: true,
           })}
         />
-        {getFormErrorMessage(errors.fullName)}
+        <ErrorMessageComponent errors={errors.fullName} />
       </div>
       <div className="mb-2">
         <InputText
@@ -79,7 +79,7 @@ export const UserRegister = () => {
             },
           })}
         />
-        {getFormErrorMessage(errors.email)}
+        <ErrorMessageComponent errors={errors.email} />
       </div>
       <div className="mb-2">
         <Controller
@@ -110,7 +110,7 @@ export const UserRegister = () => {
                 id={field.name}
                 name={field.name}
               />
-              {getFormErrorMessage(errors.password)}
+              <ErrorMessageComponent errors={errors.password} />
             </>
           )}
         />
@@ -135,7 +135,7 @@ export const UserRegister = () => {
                 toggleMask
                 inputStyle={{ width: '100%' }}
               />
-              {getFormErrorMessage(errors.confirmPassword)}
+              <ErrorMessageComponent errors={errors.confirmPassword} />
             </div>
           )}
         />
