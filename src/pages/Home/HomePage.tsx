@@ -1,12 +1,12 @@
 import { SidebarMenuComponent } from '@pages/Home/components/SidebarMenu'
+import { Outlet } from 'react-router-dom'
 
 export const HomePage = () => {
   return (
     <div className="flex">
       <SidebarMenuComponent />
-      <div className={'flex justify-content-center'} style={{ width: 'calc(100vw - 280px)' }}>
-        <h1>Bem-Vindo ao OmniChat</h1>
-      </div>
+      <div className={'flex justify-content-center'} style={{ width: 'calc(100vw - 280px)' }}></div>
+      <Outlet />
     </div>
   )
 }
