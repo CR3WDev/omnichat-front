@@ -12,7 +12,7 @@ export const SidebarFooterComponent = () => {
           image="https://primefaces.org/cdn/primevue/images/avatar/amyelsner.png"
           shape="circle"
         />
-        <span className="font-bold">Amy Elsner</span>
+        <span className="font-bold">Marcelo Piranhudo</span>
       </a>
     </div>
   )
