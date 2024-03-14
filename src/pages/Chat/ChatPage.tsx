@@ -1,10 +1,11 @@
+import { Ripple } from 'primereact/Ripple'
+import { Avatar } from 'primereact/avatar'
+import { Button } from 'primereact/button'
 import { Divider } from 'primereact/divider'
 import { InputText } from 'primereact/inputtext'
-import { Avatar } from 'primereact/avatar'
-import { Ripple } from 'primereact/Ripple'
-import { ChatMock } from './ChatMock.ts'
-import { Button } from 'primereact/button'
 import { MdSend } from 'react-icons/md'
+import { ChatMock } from './ChatMock.ts'
+
 export const ChatPage = () => {
   return (
     <div className="page-container flex">
