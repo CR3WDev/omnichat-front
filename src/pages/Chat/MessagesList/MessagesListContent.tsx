@@ -19,6 +19,7 @@ export const MessagesListContent = () => {
             <MessagesListItemComponent
               message={message}
               simpleMessage={message?.user === messagesMock[index + 1]?.user}
+              key={index}
             />
           )
         })}

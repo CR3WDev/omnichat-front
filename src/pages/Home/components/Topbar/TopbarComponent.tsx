@@ -1,7 +1,9 @@
 import { useIsMobile } from '@redux/Reducers/isMobileReducer'
 import { Button } from 'primereact/button'
-import { useState } from 'react'
-import { MdLogout, MdMenu } from 'react-icons/md'
+import { MenuItem } from 'primereact/menuitem'
+import { TieredMenu } from 'primereact/tieredmenu'
+import { useRef, useState } from 'react'
+import { MdAccountBox, MdArrowDropDown, MdDarkMode, MdMenu } from 'react-icons/md'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { TopbarSidebarComponent } from './TopbarSidebarComponent'
@@ -10,6 +12,27 @@ export const TopbarComponent = () => {
   const isMobile = useSelector(useIsMobile)
   const [showMenu, setShowMenu] = useState(false)
   const navigate = useNavigate()
+  const menu = useRef<any>(null)
+  const items: MenuItem[] = [
+    {
+      label: 'Perfil',
+      icon: <MdAccountBox />,
+    },
+    {
+      label: ' Trocar tema',
+      icon: <MdDarkMode />,
+    },
+    {
+      separator: true,
+    },
+    {
+      label: 'Sair',
+      icon: 'pi pi-share-alt',
+      command: () => {
+        navigate('/login')
+      },
+    },
+  ]
 
   return (
     <>
@@ -38,16 +61,18 @@ export const TopbarComponent = () => {
               icon={<MdMenu />}
             ></Button>
           </div>
-          <div>
-            <Button
-              onClick={() => {
-                navigate('/login')
-              }}
-              outlined
-              icon={<MdLogout />}
-            >
-              Sair
-            </Button>
+          <div className="flex">
+            <div>
+              <TieredMenu model={items} popup ref={menu} breakpoint="767px" />
+              <Button
+                label="Menu"
+                icon={<MdArrowDropDown />}
+                iconPos="left"
+                onClick={(e: any) => {
+                  menu.current.toggle(e)
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
