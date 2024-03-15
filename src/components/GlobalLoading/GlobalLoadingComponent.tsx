@@ -1,24 +1,21 @@
-import { ProgressSpinner } from 'primereact/progressspinner';
-import { useIsFetching, useIsMutating } from 'react-query';
-import './GlobalLoadingStyle.scss';
+import { ProgressSpinner } from 'primereact/progressspinner'
+import { useIsFetching, useIsMutating } from 'react-query'
+import './GlobalLoadingStyle.scss'
 
 export const GlobalLoadingComponent = () => {
-  const excludedQueryKeys: string[] = [];
-  const excludedMutationsKeys: string[] = [];
+  const excludedQueryKeys: string[] = []
+  const excludedMutationsKeys: string[] = []
 
   let sum =
     useIsFetching({
-      predicate: (key: any) =>
-        !excludedQueryKeys.includes(key?.queryKey[0].toString()),
+      predicate: (key: any) => !excludedQueryKeys.includes(key?.queryKey[0].toString()),
     }) +
     useIsMutating({
       predicate: (key: any) =>
-        !excludedMutationsKeys.includes(
-          key?.options?.mutationKey[0].toString()
-        ),
-    });
+        !excludedMutationsKeys.includes(key?.options?.mutationKey[0].toString()),
+    })
 
-  const isLoading = sum;
+  const isLoading = sum
 
   return (
     <div
@@ -31,5 +28,5 @@ export const GlobalLoadingComponent = () => {
         <ProgressSpinner />
       </div>
     </div>
-  );
-};
+  )
+}
