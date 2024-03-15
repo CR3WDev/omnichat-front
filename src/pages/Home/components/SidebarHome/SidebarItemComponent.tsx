@@ -1,9 +1,11 @@
-import { Ripple } from 'primereact/Ripple'
 import { IMenuOption } from '@pages/Home/components/SidebarHome/MenuOptions.ts'
+import { Ripple } from 'primereact/Ripple'
 import { useNavigate } from 'react-router-dom'
 
 type SidebarItemProps = {
+  //** item do menu */
   menuOption: IMenuOption
+  //** onHide para fechar a sidebar no modo celular */
   onHide?: () => void
 }
 

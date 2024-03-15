@@ -1,10 +1,16 @@
-import { useGetLoginResponseDTO } from '@utils/hooks/useGetLoginResponseDTO.ts'
 import { showToastError } from '@components/GlobalToast'
+import { useGetLoginResponseDTO } from '@utils/hooks/useGetLoginResponseDTO.ts'
+import { ReactElement } from 'react'
+import { ErrorResponse } from '../ServicesInterfaces.ts'
 import { api } from '../axios.tsx'
 import { ErrorTypes } from '../enum.ts'
-import { ErrorResponse } from '../ServicesInterfaces.ts'
 
-export const InterceptorComponent = ({ children }: any) => {
+type InterceptorProps = {
+  //** Tudo que tiver dentro dele terá os tratamentos de erros */
+  children: ReactElement
+}
+
+export const InterceptorComponent = ({ children }: InterceptorProps) => {
   api.interceptors.request.use(
     (config) => {
       const LoginResponseDTO = useGetLoginResponseDTO()

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { MdLogout, MdMenu } from 'react-icons/md'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { TopbarMenuComponent } from './TopbarMenuComponent'
+import { TopbarSidebarComponent } from './TopbarSidebarComponent'
 
 export const TopbarComponent = () => {
   const isMobile = useSelector(useIsMobile)
@@ -13,7 +13,7 @@ export const TopbarComponent = () => {
 
   return (
     <>
-      <TopbarMenuComponent
+      <TopbarSidebarComponent
         visible={showMenu}
         onHide={() => {
           setShowMenu(false)

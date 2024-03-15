@@ -4,6 +4,7 @@ import { ReactElement, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 type SizerProps = {
+  /** Todo o código que deseja ter a variavel isMobile */
   children: ReactElement
 }
 export const SizerComponent = ({ children }: SizerProps) => {

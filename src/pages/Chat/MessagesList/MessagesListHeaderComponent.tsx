@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { useIsMobile } from 'redux/Reducers/isMobileReducer'
 
 type MessagesListHeaderProps = {
+  //** define se a lista será visível ou não no mobile */
   setIsVisible: Dispatch<SetStateAction<boolean>>
 }
 export const MessagesListHeaderComponent = ({ setIsVisible }: MessagesListHeaderProps) => {

@@ -7,7 +7,9 @@ import { useSelector } from 'react-redux'
 import { ChatMock } from '../ChatMock'
 
 type ChatListProps = {
+  /** useState que define se vai mostrar as mensagens ou não */
   setShowMessagesList: Dispatch<SetStateAction<boolean>>
+  /** define se vai mostrar as mensagens ou não */
   showMessagesList: boolean
 }
 export const ChatListComponent = ({ setShowMessagesList, showMessagesList }: ChatListProps) => {

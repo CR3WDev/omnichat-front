@@ -6,7 +6,9 @@ import { MessagesListContent } from './MessagesListContent'
 import { MessagesListHeaderComponent } from './MessagesListHeaderComponent'
 
 type MessagesListProps = {
+  //** define se a lista será visível ou não no mobile */
   isVisible: boolean
+  //** useState define se a lista será visível ou não no mobile */
   setIsVisible: Dispatch<SetStateAction<boolean>>
 }
 export const MessagesListComponent = ({ isVisible, setIsVisible }: MessagesListProps) => {

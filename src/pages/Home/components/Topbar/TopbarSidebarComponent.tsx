@@ -5,10 +5,12 @@ import { SidebarItemComponent } from '@pages/Home/components/SidebarHome/Sidebar
 import { Sidebar } from 'primereact/sidebar'
 
 type TopbarMenuProps = {
+  //** define se vai mostrar a sidebar da topbar */
   visible: boolean
+  //** fecha a sidebar da topbar */
   onHide: () => void
 }
-export const TopbarMenuComponent = ({ visible, onHide }: TopbarMenuProps) => {
+export const TopbarSidebarComponent = ({ visible, onHide }: TopbarMenuProps) => {
   return (
     <Sidebar
       visible={visible}

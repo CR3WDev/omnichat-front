@@ -2,7 +2,9 @@ import { Avatar } from 'primereact/avatar'
 import { ChatMessage } from '../ChatMock'
 
 type MessagesListItemProps = {
+  //** objeto de mensagem do chat */
   message: ChatMessage
+  //** define se será mostrado a mensagem normal ou a mais complexa com a foto e hora */
   simpleMessage: boolean
 }
 export const MessagesListItemComponent = ({ message, simpleMessage }: MessagesListItemProps) => {
