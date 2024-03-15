@@ -3,6 +3,12 @@ function formatDate(date: any) {
   // @ts-ignore
   return new Date(date).toLocaleDateString('pt-BR', options)
 }
+export interface ChatMessage {
+  user: string
+  message: string
+  time: string // Formato HH:MM para simplificação
+}
+
 export const ChatMock = [
   {
     username: 'Alice Johnson',
@@ -117,5 +123,104 @@ export const ChatMock = [
     firstLetter: 'S',
     lastMessageDate: formatDate('2024-03-05T08:45:00'),
     lastMessage: 'Pizza com borda recheada, por favor!',
+  },
+]
+
+export const messagesMock: ChatMessage[] = [
+  { user: 'Bruno', message: 'Olá, gostaria de fazer um pedido.', time: '18:00' },
+  { user: 'Lucas', message: 'Claro! O que você gostaria de pedir?', time: '18:02' },
+  { user: 'Bruno', message: 'Uma pizza de calabresa, por favor.', time: '18:03' },
+  { user: 'Lucas', message: 'Perfeito! Alguma bebida junto?', time: '18:05' },
+  { user: 'Bruno', message: 'Uma Coca-Cola, por favor.', time: '18:06' },
+  {
+    user: 'Lucas',
+    message: 'Ok, seu pedido ficará pronto em 30 minutos. O endereço de entrega está atualizado?',
+    time: '18:07',
+  },
+  { user: 'Bruno', message: 'Sim, o endereço está correto.', time: '18:08' },
+  {
+    user: 'Lucas',
+    message: 'Ótimo! Estamos preparando seu pedido. Qualquer coisa, nos chame aqui.',
+    time: '18:09',
+  },
+  { user: 'Lucas', message: 'Pedido saiu para entrega.', time: '18:30' },
+  { user: 'Lucas', message: 'O entregador chegou no local.', time: '18:59' },
+  { user: 'Bruno', message: 'Recebi aqui, muito obrigado!', time: '19:00' },
+  {
+    user: 'Lucas',
+    message: 'De nada, Bruno! Aproveite sua refeição. Se puder, deixe um feedback para nós. :)',
+    time: '19:02',
+  },
+  { user: 'Bruno', message: 'Olá, gostaria de fazer um pedido.', time: '18:00' },
+  { user: 'Lucas', message: 'Claro! O que você gostaria de pedir?', time: '18:02' },
+  { user: 'Bruno', message: 'Uma pizza de calabresa, por favor.', time: '18:03' },
+  { user: 'Lucas', message: 'Perfeito! Alguma bebida junto?', time: '18:05' },
+  { user: 'Bruno', message: 'Uma Coca-Cola, por favor.', time: '18:06' },
+  {
+    user: 'Lucas',
+    message: 'Ok, seu pedido ficará pronto em 30 minutos. O endereço de entrega está atualizado?',
+    time: '18:07',
+  },
+  { user: 'Bruno', message: 'Sim, o endereço está correto.', time: '18:08' },
+  {
+    user: 'Lucas',
+    message: 'Ótimo! Estamos preparando seu pedido. Qualquer coisa, nos chame aqui.',
+    time: '18:09',
+  },
+  { user: 'Lucas', message: 'Pedido saiu para entrega.', time: '18:30' },
+  { user: 'Lucas', message: 'O entregador chegou no local.', time: '18:59' },
+  { user: 'Bruno', message: 'Recebi aqui, muito obrigado!', time: '19:00' },
+  {
+    user: 'Lucas',
+    message: 'De nada, Bruno! Aproveite sua refeição. Se puder, deixe um feedback para nós. :)',
+    time: '19:02',
+  },
+  { user: 'Bruno', message: 'Olá, gostaria de fazer um pedido.', time: '18:00' },
+  { user: 'Lucas', message: 'Claro! O que você gostaria de pedir?', time: '18:02' },
+  { user: 'Bruno', message: 'Uma pizza de calabresa, por favor.', time: '18:03' },
+  { user: 'Lucas', message: 'Perfeito! Alguma bebida junto?', time: '18:05' },
+  { user: 'Bruno', message: 'Uma Coca-Cola, por favor.', time: '18:06' },
+  {
+    user: 'Lucas',
+    message: 'Ok, seu pedido ficará pronto em 30 minutos. O endereço de entrega está atualizado?',
+    time: '18:07',
+  },
+  { user: 'Bruno', message: 'Sim, o endereço está correto.', time: '18:08' },
+  {
+    user: 'Lucas',
+    message: 'Ótimo! Estamos preparando seu pedido. Qualquer coisa, nos chame aqui.',
+    time: '18:09',
+  },
+  { user: 'Lucas', message: 'Pedido saiu para entrega.', time: '18:30' },
+  { user: 'Lucas', message: 'O entregador chegou no local.', time: '18:59' },
+  { user: 'Bruno', message: 'Recebi aqui, muito obrigado!', time: '19:00' },
+  {
+    user: 'Lucas',
+    message: 'De nada, Bruno! Aproveite sua refeição. Se puder, deixe um feedback para nós. :)',
+    time: '19:02',
+  },
+  { user: 'Bruno', message: 'Olá, gostaria de fazer um pedido.', time: '18:00' },
+  { user: 'Lucas', message: 'Claro! O que você gostaria de pedir?', time: '18:02' },
+  { user: 'Bruno', message: 'Uma pizza de calabresa, por favor.', time: '18:03' },
+  { user: 'Lucas', message: 'Perfeito! Alguma bebida junto?', time: '18:05' },
+  { user: 'Bruno', message: 'Uma Coca-Cola, por favor.', time: '18:06' },
+  {
+    user: 'Lucas',
+    message: 'Ok, seu pedido ficará pronto em 30 minutos. O endereço de entrega está atualizado?',
+    time: '18:07',
+  },
+  { user: 'Bruno', message: 'Sim, o endereço está correto.', time: '18:08' },
+  {
+    user: 'Lucas',
+    message: 'Ótimo! Estamos preparando seu pedido. Qualquer coisa, nos chame aqui.',
+    time: '18:09',
+  },
+  { user: 'Lucas', message: 'Pedido saiu para entrega.', time: '18:30' },
+  { user: 'Lucas', message: 'O entregador chegou no local.', time: '18:59' },
+  { user: 'Bruno', message: 'Recebi aqui, muito obrigado!', time: '19:00' },
+  {
+    user: 'Lucas',
+    message: 'De nada, Bruno! Aproveite sua refeição. Se puder, deixe um feedback para nós. :)',
+    time: '19:02',
   },
 ]
