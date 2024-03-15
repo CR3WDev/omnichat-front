@@ -1,0 +1,26 @@
+import { Divider } from 'primereact/divider'
+import { Dispatch, SetStateAction } from 'react'
+import { useSelector } from 'react-redux'
+import { useIsMobile } from 'redux/Reducers/isMobileReducer'
+import { MessagesListContent } from './MessagesListContent'
+import { MessagesListHeaderComponent } from './MessagesListHeaderComponent'
+
+type MessagesListProps = {
+  isVisible: boolean
+  setIsVisible: Dispatch<SetStateAction<boolean>>
+}
+export const MessagesListComponent = ({ isVisible, setIsVisible }: MessagesListProps) => {
+  const isMobile = useSelector(useIsMobile)
+  const isShowMessages = () => {
+    if (isMobile && !isVisible) return 'hidden '
+    return 'flex '
+  }
+
+  return (
+    <div className={isShowMessages() + 'h-full w-full flex-column justify-content-between'}>
+      <MessagesListHeaderComponent setIsVisible={setIsVisible} />
+      <Divider />
+      <MessagesListContent />
+    </div>
+  )
+}
