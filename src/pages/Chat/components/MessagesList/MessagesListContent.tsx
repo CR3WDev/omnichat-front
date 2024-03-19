@@ -1,7 +1,7 @@
+import { ChatMessage, messagesMock } from '@pages/Chat/ChatMock'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { MdSend } from 'react-icons/md'
-import { ChatMessage, messagesMock } from '../ChatMock'
 import { MessagesListItemComponent } from './MessagesListItemComponent'
 
 export const MessagesListContent = () => {

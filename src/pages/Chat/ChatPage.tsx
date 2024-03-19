@@ -1,7 +1,7 @@
 import { Divider } from 'primereact/divider'
 import { useState } from 'react'
-import { ChatListComponent } from './ChatsList/ChatsListComponent.tsx'
-import { MessagesListComponent } from './MessagesList/MessagesListComponent.tsx'
+import { ChatListComponent } from './components/ChatsList'
+import { MessagesListComponent } from './components/MessagesList'
 
 export const ChatPage = () => {
   const [showMessagesList, setShowMessagesList] = useState(false)

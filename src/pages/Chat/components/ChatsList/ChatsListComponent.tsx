@@ -1,10 +1,10 @@
+import { ChatMock } from '@pages/Chat/ChatMock'
 import { useIsMobile } from '@redux/Reducers/isMobileReducer'
 import { Ripple } from 'primereact/Ripple'
 import { Avatar } from 'primereact/avatar'
 import { InputText } from 'primereact/inputtext'
 import { Dispatch, SetStateAction } from 'react'
 import { useSelector } from 'react-redux'
-import { ChatMock } from '../ChatMock'
 
 type ChatListProps = {
   /** useState que define se vai mostrar as mensagens ou não */

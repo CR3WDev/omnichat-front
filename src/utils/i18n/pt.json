@@ -52,8 +52,10 @@
     "menu": "Menu",
     "leave": "Sair"
   },
-
-  "not_found": {
+  "Error": {
+    "stack": "Stack",
+    "file": "Arquivo",
+    "line_column": "Linha / Coluna",
     "oops": "Oops...",
     "erro404": "404",
     "page_not_found": "Pagina não encontrada",

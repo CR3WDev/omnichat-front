@@ -1,5 +1,5 @@
+import { ChatMessage } from '@pages/Chat/ChatMock'
 import { Avatar } from 'primereact/avatar'
-import { ChatMessage } from '../ChatMock'
 
 type MessagesListItemProps = {
   //** objeto de mensagem do chat */

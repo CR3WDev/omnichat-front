@@ -1,13 +1,13 @@
 import { ChangePasswordPage } from '@pages/Auth/ChangePassword'
-import { RegisterPage } from '@pages/Auth/Register'
-import { createBrowserRouter } from 'react-router-dom'
 import { LoginPage } from '@pages/Auth/Login'
-import { HomePage } from '@pages/Home'
+import { RegisterPage } from '@pages/Auth/Register'
 import { ChatPage } from '@pages/Chat/ChatPage.tsx'
-import { NotFoundPage } from '@pages/NotFound'
 import { DashboardPage } from '@pages/Dashboard'
-import { OrdersPage } from '@pages/Orders'
+import { ErrorPage } from '@pages/Error'
+import { HomePage } from '@pages/Home'
 import { MenuPage } from '@pages/Menu'
+import { OrdersPage } from '@pages/Orders'
+import { createBrowserRouter } from 'react-router-dom'
 
 export const router = createBrowserRouter([
   {
@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <HomePage />,
-    errorElement: <NotFoundPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/chat',
