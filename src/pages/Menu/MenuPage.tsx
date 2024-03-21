@@ -1,36 +1,30 @@
 import { Button } from 'primereact/button'
 import { Card } from 'primereact/card'
 import { DataView } from 'primereact/dataview'
-import { Rating } from 'primereact/rating'
-import { Tag } from 'primereact/tag'
+import { Dialog } from 'primereact/dialog'
+import { ScrollPanel } from 'primereact/scrollpanel'
 import { classNames } from 'primereact/utils'
-import { useEffect, useState, useRef } from 'react'
-import { Dialog } from 'primereact/dialog';
-import Logo from '../../assets/PizzaHutLogo.avif'
-import { Avatar } from 'primereact/avatar';
+import { useEffect, useState } from 'react'
 import LojaComponente from './components/LojaComponent'
-import { ScrollPanel } from 'primereact/scrollpanel';
 
-import 'primeicons/primeicons.css';
-
+import 'primeicons/primeicons.css'
 
 export const MenuPage = () => {
-  const LojaName = 'Tartarugando Pizzaria';
-  const ValorMinimo = 20;
+  const LojaName = 'Tartarugando Pizzaria'
+  const ValorMinimo = 20
   const [products, setProducts] = useState<any[]>()
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const groupedProductsRef = useRef<any>({});
+  const [_selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  // const groupedProductsRef = useRef<any>({})
 
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false)
 
   const handleClick = () => {
-    setVisible(true);
-  };
+    setVisible(true)
+  }
 
   const onHide = () => {
-    setVisible(false);
-  };
-
+    setVisible(false)
+  }
 
   useEffect(() => {
     setProducts([
@@ -112,8 +106,13 @@ export const MenuPage = () => {
 
   const itemTemplate = (product: any) => {
     return (
-      <div className="flex h-full w-full justify-content-center xl:flex-row" onClick={handleClick} style={{ cursor: 'pointer' }} key={product.id}>
-        <Card className=''>
+      <div
+        className="flex h-full w-full justify-content-center xl:flex-row"
+        onClick={handleClick}
+        style={{ cursor: 'pointer' }}
+        key={product.id}
+      >
+        <Card className="">
           <div className={classNames('flex flex-column xl:flex-row p-4 gap-4 p-m-3 w-full')}>
             <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
               <div className="flex flex-column align-items-center sm:align-items-start gap-3">
@@ -143,7 +142,7 @@ export const MenuPage = () => {
 
   const groupProductsByCategory = (products: any[]) => {
     const groupedProducts: any = {}
-    products.forEach(product => {
+    products.forEach((product) => {
       if (!groupedProducts[product.category]) {
         groupedProducts[product.category] = []
       }
@@ -154,16 +153,16 @@ export const MenuPage = () => {
   const groupedProducts = groupProductsByCategory(products || [])
 
   const handleCategoryButtonClick = (category: string) => {
-    setSelectedCategory(category);
-    scrollToCategory(category);
-  };
+    setSelectedCategory(category)
+    scrollToCategory(category)
+  }
 
   const scrollToCategory = (category: string) => {
-    const element = document.getElementById(`category-${category}`);
+    const element = document.getElementById(`category-${category}`)
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
-  };
+  }
 
   return (
     <div className="h-full w-8">
@@ -178,19 +177,14 @@ export const MenuPage = () => {
           />
         ))}
       </div>
-      <Dialog
-        header="Popup"
-        visible={visible}
-        style={{ width: '50vw' }}
-        onHide={onHide}
-      >
+      <Dialog header="Popup" visible={visible} style={{ width: '50vw' }} onHide={onHide}>
         Conteúdo do popup aqui
       </Dialog>
       <ScrollPanel style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 6vh)' }}>
         {Object.keys(groupedProducts).map((category) => (
-          <div  key={category} id={`category-${category}`}>
-            <h2 className='flex justify-content-center'>{category}</h2>
-            <DataView   value={groupedProducts[category]} itemTemplate={itemTemplate} />
+          <div key={category} id={`category-${category}`}>
+            <h2 className="flex justify-content-center">{category}</h2>
+            <DataView value={groupedProducts[category]} itemTemplate={itemTemplate} />
           </div>
         ))}
       </ScrollPanel>
