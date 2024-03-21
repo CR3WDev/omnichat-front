@@ -1,6 +1,7 @@
-import { getI18n } from '@utils/hooks/useGetI18n.ts'
-import { UseValidateEmail } from '@utils/hooks/useValidateEmail.ts'
-import { UseValidatePassword } from '@utils/hooks/useValidatePassword.ts'
+import { ErrorMessageComponent } from '@components/ErrorMessage'
+import { getI18n } from '@hooks/useGetI18n.ts'
+import { UseValidateEmail } from '@hooks/useValidateEmail.ts'
+import { UseValidatePassword } from '@hooks/useValidatePassword.ts'
 import { Button } from 'primereact/button'
 import { Divider } from 'primereact/divider'
 import { InputText } from 'primereact/inputtext'
@@ -10,7 +11,6 @@ import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { Register } from '../../RegisterInterfaces.ts'
 import { postRegister } from '../../RegisterServices.ts'
-import { ErrorMessageComponent } from '@components/ErrorMessage'
 
 export const UserRegister = () => {
   const registerI18n = getI18n('register')

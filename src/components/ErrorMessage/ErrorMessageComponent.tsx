@@ -1,4 +1,4 @@
-import { getI18n } from '@utils/hooks/useGetI18n.ts'
+import { getI18n } from '@hooks/useGetI18n'
 import { ReactElement } from 'react'
 
 type ErrorMessageProps = {

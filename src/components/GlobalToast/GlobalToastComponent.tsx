@@ -1,4 +1,4 @@
-import { getI18n } from '@utils/hooks/useGetI18n'
+import { getI18n } from '@hooks/useGetI18n'
 import { Toast, ToastProps } from 'primereact/toast'
 import { useEffect, useRef } from 'react'
 
@@ -45,4 +45,11 @@ const showToastInfo = (message: string, title?: string) => {
       detail: message,
     })
 }
-export { GlobalToastComponent, getToastRef, showToastError, showToastInfo, showToastSuccess, showToastWarn }
+export {
+  getToastRef,
+  GlobalToastComponent,
+  showToastError,
+  showToastInfo,
+  showToastSuccess,
+  showToastWarn,
+}

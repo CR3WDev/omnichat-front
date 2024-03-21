@@ -1,4 +1,4 @@
-import { getI18n } from '@utils/hooks/useGetI18n'
+import { getI18n } from '@hooks/useGetI18n'
 import { Card } from 'primereact/card'
 import { Divider } from 'primereact/divider'
 import { Message } from 'primereact/message'

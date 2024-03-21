@@ -1,5 +1,5 @@
 import { showToastError } from '@components/GlobalToast'
-import { useGetLoginResponseDTO } from '@utils/hooks/useGetLoginResponseDTO.ts'
+import { useGetLoginResponseDTO } from '@hooks/useGetLoginResponseDTO.ts'
 import { ReactElement } from 'react'
 import { ErrorResponse } from '../ServicesInterfaces.ts'
 import { api } from '../axios.tsx'

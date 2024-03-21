@@ -4,9 +4,9 @@ import { classNames } from 'primereact/utils'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { getI18n } from '@utils/hooks/useGetI18n'
-import { useEffect } from 'react'
 import { ErrorMessageComponent } from '@components/ErrorMessage'
+import { getI18n } from '@hooks/useGetI18n'
+import { useEffect } from 'react'
 
 export const ChangePasswordPage = () => {
   const changePasswordI18n = getI18n('change_password')
@@ -28,9 +28,7 @@ export const ChangePasswordPage = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div
-        className="flex align-items-center justify-content-center h-screen"
-      >
+      <div className="flex align-items-center justify-content-center h-screen">
         <div className="w-16rem">
           <div className="text-center mb-3">
             <h1>{changePasswordI18n.title}</h1>

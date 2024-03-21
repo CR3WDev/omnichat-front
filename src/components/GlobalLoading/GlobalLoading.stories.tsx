@@ -1,4 +1,4 @@
-import { queryClient } from '@services/queryClient'
+import { queryClient } from '@api/queryClient'
 import { Meta, StoryObj } from '@storybook/react'
 import { QueryClientProvider } from 'react-query'
 import { GlobalLoadingComponent } from './GlobalLoadingComponent'

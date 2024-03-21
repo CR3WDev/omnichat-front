@@ -1,15 +1,15 @@
+import { InterceptorComponent } from '@api/components'
+import { queryClient } from '@api/queryClient'
 import { GlobalLoadingComponent } from '@components/GlobalLoading'
 import { GlobalToastComponent } from '@components/GlobalToast'
 import { SizerComponent } from '@components/Sizer'
-import { InterceptorComponent } from '@services/components/interceptorComponent.tsx'
+import { router } from '@navigation/PublicRoutes'
 import pt from '@utils/i18n/pt.json'
 import { PrimeReactProvider, addLocale } from 'primereact/api'
 import { QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
 import { RouterProvider } from 'react-router-dom'
 import store from 'redux/store'
-import { router } from 'routes/PublicRoutes'
-import { queryClient } from './services/queryClient'
 
 const App = () => {
   //@ts-ignore

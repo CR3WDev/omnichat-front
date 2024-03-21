@@ -1,5 +1,5 @@
+import { getI18n } from '@hooks/useGetI18n'
 import { useNavigate } from 'react-router-dom'
-import { getI18n } from '@utils/hooks/useGetI18n'
 import { UserRegister } from './components/UserRegisterComponent'
 
 export const RegisterPage = () => {
@@ -8,9 +8,7 @@ export const RegisterPage = () => {
 
   return (
     <div>
-      <div
-        className="flex align-items-center justify-content-center h-screen"
-      >
+      <div className="flex align-items-center justify-content-center h-screen">
         <div className="w-16rem">
           <div className="text-center mb-3">
             <h1>{registerI18n.title}</h1>

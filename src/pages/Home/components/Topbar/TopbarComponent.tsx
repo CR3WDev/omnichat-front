@@ -1,5 +1,5 @@
+import { getI18n } from '@hooks/useGetI18n'
 import { useIsMobile } from '@redux/Reducers/isMobileReducer'
-import { getI18n } from '@utils/hooks/useGetI18n'
 import { PrimeReactContext } from 'primereact/api'
 import { Button } from 'primereact/button'
 import { Divider } from 'primereact/divider'

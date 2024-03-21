@@ -6,8 +6,11 @@
     "paths": {
       "@components/*": ["./components/*"],
       "@utils/*": ["./utils/*"],
-      "@assets/*": ["./assets/*"],
-      "@services/*": ["./services/*"],
+      "@assets/*": ["./utils/assets/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@api/*": ["./api/*"],
+      "@navigation/*": ["./navigation/*"],
+
       "@pages/*": ["./pages/*"],
       "@redux/*": ["./redux/*"]
     },

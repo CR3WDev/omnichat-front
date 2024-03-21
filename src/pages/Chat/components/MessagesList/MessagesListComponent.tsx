@@ -2,7 +2,7 @@ import { Divider } from 'primereact/divider'
 import { Dispatch, SetStateAction } from 'react'
 import { useSelector } from 'react-redux'
 import { useIsMobile } from 'redux/Reducers/isMobileReducer'
-import { MessagesListContent } from './MessagesListContent'
+import { MessagesListContentComponent } from './MessagesListContentComponent'
 import { MessagesListHeaderComponent } from './MessagesListHeaderComponent'
 
 type MessagesListProps = {
@@ -22,7 +22,7 @@ export const MessagesListComponent = ({ isVisible, setIsVisible }: MessagesListP
     <div className={isShowMessages() + 'h-full w-full flex-column justify-content-between'}>
       <MessagesListHeaderComponent setIsVisible={setIsVisible} />
       <Divider />
-      <MessagesListContent />
+      <MessagesListContentComponent />
     </div>
   )
 }

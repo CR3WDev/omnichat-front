@@ -4,7 +4,7 @@ import { InputText } from 'primereact/inputtext'
 import { MdSend } from 'react-icons/md'
 import { MessagesListItemComponent } from './MessagesListItemComponent'
 
-export const MessagesListContent = () => {
+export const MessagesListContentComponent = () => {
   return (
     <div className="flex flex-column flex-grow-1">
       <div

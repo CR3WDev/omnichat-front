@@ -6,10 +6,10 @@ import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-import { getI18n } from '@utils/hooks/useGetI18n'
-import { Login } from './LoginInterfaces.ts'
-import { postLogin } from '@pages/Auth/Login/loginServices.ts'
 import { ErrorMessageComponent } from '@components/ErrorMessage'
+import { getI18n } from '@hooks/useGetI18n.ts'
+import { postLogin } from '@pages/Auth/Login/loginServices.ts'
+import { Login } from './LoginInterfaces.ts'
 
 export const LoginPage = () => {
   const loginI18n = getI18n('login')
@@ -41,9 +41,7 @@ export const LoginPage = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div
-        className="flex align-items-center justify-content-center h-screen"
-      >
+      <div className="flex align-items-center justify-content-center h-screen">
         <div className="w-16rem">
           <div className="text-center">
             <h1>{loginI18n.title}</h1>

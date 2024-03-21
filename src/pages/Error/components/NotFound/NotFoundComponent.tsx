@@ -1,5 +1,5 @@
-import { getI18n } from '@utils/hooks/useGetI18n'
-import { useGetLoginResponseDTO } from '@utils/hooks/useGetLoginResponseDTO'
+import { getI18n } from '@hooks/useGetI18n'
+import { useGetLoginResponseDTO } from '@hooks/useGetLoginResponseDTO'
 import { Button } from 'primereact/button'
 import { useNavigate, useRouteError } from 'react-router-dom'
 
