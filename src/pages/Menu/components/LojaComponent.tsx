@@ -1,8 +1,8 @@
 import { Avatar } from 'primereact/avatar'
 import React from 'react'
 
-import bannerImage from '../../../assets/BannerPizzaria.png'
-import LogoImage from '../../../assets/Logo.png'
+import bannerImage from '@assets/pizzaria/BannerPizzaria.png'
+import LogoImage from '@assets/pizzaria/Logo.png'
 
 interface LojaComponenteProps {
   lojaNome: string

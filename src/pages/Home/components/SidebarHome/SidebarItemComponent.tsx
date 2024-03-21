@@ -20,7 +20,6 @@ export const SidebarItemComponent = ({ menuOption, onHide }: SidebarItemProps) =
         onHide && onHide()
       }}
     >
-      <i className="pi pi-folder mr-2"></i>
       <span className="font-medium">{menuOption?.label}</span>
       <Ripple />
     </div>
