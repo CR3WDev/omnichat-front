@@ -1,8 +1,8 @@
+import { api } from '@api/axios.ts'
 import { showToastError } from '@components/GlobalToast'
 import { useGetLoginResponseDTO } from '@hooks/useGetLoginResponseDTO.ts'
 import { ReactElement } from 'react'
 import { ErrorResponse } from '../ServicesInterfaces.ts'
-import { api } from '../axios.tsx'
 import { ErrorTypes } from '../enum.ts'
 
 type InterceptorProps = {
