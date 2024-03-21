@@ -2,8 +2,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const initialState: boolean = window.innerWidth <= 992
 
-const isMobileReducer = createSlice({
-  name: 'isMobileReducer',
+const isMobileSlice = createSlice({
+  name: 'isMobileSlice',
   initialState,
   reducers: {
     setIsMobile: (_, { payload }: PayloadAction<boolean>) => {
@@ -12,8 +12,8 @@ const isMobileReducer = createSlice({
   },
 })
 
-export default isMobileReducer.reducer
-export const { setIsMobile } = isMobileReducer.actions
-export const useIsMobile = (state: any) => {
-  return state.isMobileReducer as boolean
+export default isMobileSlice.reducer
+export const { setIsMobile } = isMobileSlice.actions
+export const selectorIsMobile = (state: any) => {
+  return state.isMobileSlice as boolean
 }

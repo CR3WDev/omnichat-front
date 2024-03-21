@@ -3,14 +3,14 @@ import { Button } from 'primereact/button'
 import { Dispatch, SetStateAction } from 'react'
 import { MdArrowBack } from 'react-icons/md'
 import { useSelector } from 'react-redux'
-import { useIsMobile } from 'redux/Reducers/isMobileReducer'
+import { selectorIsMobile } from 'redux/Reducers/isMobileReducer'
 
 type MessagesListHeaderProps = {
   //** define se a lista será visível ou não no mobile */
   setIsVisible: Dispatch<SetStateAction<boolean>>
 }
 export const MessagesListHeaderComponent = ({ setIsVisible }: MessagesListHeaderProps) => {
-  const isMobile = useSelector(useIsMobile)
+  const isMobile = useSelector(selectorIsMobile)
   return (
     <div className="flex mx-3 mt-3">
       {isMobile && (

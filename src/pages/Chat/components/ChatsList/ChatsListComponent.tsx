@@ -1,5 +1,5 @@
 import { ChatMock } from '@pages/Chat/ChatMock'
-import { useIsMobile } from '@redux/Reducers/isMobileReducer'
+import { selectorIsMobile } from '@redux/Reducers/isMobileReducer'
 import { Ripple } from 'primereact/Ripple'
 import { Avatar } from 'primereact/avatar'
 import { InputText } from 'primereact/inputtext'
@@ -13,7 +13,7 @@ type ChatListProps = {
   showMessagesList: boolean
 }
 export const ChatListComponent = ({ setShowMessagesList, showMessagesList }: ChatListProps) => {
-  const isMobile = useSelector(useIsMobile)
+  const isMobile = useSelector(selectorIsMobile)
 
   if (showMessagesList && isMobile) return <></>
   return (

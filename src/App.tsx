@@ -4,12 +4,12 @@ import { GlobalLoadingComponent } from '@components/GlobalLoading'
 import { GlobalToastComponent } from '@components/GlobalToast'
 import { SizerComponent } from '@components/Sizer'
 import { router } from '@navigation/PublicRoutes'
+import { store } from '@redux/store'
 import pt from '@utils/i18n/pt.json'
 import { PrimeReactProvider, addLocale } from 'primereact/api'
 import { QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
 import { RouterProvider } from 'react-router-dom'
-import store from 'redux/store'
 
 const App = () => {
   //@ts-ignore

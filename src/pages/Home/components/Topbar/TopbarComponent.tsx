@@ -1,5 +1,5 @@
 import { getI18n } from '@hooks/useGetI18n'
-import { useIsMobile } from '@redux/Reducers/isMobileReducer'
+import { selectorIsMobile } from '@redux/Reducers/isMobileReducer'
 import { PrimeReactContext } from 'primereact/api'
 import { Button } from 'primereact/button'
 import { Divider } from 'primereact/divider'
@@ -22,7 +22,7 @@ export const TopbarComponent = () => {
   const { changeTheme } = useContext(PrimeReactContext)
   const [theme, setTheme] = useState<string>('dark')
   const homeI18n = getI18n('home')
-  const isMobile = useSelector(useIsMobile)
+  const isMobile = useSelector(selectorIsMobile)
   const [showMenu, setShowMenu] = useState(false)
   const navigate = useNavigate()
   const menu = useRef<any>(null)

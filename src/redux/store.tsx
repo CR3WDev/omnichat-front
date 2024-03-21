@@ -1,10 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import isMobileReducer from './Reducers/isMobileReducer'
+import isMobileSlice from './Reducers/isMobileReducer'
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    isMobileReducer,
+    isMobileSlice,
   },
 })
-
-export default store
