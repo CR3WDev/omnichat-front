@@ -81,5 +81,8 @@
     "email": "Email",
     "edit_user_info": "Editar informações do usuário",
     "save": "Salvar"
+  },
+  "menu": {
+    "read_more": "Saiba mais"
   }
 }
