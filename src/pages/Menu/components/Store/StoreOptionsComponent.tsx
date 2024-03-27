@@ -1,3 +1,4 @@
+import { getI18n } from '@hooks/useGetI18n'
 import { Button } from 'primereact/button'
 import { Dialog } from 'primereact/dialog'
 import { RadioButton, RadioButtonChangeEvent } from 'primereact/radiobutton'
@@ -12,6 +13,7 @@ interface StoreOptionsProps {
 }
 
 export const StoreOptionsComponent = ({ visible, onHide, onSelectOption }: StoreOptionsProps) => {
+  const menuI18n = getI18n('menu')
   const categories: Category[] = [
     { name: 'Entrega', key: 'delivery', icon: <AiOutlineCar style={{ fontSize: '2rem' }} /> },
     { name: 'Retirada', key: 'pickup', icon: <AiOutlineUser style={{ fontSize: '2rem' }} /> },
@@ -26,10 +28,10 @@ export const StoreOptionsComponent = ({ visible, onHide, onSelectOption }: Store
 
   return (
     <Dialog
-      header={<div style={{ textAlign: 'center' }}>Selecione uma opção de entrega</div>}
+      header={<div style={{ textAlign: 'center' }}>{menuI18n.delivery_option}</div>}
       visible={visible}
       onHide={onHide}
-      style={{ width: '400px', height: '340px', position: 'relative' }}
+      style={{ width: '400px', height: '360px', position: 'relative' }}
       modal
       draggable={false}
       resizable={false}

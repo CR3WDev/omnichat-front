@@ -1,6 +1,6 @@
-import bannerImage from '@assets/pizzaria/BannerPizzaria.png'
-import LogoImage from '@assets/pizzaria/Logo.png'
-import { getI18n } from '@hooks/useGetI18n.ts'
+import { getI18n } from '@hooks/useGetI18n'
+import bannerImage from '@utils/assets/pizzaria/BannerPizzaria.png'
+import LogoImage from '@utils/assets/pizzaria/Logo.png'
 import { Avatar } from 'primereact/avatar'
 import { Card } from 'primereact/card'
 import { Sidebar } from 'primereact/sidebar'
@@ -8,21 +8,21 @@ import { useState } from 'react'
 import { TabMenuComponent } from '../SeeMoreComponent/TabMenu'
 import DeliveryTime from './DeliveryTime'
 import { StoreOptionsComponent } from './StoreOptionsComponent'
-import SearchComponent from './StoreSearchComponent'
+import { SearchComponent } from './StoreSearchComponent'
 
-type StoreSearchProps = {
-  lojaNome: string
-  valorMinimoEntrega: number
+type StoreProps = {
+  StoreName: string
+  MinimumValueDelivery: number
   data: any[]
 }
 
-export const StoreSearchComponent = ({ lojaNome, valorMinimoEntrega, data }: StoreSearchProps) => {
+export const StoreComponent = ({ StoreName, MinimumValueDelivery, data }: StoreProps) => {
+  const menuI18n = getI18n('menu')
   const [visibleSeeMore, setVisibleSeeMore] = useState(false)
   const [visibleOptionsDelivery, setVisibleOptionsDelivery] = useState(false)
-  const [selectedOption, setSelectedOption] = useState('Entrega')
-  const menuI18n = getI18n('menu')
+  const [selectedOption, setSelectedOption] = useState([menuI18n.delivery])
 
-  const handleOptionSelect = (option: string) => {
+  const handleOptionSelect = (option: any) => {
     setSelectedOption(option)
   }
 
@@ -46,7 +46,7 @@ export const StoreSearchComponent = ({ lojaNome, valorMinimoEntrega, data }: Sto
       <div className="flex h-full w-full justify-content-center">
         <img
           src={bannerImage}
-          alt="Banner da loja"
+          alt="BannerStore"
           style={{ width: '100%', maxHeight: '200px', objectFit: 'cover' }}
         />
       </div>
@@ -54,7 +54,7 @@ export const StoreSearchComponent = ({ lojaNome, valorMinimoEntrega, data }: Sto
         <Avatar className="lg:w-1 h-auto w-3" image={LogoImage} shape="circle" size="xlarge" />
         <div className="flex lg:w-full w-8 h-auto align-items-center md:justify-content-center justify-content-start flex-wrap md:flex-nowrap mx-2">
           <div className="flex align-items-center justify-content-center md:justify-content-start md:w-8 h-2rem">
-            <h2 className="text-2xl">{lojaNome}</h2>
+            <h2 className="text-2xl">{StoreName}</h2>
           </div>
           <div className="flex align-items-center md:justify-content-end md:w-10 lg:h-auto h-2rem mx-2 ">
             <div>
@@ -68,7 +68,7 @@ export const StoreSearchComponent = ({ lojaNome, valorMinimoEntrega, data }: Sto
             <div>
               <p className="text-xs pt-1 text-gray-600">
                 {' '}
-                Pedido mínimo : R$ {valorMinimoEntrega.toFixed(2)}
+                {menuI18n.minimum_value} {MinimumValueDelivery.toFixed(2)}
               </p>
             </div>
           </div>
@@ -80,7 +80,7 @@ export const StoreSearchComponent = ({ lojaNome, valorMinimoEntrega, data }: Sto
         </div>
         <div className="lg:w-8rem h-4rem lg:mx-2 ml-2 w-4 mt-2 lg:mt-0">
           <Card
-            className="w-full h-full mx-2 flex align-items-center justify-content-start cursor-pointer"
+            className="w-full h-4rem mx-2 flex align-items-center justify-content-start cursor-pointer"
             onClick={() => setVisibleOptionsDelivery(true)}
           >
             <h3>{selectedOption}</h3>

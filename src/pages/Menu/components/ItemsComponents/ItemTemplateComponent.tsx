@@ -1,34 +1,23 @@
 import { Card } from 'primereact/card';
 import { classNames } from 'primereact/utils';
-import React, { useState } from 'react';
-import ItemDetailComponent from './ItemDetailComponent';
-
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  image: string;
-}
+import { useState } from 'react';
+import { Product } from 'types/products';
+import { ItemDetailComponent } from './ItemDetailComponent';
 
 interface ItemTemplateProps {
   product: Product;
 }
 
-const ItemTemplateComponent: React.FC<ItemTemplateProps> = ({ product}) => {
+export const ItemTemplateComponent  = ({ product}:ItemTemplateProps) => {
   const [popupVisible, setPopupVisible] = useState(false);
 
-  const handleCardClick = () => {
+  const handleItemClick = () => {
     setPopupVisible(true);
   };
 
-  const hidePopup = () => {
-    setPopupVisible(false);
-  };
-
   return (
-    <div className="xl:col-6 p-4 col-12" onClick={handleCardClick} style={{ cursor: 'pointer' }} key={product.id}>
-      <Card>
+    <div className="xl:col-6 p-4 col-12"  style={{ cursor: 'pointer' }} key={product.id}>
+      <Card onClick={handleItemClick}>
         <div className={classNames('flex flex-column xl:flex-row  gap-4 p-m-3 w-full')}>
           <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
             <div className="flex flex-column align-items-center sm:align-items-start gap-3">
@@ -52,9 +41,15 @@ const ItemTemplateComponent: React.FC<ItemTemplateProps> = ({ product}) => {
           </div>
         </div>
       </Card>
-      <ItemDetailComponent visible={popupVisible} onHide={hidePopup} product={product} />
+      {popupVisible && (
+        <ItemDetailComponent
+          visible={popupVisible}
+          onHide={() => setPopupVisible(false)}
+          product={product}
+        />
+      )}
     </div>
   );
 };
 
-export default ItemTemplateComponent;
+

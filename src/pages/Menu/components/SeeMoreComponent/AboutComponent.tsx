@@ -1,6 +1,6 @@
 import { Card } from 'primereact/card'
 
-const AboutComponent = () => {
+export const AboutComponent = () => {
   return (
     <Card className="w-20rem">
       <div className="flex w-full flex-wrap">
@@ -23,4 +23,4 @@ const AboutComponent = () => {
   )
 }
 
-export default AboutComponent
+

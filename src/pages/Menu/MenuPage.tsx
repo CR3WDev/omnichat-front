@@ -1,20 +1,20 @@
 import { listProduct } from '@utils/mock/products'
 import { DataView } from 'primereact/dataview'
-import { ScrollPanel } from 'primereact/scrollpanel'
+import { Panel } from 'primereact/panel'
 import { TabMenu } from 'primereact/tabmenu'
 import { useEffect, useState } from 'react'
-import ItemTemplateComponent from './components/ItemsComponents/ItemTemplateComponent'
-import { StoreSearchComponent } from './components/Store/StoreComponent'
+import { ItemTemplateComponent } from './components/ItemsComponents/ItemTemplateComponent'
+import { StoreComponent } from './components/Store/StoreComponent'
 
 export const MenuPage = () => {
-  const LojaName = 'Tartarugando Pizzaria'
-  const ValorMinimo = 20
+  const StoreName = 'Tartarugando Pizzaria'
+  const MinimumValueDelivery = 20
   const [products, setProducts] = useState<any[]>([])
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
   const groupProductsByCategory = (products: any[]) => {
     const groupedProducts: any = {}
-    products.forEach((product) => {
+    products.forEach(product => {
       if (!groupedProducts[product.category]) {
         groupedProducts[product.category] = []
       }
@@ -29,48 +29,45 @@ export const MenuPage = () => {
     setSelectedCategory(category)
   }
 
-  // const scrollToCategory = (category: string) => {
-  //   const element = document.getElementById(`category-${category}`)
-  //   if (element) {
-  //     element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  //   }
-  // }
   useEffect(() => {
     // Verifica se há categorias e define a primeira como selecionada
     if (Object.keys(groupedProducts).length > 0 && !selectedCategory) {
-      setSelectedCategory(Object.keys(groupedProducts)[0])
+      setSelectedCategory(Object.keys(groupedProducts)[0]);
     }
-  }, [groupedProducts, selectedCategory])
+  }, [groupedProducts, selectedCategory]);
 
   useEffect(() => {
-    setProducts(listProduct)
+      setProducts(listProduct)
   }, [])
 
+
   return (
-    <div className="h-full xl:w-8">
-      <StoreSearchComponent lojaNome={LojaName} valorMinimoEntrega={ValorMinimo} data={products} />
-      <div className="flex justify-content-center">
-        <TabMenu
-          model={Object.keys(groupedProducts).map((category) => ({
-            label: category,
-            icon: 'pi pi-fw pi-list',
-            command: () => handleCategoryButtonClick(category),
-          }))}
-        />
-      </div>
-      <ScrollPanel style={{ overflowY: 'auto', maxHeight: '100vh' }}>
-        {selectedCategory && (
-          <div id={`category-${selectedCategory}`}>
-            <h2 className="flex justify-content-center">{selectedCategory}</h2>
-            <div>
-              <DataView
-                value={groupedProducts[selectedCategory]}
-                itemTemplate={(product: any) => <ItemTemplateComponent product={product} />}
-              />
+    <div className="h-screen w-screen justify-content-center flex">
+      <div className='lg:w-8'>
+        <StoreComponent StoreName={StoreName} MinimumValueDelivery={MinimumValueDelivery} data={products} />
+        <div className="flex justify-content-center">
+          <TabMenu
+            model={Object.keys(groupedProducts).map((category) => ({
+              label: category,
+              icon: 'pi pi-fw pi-list',
+              command: () => handleCategoryButtonClick(category),
+            }))}
+          />
+        </div>
+        <Panel>
+          {selectedCategory && (
+            <div id={`category-${selectedCategory}`}>
+              <h2 className="flex justify-content-center">{selectedCategory}</h2>
+              <div>
+                <DataView
+                  value={groupedProducts[selectedCategory]}
+                  itemTemplate={(product: any) => <ItemTemplateComponent product={product} />}
+                />
+              </div>
             </div>
-          </div>
-        )}
-      </ScrollPanel>
+          )}
+        </Panel>
+      </div>
     </div>
-  )
-}
+  );
+};

@@ -1,4 +1,4 @@
-import 'primeicons/primeicons.css'
+
 import { InputText } from 'primereact/inputtext'
 import React, { useEffect, useState } from 'react'
 import { Product } from 'types/products'
@@ -8,7 +8,7 @@ type SearchComponentProps = {
   products: Product[]
 }
 
-const SearchComponent = ({ products }: SearchComponentProps) => {
+export const SearchComponent = ({ products }: SearchComponentProps) => {
   const [searchText, setSearchText] = useState<string>('')
   const [searchResult, setSearchResult] = useState<Product | null>(null)
   const [visible, setVisible] = useState(false)
@@ -55,4 +55,4 @@ const SearchComponent = ({ products }: SearchComponentProps) => {
   )
 }
 
-export default SearchComponent
+

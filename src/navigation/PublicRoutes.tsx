@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: '/menu',
+    path: '/menu/example',
     element: <MenuPage />,
   },
 ])
