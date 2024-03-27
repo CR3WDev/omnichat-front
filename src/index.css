@@ -1,4 +1,4 @@
-@import "primeflex/primeflex.scss";
+@import 'primeflex/primeflex.scss';
 
 body {
   padding: 0;
@@ -6,7 +6,11 @@ body {
 }
 
 .page-container {
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   /*padding:3rem;*/
+}
+
+.p-card-content {
+  padding: 0;
 }
