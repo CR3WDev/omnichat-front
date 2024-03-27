@@ -2,9 +2,9 @@ import { getI18n } from '@hooks/useGetI18n'
 import { MenuItem } from 'primereact/menuitem'
 import { TabMenu } from 'primereact/tabmenu'
 import { useState } from 'react'
-import { AboutComponent } from './AboutComponent'
-import { PaymentComponent } from './PaymentComponent'
-import { ScheduleComponent } from './ScheduleComponent'
+import { AboutComponent } from './SeeMoreAboutComponent'
+import { PaymentComponent } from './SeeMorePaymentComponent'
+import { ScheduleComponent } from './SeeMoreScheduleComponent'
 
 export const TabMenuComponent = () => {
   const [activeItem, setActiveItem] = useState<MenuItem | null>(null)
@@ -24,7 +24,7 @@ export const TabMenuComponent = () => {
       },
     },
     {
-      label: 'Pagamento',
+      label: 'Pagamentos',
       command: () => {
         setActiveItem(items[2])
       },

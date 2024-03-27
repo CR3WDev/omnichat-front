@@ -83,6 +83,20 @@
     "save": "Salvar"
   },
   "menu": {
-    "read_more": "Saiba mais"
+    "read_more": "Saiba mais",
+    "delivery_option": "Opções de entrega",
+    "delivery": "Entrega",
+    "minimum_value": "Valor minimo",
+    "today": "Hoje",
+    "free": "Grátis",
+    "website_payment": "Pagamentos pelo site",
+    "credit_debit": "Credito e Debito",
+    "others": "Outros",
+    "schedule": "Horário",
+    "opening_hours": "Horário de funcionamento",
+    "day": "Dia",
+    "about": "Sobre",
+    "payment": "Pagamentos",
+    "add": "Adicionar"
   }
 }

@@ -1,4 +1,6 @@
-export const listProduct = [
+import { Product } from 'types/products';
+
+export const listProduct: Product[] = [
   {
     id: '1000',
     code: 'f230fh0g3',
@@ -7,69 +9,78 @@ export const listProduct = [
     image: 'bamboo-watch.jpg',
     price: 65,
     category: 'Combos',
+    items: [
+      {
+        name: "Pizzas",
+        type: 'Selecione 1 meia pizza',
+        options: [
+          { label: "Pizza de Pepperoni", value: "pepperoni" },
+          { label: "Pizza de Queijo", value: "cheese" }
+        ]
+      },
+      {
+        name: "Refrigerantes",
+        type: 'Selecione 1 Refrigerante',
+        options: [
+          { label: "Coca-Cola", value: "coke" },
+          { label: "Fanta", value: "fanta" },
+          { label: "Sprite", value: "sprite" }
+        ]
+      }
+    ]
   },
   {
     id: '1001',
-    code: 'nvklal433',
-    name: 'Elegant Black Watch',
-    description: 'Sophisticated and timeless design',
-    image: 'elegant-black-watch.jpg',
-    price: 95,
-    category: 'Pizza Doce',
-  },
-  {
-    id: '1001',
-    code: 'nvklal433',
-    name: 'Elegant Black Watch',
-    description: 'Sophisticated and timeless design',
-    image: 'elegant-black-watch.jpg',
-    price: 95,
-    category: 'Pizza Doce',
-  },
-  {
-    id: '1001',
-    code: 'nvklal433',
-    name: 'Elegant Black Watch',
-    description: 'Sophisticated and timeless design',
-    image: 'elegant-black-watch.jpg',
-    price: 95,
-    category: 'Promoção',
-  },
-  {
-    id: '1001',
-    code: 'nvklal433',
-    name: 'Elegant Black Watch',
-    description: 'Sophisticated and timeless design',
-    image: 'elegant-black-watch.jpg',
-    price: 95,
-    category: 'Pizza Doce',
-  },
-  {
-    id: '1001',
-    code: 'nvklal433',
-    name: 'Elegant Black Watch',
-    description: 'Sophisticated and timeless design',
-    image: 'elegant-black-watch.jpg',
-    price: 95,
-    category: 'Pizza Doce',
-    quantity: 15,
-  },
-  {
-    id: '1004',
-    code: 'nvklal433',
-    name: 'Chocolate',
-    description: 'Sophisticated and timeless design',
-    image: 'elegant-black-watch.jpg',
-    price: 95,
-    category: 'Pizza Doce',
+    code: 'jdffk3ljs',
+    name: 'Combo 2',
+    description: 'Combo de Pizza de Calabresa e 2 Refris',
+    image: 'calabresa-pizza.jpg',
+    price: 50,
+    category: 'Combos',
+    items: [
+      {
+        name: "Pizzas",
+        type: "selecione a Pizza",
+        options: [
+          { label: "Pizza de Calabresa", value: "calabresa" }
+        ]
+      },
+      {
+        name: "Refrigerantes",
+        type: "selecione o Refrigerante",
+        options: [
+          { label: "Coca-Cola", value: "coke" },
+          { label: "Pepsi", value: "pepsi" }
+        ]
+      }
+    ]
   },
   {
     id: '1002',
-    code: 'zz21cz3c1',
-    name: 'Sporty Watch',
-    description: 'Durable and designed for the active lifestyle',
-    image: 'sporty-watch.jpg',
-    price: 55,
-    category: 'Bebidas',
+    code: 'hsy82hdjs',
+    name: 'Combo 3',
+    description: 'Combo de Pizza de Frango com Catupiry e 1 Refri',
+    image: 'frango-catupiry-pizza.jpg',
+    price: 45,
+    category: 'Combos',
+    items: [
+      {
+        name: "Pizzas",
+        type: "Selecione a Pizza",
+        options: [
+          { label: "Pizza de Frango com Catupiry", value: "frango_catupiry" },
+          { label: "Pizza de Frango ", value: "frango" }
+        ]
+      },
+      {
+        name: "Refrigerantes",
+        type: "Selecione o Refrigerante",
+        options: [
+          { label: "Guaraná", value: "guarana" },
+          { label: "Sukita", value: "sukita" }
+        ]
+      }
+    ]
   },
-]
+
+];

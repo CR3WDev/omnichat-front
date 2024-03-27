@@ -3,7 +3,7 @@ import { DataView } from 'primereact/dataview'
 import { Panel } from 'primereact/panel'
 import { TabMenu } from 'primereact/tabmenu'
 import { useEffect, useState } from 'react'
-import { ItemTemplateComponent } from './components/ItemsComponents/ItemTemplateComponent'
+import { ItemTemplateComponent } from './components/Items/ItemTemplateComponent'
 import { StoreComponent } from './components/Store/StoreComponent'
 
 export const MenuPage = () => {
@@ -57,7 +57,6 @@ export const MenuPage = () => {
         <Panel>
           {selectedCategory && (
             <div id={`category-${selectedCategory}`}>
-              <h2 className="flex justify-content-center">{selectedCategory}</h2>
               <div>
                 <DataView
                   value={groupedProducts[selectedCategory]}

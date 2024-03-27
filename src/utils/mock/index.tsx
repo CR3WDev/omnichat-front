@@ -169,3 +169,34 @@ export const userLawyerServices = [
     info: 'Serviço especializado de defesa em processos judiciais. Como advogado dedicado, estou comprometido em representar meus clientes com diligência e determinação perante os tribunais. Desde litígios comerciais até disputas civis, estou pronto para fornecer uma defesa robusta e estratégica. Minha abordagem centrada no cliente visa alcançar os melhores resultados possíveis, protegendo os interesses e direitos de meus clientes em cada etapa do processo judicial. Confie em mim para representá-lo com profissionalismo e comprometimento durante todo o processo legal.',
   },
 ]
+
+export const paymentMethods = [
+  {
+    name: "Master Card",
+    image: "https://static.ifood-static.com.br/image/upload/t_high/icones/payments/brands/ca34f400-9ba1-49c9-9f08-d269f97fd678"
+  },
+  {
+    name: "Visa",
+    image: "https://static.ifood-static.com.br/image/upload/t_high/icones/payments/brands/3fc410d4-a5ea-424c-8ef1-4847fc23723e"
+  },
+  {
+    name: "Elo",
+    image: "https://static.ifood-static.com.br/image/upload/t_high/icones/payments/brands/70764a4a-84bb-4697-82e2-7e63d88f4aa3"
+  },
+  {
+    name: "Pix",
+    image: "https://getapp.astropay.com/img/payment_methods/IX.svg"
+  }
+];
+
+export const scheduleData = [
+  { day: 'Segunda-feira', open: '18:00', close: '23:00' },
+  { day: 'Terça-feira', open: '18:00', close: '23:00' },
+  { day: 'Quarta-feira', open: '18:00', close: '23:00' },
+  { day: 'Quinta-feira', open: '18:00', close: '23:00' },
+  { day: 'Sexta-feira', open: '18:00', close: '00:00' },
+  { day: 'Sábado', open: '12:00', close: '00:00' },
+  { day: 'Domingo', open: '12:00', close: '23:00' },
+]
+
+
