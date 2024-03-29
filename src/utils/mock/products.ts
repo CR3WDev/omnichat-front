@@ -58,18 +58,18 @@ export const listProduct: Product[] = [
   {
     id: '1002',
     code: 'hsy82hdjs',
-    name: 'Combo 3',
+    name: 'Combo Doce',
     description: 'Combo de Pizza de Frango com Catupiry e 1 Refri',
     image: 'frango-catupiry-pizza.jpg',
     price: 45,
-    category: 'Combos',
+    category: 'Pizza Doce',
     items: [
       {
         name: "Pizzas",
         type: "Selecione a Pizza",
         options: [
-          { label: "Pizza de Frango com Catupiry", value: "frango_catupiry" },
-          { label: "Pizza de Frango ", value: "frango" }
+          { label: "Pizza de Chocolate", value: "frango_catupiry" },
+          { label: "Pizza de Morango ", value: "frango" }
         ]
       },
       {
