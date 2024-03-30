@@ -1,12 +1,12 @@
-// CreateProductForm.tsx
+
 import { Button } from 'primereact/button';
 import { MdAdd } from 'react-icons/md';
 
-interface CreateButtonProps {
+interface CrudButtonProps {
   onCreate: () => void;
 }
 
-export const CreateButton = ({ onCreate }:CreateButtonProps) => {
+export const CrudButton = ({ onCreate }:CrudButtonProps) => {
 
   return (
     <Button onClick={onCreate}>

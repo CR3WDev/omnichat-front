@@ -1,10 +1,21 @@
 // OrdersPage.tsx
-import { listProduct } from '@utils/mock/products';
 import { Card } from 'primereact/card';
-import { Column } from 'primereact/column';
 import { Crud } from './components';
 
 export const OrdersPage = () => {
+
+  const cols = [
+    { field: 'id', header: 'ID' },
+    { field: 'marca', header: 'Marca' },
+    { field: 'modelo', header: 'Modelo' },
+    { field: 'ano', header: 'Ano' }
+];
+const cars = [
+  { id: 1, marca: 'Toyota', modelo: 'Corolla', ano: 2022 },
+  { id: 2, marca: 'Honda', modelo: 'Civic', ano: 2021 },
+  { id: 3, marca: 'Ford', modelo: 'Focus', ano: 2020 }
+];
+
   const handleCreate = () => {
     console.log("Produto criado!");
   };
@@ -23,20 +34,21 @@ export const OrdersPage = () => {
    <Crud.Root title='Cadastro de Cardapios'>
       <Crud.SearchBar />
       <Card className="m-3">
-        <Crud.CreateButton onCreate={handleCreate} />
+        <Crud.Button onCreate={handleCreate} />
       </Card>
-      <Crud.ProductTable
-        products={listProduct}
+      <Crud.Table
+        data={cars}
+        cols={cols}
         currentPage={0}
         rowsPerPage={20}
-        totalRecords={listProduct.length}
+        totalRecords={cars.length}
         onView={onView}
         onEdit={onEdit}
         onDelete={onDelete}
         onPageChange={(event) => console.log('Página alterada:', event)}
       >
-        <Column field="name" header="Name" />
-      </Crud.ProductTable>
+
+      </Crud.Table>
 
   </Crud.Root>
   );

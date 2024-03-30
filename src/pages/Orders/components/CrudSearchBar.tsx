@@ -3,11 +3,11 @@ import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 
-interface SearchBarProps {
+interface CrudSearchBarProps {
   buttonOnClick?: () => void;
 }
 
-export const SearchBar = ({buttonOnClick}:SearchBarProps) => {
+export const CrudSearchBar = ({buttonOnClick}:CrudSearchBarProps) => {
   return (
     <Card className="m-3">
       <div>

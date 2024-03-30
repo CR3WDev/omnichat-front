@@ -1,14 +1,16 @@
-import { CreateButton } from './CreateButton';
+import { CrudButton } from './CrudButton';
+import { CrudColumn } from './CrudColumn';
 import { CrudRoot } from './CrudRoot';
-import { ProductActions } from './ProductActions';
-import { ProductTable } from './ProductTable';
-import { SearchBar } from './SearchBar';
+import { CrudSearchBar } from './CrudSearchBar';
+import { CrudTable } from './CrudTable';
+import { CrudTableActions } from './CrudTableActions';
 
 export const Crud = {
 
  Root: CrudRoot,
- CreateButton: CreateButton,
- ProductTable: ProductTable,
- SearchBar: SearchBar,
- ProductActions: ProductActions
+ Button: CrudButton,
+ Table: CrudTable,
+ SearchBar: CrudSearchBar,
+ TableActions: CrudTableActions,
+ Column: CrudColumn
 }

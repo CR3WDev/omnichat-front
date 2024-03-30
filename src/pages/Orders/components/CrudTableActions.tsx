@@ -2,13 +2,13 @@
 import { Button } from 'primereact/button';
 import { MdCreate, MdDelete, MdVisibility } from 'react-icons/md';
 
-interface ProductActionsProps {
+interface CrudTableActionsProps {
   onView?: () => void;
   onEdit?: () => void;
   onDelete?: () => void;
 }
 
-export const ProductActions= ({onView, onEdit, onDelete}:ProductActionsProps) => {
+export const CrudTableActions= ({onView, onEdit, onDelete}:CrudTableActionsProps) => {
   return (
     <div className="flex justify-content-center">
       <div>
