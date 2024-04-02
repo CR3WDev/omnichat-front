@@ -30,7 +30,7 @@ export const RegisterPage = () => {
               <span>{registerI18n.return_to}</span>
               <span
                 onClick={() => {
-                  navigate('/')
+                  navigate('/login')
                 }}
                 className="no-underline hover:underline text-primary cursor-pointer ml-1"
               >
