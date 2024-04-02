@@ -1,72 +1,67 @@
-import { listProduct } from '@utils/mock/products'
-import { Button } from 'primereact/button'
-import { Card } from 'primereact/card'
-import { Column } from 'primereact/column'
-import { DataTable } from 'primereact/datatable'
-import { InputText } from 'primereact/inputtext'
-import { Paginator } from 'primereact/paginator'
-import { MdAdd, MdCreate, MdDelete, MdVisibility } from 'react-icons/md'
+// OrdersPage.tsx
+import { getI18n } from '@hooks/useGetI18n';
+import { Button } from 'primereact/button';
+import { Card } from 'primereact/card';
+import { MdCreate, MdDelete, MdVisibility } from 'react-icons/md';
+import { useSelector } from 'react-redux';
+import { Crud } from '../../components/Crud';
 
 export const OrdersPage = () => {
+  const orderI18n = getI18n('order')
+
+
+
+  const cols = [
+    { field: 'id', header: 'ID' },
+    { field: 'marca', header: 'Marca' },
+    { field: 'modelo', header: 'Modelo' },
+    { field: 'ano', header: 'Ano' }
+];
+const cars = [
+  { id: 1, marca: 'Toyota', modelo: 'Corolla', ano: 2022 },
+  { id: 2, marca: 'Honda', modelo: 'Civic', ano: 2021 },
+  { id: 3, marca: 'Ford', modelo: 'Focus', ano: 2020 }
+];
+
+  const handleCreate = () => {
+    console.log("Produto criado!");
+  };
+
   return (
-    <div className="page-container flex flex-column">
-      <h2 className="mx-3 mt-3 m-0">Cadastro de Cardápio</h2>
+   <Crud.Root title={orderI18n.title}>
+      <Crud.SearchBar columns={cols} useDropdown />
       <Card className="m-3">
-        <div>
-          <h3 className="m-0 mb-3">Pesquisar</h3>
-        </div>
-        <div className="flex">
+        <Crud.Button onCreate={handleCreate} />
+      </Card>
+      <Crud.Table
+        data={cars}
+        cols={cols}
+        currentPage={0}
+        rowsPerPage={20}
+        totalRecords={cars.length}
+        onPageChange={(event) => console.log('Página alterada:', event)}
+      >
+        <Crud.TableActions>
           <div>
-            <InputText placeholder="Pesquisar">Pesquisar</InputText>
+            <Button text>
+              <MdVisibility className="mr-2" size="20" /> Visualizar
+            </Button>
           </div>
-          <div className="ml-3">
-            <Button>Pesquisar</Button>
+          <div>
+            <Button text severity="secondary">
+              <MdCreate className="mr-2" size="20" /> Editar
+            </Button>
           </div>
-        </div>
-      </Card>
-      <Card className="m-3">
-        <Button>
-          Cadastrar <MdAdd className="ml-2" />
-        </Button>
-      </Card>
-      <div className="m-3">
-        <DataTable value={listProduct}>
-          <Column field="name" header="Nome"></Column>
-          <Column
-            field="actions"
-            header="Ações"
-            headerClassName="flex justify-content-center"
-            body={
-              <div className="flex justify-content-center">
-                <div>
-                  <Button text>
-                    <MdVisibility className="mr-2" size="20" /> Visualizar
-                  </Button>
-                </div>
-                <div>
-                  <Button text severity="secondary">
-                    <MdCreate className="mr-2" size="20" /> Editar
-                  </Button>
-                </div>
-                <div>
-                  <Button text severity="danger">
-                    <MdDelete className="mr-2" size="20" /> Deletar
-                  </Button>
-                </div>
-              </div>
-            }
-          ></Column>
-        </DataTable>
-        <Paginator
-          first={5}
-          rows={20}
-          totalRecords={120}
-          rowsPerPageOptions={[10, 20, 30]}
-          onPageChange={() => {
-            console.log('oi')
-          }}
-        />
-      </div>
-    </div>
-  )
-}
+          <div>
+            <Button text severity="danger">
+              <MdDelete className="mr-2" size="20" /> Deletar
+            </Button>
+          </div>
+        </Crud.TableActions>
+      </Crud.Table>
+
+  </Crud.Root>
+  );
+};
+
+

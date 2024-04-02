@@ -82,7 +82,34 @@
     "edit_user_info": "Editar informações do usuário",
     "save": "Salvar"
   },
+  "crud":{
+    "search": "Pesquisar",
+    "searchfor": "Pesquisar por",
+    "clear": "Limpar",
+    "register":"Cadastrar",
+    "choosecolumn":"Escolher coluna",
+    "actions": "Ações"
+  },
   "menu": {
-    "read_more": "Saiba mais"
+    "read_more": "Saiba mais",
+    "delivery_option": "Opções de entrega",
+    "delivery": "Entrega",
+    "minimum_value": "Valor minimo",
+    "today": "Hoje",
+    "free": "Grátis",
+    "website_payment": "Pagamentos pelo site",
+    "credit_debit": "Credito e Debito",
+    "others": "Outros",
+    "schedule": "Horário",
+    "opening_hours": "Horário de funcionamento",
+    "day": "Dia",
+    "about": "Sobre",
+    "payment": "Pagamentos",
+    "add": "Adicionar"
+  },
+  "order":{
+    "title": "Cadastro de Pedidos",
+    "order": "Pedido",
+    "actions": "Ações"
   }
 }

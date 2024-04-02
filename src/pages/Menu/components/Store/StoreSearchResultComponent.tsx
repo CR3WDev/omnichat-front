@@ -1,5 +1,5 @@
 import { Product } from 'types/products'
-import { ItemDetailComponent } from '../ItemsComponents/ItemDetailComponent'
+import { ItemDetailComponent } from '../Items/ItemDetailComponent'
 
 interface StoreSearchResultProps {
   result: Product | null
