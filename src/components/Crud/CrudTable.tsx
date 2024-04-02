@@ -32,7 +32,12 @@ export const CrudTable = <T extends object>({
         {cols.map(col => (
           <Column key={col.field} field={col.field} header={col.header} />
         ))}
-        {children}
+         <Column
+          field="actions"
+          header="Ações"
+          headerClassName="flex justify-content-center"
+          body={children}
+          />
       </DataTable>
       <Paginator
         first={currentPage * rowsPerPage}

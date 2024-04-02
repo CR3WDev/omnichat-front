@@ -1,36 +1,15 @@
 // OrdersPage.tsx
 import { getI18n } from '@hooks/useGetI18n';
+import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
-import { Column } from 'primereact/column';
 import { MdCreate, MdDelete, MdVisibility } from 'react-icons/md';
+import { useSelector } from 'react-redux';
 import { Crud } from '../../components/Crud';
 
 export const OrdersPage = () => {
   const orderI18n = getI18n('order')
-  const actions = [
-    {
-      onClick: () => {  console.log("Produto visto!");},
-      icon: <MdVisibility className="mr-2" size="20" />,
-      severity: "info",
-      label: "Visualizar"
-    },
-    {
-      onClick: () => {
-        console.log("Produto editado!");
-      },
-      icon: <MdCreate className="mr-2" size="20" />,
-      severity: "secondary",
-      label: "Editar"
-    },
-    {
-      onClick: () => {
-        console.log("Produto deletado!");
-      },
-      icon: <MdDelete className="mr-2" size="20" />,
-      severity: 'danger',
-      label: "Deletar"
-    }
-  ];
+
+
 
   const cols = [
     { field: 'id', header: 'ID' },
@@ -62,13 +41,23 @@ const cars = [
         totalRecords={cars.length}
         onPageChange={(event) => console.log('Página alterada:', event)}
       >
-        <Column
-          field="actions"
-          header={orderI18n.actions}
-          headerClassName="flex justify-content-center"
-          body={<Crud.TableActions actions={actions} />}
-
-        />
+        <Crud.TableActions>
+          <div>
+            <Button text>
+              <MdVisibility className="mr-2" size="20" /> Visualizar
+            </Button>
+          </div>
+          <div>
+            <Button text severity="secondary">
+              <MdCreate className="mr-2" size="20" /> Editar
+            </Button>
+          </div>
+          <div>
+            <Button text severity="danger">
+              <MdDelete className="mr-2" size="20" /> Deletar
+            </Button>
+          </div>
+        </Crud.TableActions>
       </Crud.Table>
 
   </Crud.Root>

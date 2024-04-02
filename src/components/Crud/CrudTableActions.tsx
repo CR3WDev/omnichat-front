@@ -1,21 +1,14 @@
-import { Button } from 'primereact/button';
-import { ActionType } from 'types/crudactions';
+import { ReactNode } from "react";
 
 interface CrudActionsProps {
-  actions: ActionType[];
+  children?: ReactNode;
 }
 
-export const CrudTableActions = ({ actions }: CrudActionsProps) => {
+export const CrudTableActions = ({ children }: CrudActionsProps) => {
+
   return (
     <div className="flex justify-content-center">
-      {actions.map((action, index) => (
-        <div key={index}>
-          <Button text onClick={action.onClick} severity={action.severity}>
-            {action.icon}
-            {action.label}
-          </Button>
-        </div>
-      ))}
+      {children}
     </div>
   );
 };
