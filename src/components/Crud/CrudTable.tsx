@@ -3,7 +3,6 @@ import { DataTable } from 'primereact/datatable';
 import { Paginator } from 'primereact/paginator';
 import { ReactNode } from 'react';
 import { ColumnType } from 'types/column';
-import { Crud } from '.';
 
 interface CrudTableProps<T extends object> {
   children?: ReactNode;
@@ -25,9 +24,6 @@ export const CrudTable = <T extends object>({
   currentPage,
   rowsPerPage,
   totalRecords,
-  onView,
-  onEdit,
-  onDelete,
   onPageChange,
 }: CrudTableProps<T>) => {
   return (
@@ -36,13 +32,7 @@ export const CrudTable = <T extends object>({
         {cols.map(col => (
           <Column key={col.field} field={col.field} header={col.header} />
         ))}
-        <Column
-          field="actions"
-          header="Ações"
-          headerClassName="flex justify-content-center"
-          body={<Crud.TableActions onEdit={onEdit} onView={onView} onDelete={onDelete} />}
-          className="actions-column"
-        ></Column>
+        {children}
       </DataTable>
       <Paginator
         first={currentPage * rowsPerPage}
