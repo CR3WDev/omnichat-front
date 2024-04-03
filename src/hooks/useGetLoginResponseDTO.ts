@@ -8,7 +8,12 @@ interface LoginResponseDTO {
 export const useGetLoginResponseDTO = (): LoginResponseDTO | undefined => {
   const loginResponseDTOStringfy = sessionStorage.getItem('LoginResponseDTO')
   if (!loginResponseDTOStringfy) return undefined
-  return JSON.parse(loginResponseDTOStringfy)
+  try {
+    return JSON.parse(loginResponseDTOStringfy)
+  } catch (error) {
+    console.error('Failed to parse JSON string:', loginResponseDTOStringfy, 'Error:', error);
+    throw error;
+  }
 }
 
 export const useSetLoginResponseDTO = (loginResponseDTO: LoginResponseDTO) => {
