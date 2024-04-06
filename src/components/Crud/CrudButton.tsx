@@ -10,7 +10,7 @@ interface CrudButtonProps {
 export const CrudButton = ({ onCreate }:CrudButtonProps) => {
   const crudI18n = getI18n('crud')
   return (
-    <Button onClick={onCreate}>
+    <Button  onClick={onCreate}>
       {crudI18n.register} <MdAdd className="ml-2" />
     </Button>
   );

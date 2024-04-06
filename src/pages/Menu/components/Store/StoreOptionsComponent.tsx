@@ -28,6 +28,7 @@ export const StoreOptionsComponent = ({ visible, onHide, onSelectOption }: Store
 
   return (
     <Dialog
+      className='light-roundedsm'
       header={<div style={{ textAlign: 'center' }}>{menuI18n.delivery_option}</div>}
       visible={visible}
       onHide={onHide}

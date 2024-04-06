@@ -3,13 +3,10 @@ import { getI18n } from '@hooks/useGetI18n';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { MdCreate, MdDelete, MdVisibility } from 'react-icons/md';
-import { useSelector } from 'react-redux';
 import { Crud } from '../../components/Crud';
 
 export const OrdersPage = () => {
   const orderI18n = getI18n('order')
-
-
 
   const cols = [
     { field: 'id', header: 'ID' },
@@ -17,15 +14,15 @@ export const OrdersPage = () => {
     { field: 'modelo', header: 'Modelo' },
     { field: 'ano', header: 'Ano' }
 ];
-const cars = [
+  const cars = [
   { id: 1, marca: 'Toyota', modelo: 'Corolla', ano: 2022 },
   { id: 2, marca: 'Honda', modelo: 'Civic', ano: 2021 },
   { id: 3, marca: 'Ford', modelo: 'Focus', ano: 2020 }
 ];
 
-  const handleCreate = () => {
+const handleCreate = () => {
     console.log("Produto criado!");
-  };
+};
 
   return (
    <Crud.Root title={orderI18n.title}>

@@ -50,7 +50,6 @@
   --highlight-text-color: rgba(255, 255, 255, 0.87);
   color-scheme: dark;
 }
-
 @font-face {
   font-family: "Inter var";
   font-weight: 100 900;
@@ -189,6 +188,16 @@
   --primary-800:#5c4c8a;
   --primary-900:#433864;
 }
+.d-rounded{
+  border-width: 0px;
+}
+.bg-card{
+  background-color: #1f2937;
+}
+.light-rounded{
+  border: #000000 0px solid ;
+  border-radius: 25px;
+}
 
 .p-editor-container .p-editor-toolbar {
   background: #1f2937;
@@ -288,10 +297,22 @@
 .p-editor-container .ql-snow.ql-toolbar .ql-picker-item.ql-selected .ql-picker-label {
   color: #a78bfa;
 }
-
+.bg-black{
+  background-color: #000000;
+}
 @layer primereact {
   * {
     box-sizing: border-box;
+  }
+  .bg-black{
+    background-color: #000000;
+  }
+  .bg-card{
+    background-color: #121212;
+  }
+  .light-rounded{
+    border: #000000 0px solid ;
+    border-radius: 25px;
   }
   .p-component {
     font-family: var(--font-family);
@@ -2605,7 +2626,7 @@
     border-width: 0 0 1px 0;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.87);
-    background: #1f2937;
+    background: #000000;
     transition: box-shadow 0.2s;
   }
   .p-datatable .p-datatable-tfoot > tr > td {
@@ -2877,7 +2898,7 @@
     font-weight: 700;
   }
   .p-dataview .p-dataview-content {
-    background: #1f2937;
+    background: #121212;
     color: rgba(255, 255, 255, 0.87);
     border: 0 none;
     padding: 0;

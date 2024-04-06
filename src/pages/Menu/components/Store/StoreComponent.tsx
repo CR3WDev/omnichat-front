@@ -2,6 +2,7 @@ import { getI18n } from '@hooks/useGetI18n'
 import bannerImage from '@utils/assets/pizzaria/BannerPizzaria.png'
 import LogoImage from '@utils/assets/pizzaria/Logo.png'
 import { Avatar } from 'primereact/avatar'
+import { Button } from 'primereact/button'
 import { Card } from 'primereact/card'
 import { Sidebar } from 'primereact/sidebar'
 import { useState } from 'react'
@@ -58,9 +59,9 @@ export const StoreComponent = ({ StoreName, MinimumValueDelivery, data }: StoreP
           </div>
           <div className="flex align-items-center md:justify-content-end md:w-10 lg:h-auto h-2rem mx-2 ">
             <div>
-              <a className="cursor-pointer text-blue-600" onClick={() => setVisibleSeeMore(true)}>
+              <Button text className="cursor-pointer" onClick={() => setVisibleSeeMore(true)}>
                 {menuI18n.read_more}
-              </a>
+              </Button>
             </div>
             <div className="lg:px-3 p-1 text-500">
               <p> | </p>
@@ -80,7 +81,7 @@ export const StoreComponent = ({ StoreName, MinimumValueDelivery, data }: StoreP
         </div>
         <div className="lg:w-8rem h-4rem lg:mx-2 ml-2 w-4 mt-2 lg:mt-0">
           <Card
-            className="w-full h-4rem mx-2 flex align-items-center justify-content-start cursor-pointer"
+            className="w-full h-4rem mx-2 flex align-items-center justify-content-center cursor-pointer light-rounded"
             onClick={() => setVisibleOptionsDelivery(true)}
           >
             <h3>{selectedOption}</h3>

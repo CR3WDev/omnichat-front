@@ -17,17 +17,17 @@ export const ItemTemplateComponent  = ({ product}:ItemTemplateProps) => {
 
   return (
     <div className="xl:col-6 p-4 col-12"  style={{ cursor: 'pointer' }} key={product.id}>
-      <Card onClick={handleItemClick}>
+      <Card onClick={handleItemClick} className='light-rounded'>
         <div className={classNames('flex flex-column xl:flex-row  gap-4 p-m-3 w-full')}>
           <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
-            <div className="flex flex-column align-items-center sm:align-items-start gap-3">
+            <div className="flex flex-column w-full align-items-center sm:align-items-start gap-3">
               <div className="text-2xl font-bold text-900">{product.name}</div>
               <div className="flex align-items-center gap-3">
                 <span className="flex align-items-center gap-2">
                   <span className="font-semibold text-4x1">{product.description}</span>
                 </span>
               </div>
-              <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2 h-full">
+              <div className="flex sm:flex-column align-items-center w-full justify-content-end primary sm:align-items-end gap-3 sm:gap-2 h-full">
                 <span className="text-2xl font-semibold">${product.price}</span>
               </div>
             </div>

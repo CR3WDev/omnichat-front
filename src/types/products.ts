@@ -11,6 +11,7 @@ export interface Product {
 
 export interface Item {
   type: string;
+  class: string;
   name: string;
   options: ItemOption[];
 }
@@ -18,4 +19,5 @@ export interface Item {
 export interface ItemOption {
   label: string;
   value: string;
+  price?: number;
 }

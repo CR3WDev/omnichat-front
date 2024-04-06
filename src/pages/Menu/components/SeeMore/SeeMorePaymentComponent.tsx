@@ -6,7 +6,7 @@ export const PaymentComponent = () => {
   const menuI18n = getI18n('menu')
 
   return (
-    <Card className="w-20rem">
+    <Card className="w-20rem light-rounded">
       <div className="w-full justify-content-center">
         <h3>{menuI18n.website_payment}</h3>
       </div>

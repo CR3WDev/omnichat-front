@@ -26,7 +26,7 @@ export const ScheduleComponent = () => {
   }
 
   return (
-    <Card className="w-20rem">
+    <Card className="w-20rem light-rounded">
       <DataTable value={scheduleData} header={menuI18n.opening_hours}>
         <Column header={menuI18n.day} body={renderDay}></Column>
         <Column header={menuI18n.schedule} body={renderTime}></Column>

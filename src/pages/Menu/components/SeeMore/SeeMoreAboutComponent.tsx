@@ -2,7 +2,7 @@ import { Card } from 'primereact/card'
 
 export const AboutComponent = () => {
   return (
-    <Card className="w-20rem">
+    <Card className="w-20rem light-rounded">
       <div className="flex w-full flex-wrap">
         <p className="text-md text-700">
           Venha saborear a excelência da tradição italiana e brasileira, a Pizzaria Della Mamma,
