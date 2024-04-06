@@ -19,5 +19,5 @@ export interface Item {
 export interface ItemOption {
   label: string;
   value: string;
-  price?: number;
+  price: number;
 }

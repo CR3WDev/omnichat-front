@@ -42,19 +42,17 @@ export const MenuPage = () => {
 
   return (
     <div className="h-screen w-screen justify-content-center flex">
-      <div className='lg:w-10'>
+      <div className='lg:w-10 w-screen'>
         <StoreComponent StoreName={StoreName} MinimumValueDelivery={MinimumValueDelivery} data={products} />
-        <div className="flex justify-content-center">
-          <div className='bg-card' >
-            <TabMenu style={{ overflowX: 'auto', maxWidth: '100%' }}
+        <div className="flex justify-content-center"  style={{ overflowX: 'auto', maxWidth: '100%'  }}>
+          <div className='bg-card' style={{ flex: '0 0 auto' }} >
+            <TabMenu  style={{ width: '100%' }}
               model={Object.keys(groupedProducts).map((category) => ({
                 label: category,
-                icon: 'pi pi-fw pi-list',
                 command: () => handleCategoryButtonClick(category),
               }))}
             />
           </div>
-
         </div>
           {selectedCategory && (
             <div  id={`category-${selectedCategory}`}>

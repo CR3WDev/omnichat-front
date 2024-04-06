@@ -57,9 +57,9 @@ export const StoreComponent = ({ StoreName, MinimumValueDelivery, data }: StoreP
           <div className="flex align-items-center justify-content-center md:justify-content-start md:w-8 h-2rem">
             <h2 className="text-2xl">{StoreName}</h2>
           </div>
-          <div className="flex align-items-center md:justify-content-end md:w-10 lg:h-auto h-2rem mx-2 ">
+          <div className="flex align-items-center md:justify-content-end md:w-10 lg:h-auto h-2rem lg:mx-2 ">
             <div>
-              <Button text className="cursor-pointer" onClick={() => setVisibleSeeMore(true)}>
+              <Button text className="cursor-pointer m-0 p-0" onClick={() => setVisibleSeeMore(true)}>
                 {menuI18n.read_more}
               </Button>
             </div>
@@ -67,7 +67,7 @@ export const StoreComponent = ({ StoreName, MinimumValueDelivery, data }: StoreP
               <p> | </p>
             </div>
             <div>
-              <p className="text-xs pt-1 text-gray-600">
+              <p className="text-xs pt-1 pl-1 text-gray-600">
                 {' '}
                 {menuI18n.minimum_value} {MinimumValueDelivery.toFixed(2)}
               </p>

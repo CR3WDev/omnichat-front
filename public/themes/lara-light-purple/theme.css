@@ -195,6 +195,16 @@
   border: #000000 2px solid ;
   border-radius: 25px !important
 }
+.light-roundedcard{
+  border: #000000 2px solid ;
+  border-radius: 25px !important
+}
+@media screen and (max-width: 768px) {
+  .light-roundedcard {
+    border-radius: 0 !important;
+    border: #000000 0px solid ;
+  }
+}
 .light-roundedsm{
   border: #000000 2px solid ;
   border-radius: 5px;
@@ -305,6 +315,12 @@
   .light-rounded{
     border: #000000 2px solid ;
     border-radius: 25px !important
+  }
+  @media screen and (max-width: 768px) {
+    .light-rounded {
+      border: #000000 0px solid ;
+      border-radius: 0 !important;
+    }
   }
 
   .light-roundedsm{
