@@ -14,8 +14,8 @@ export const InterceptorComponent = ({ children }: InterceptorProps) => {
   api.interceptors.request.use(
     (config) => {
       const LoginResponseDTO = useGetLoginResponseDTO()
-      if (LoginResponseDTO?.token) {
-        config.headers.Authorization = `Bearer ${LoginResponseDTO?.token}`
+      if (LoginResponseDTO?.tokens) {
+        config.headers.Authorization = `Bearer ${LoginResponseDTO?.tokens.access_token}`
       }
       return config
     },

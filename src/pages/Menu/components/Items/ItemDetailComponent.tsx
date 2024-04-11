@@ -18,7 +18,6 @@ interface ItemDetailComponentProps {
 
 export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComponentProps) => {
   const [selectedOptions, setSelectedOptions] = useState<{ [key: string]: string }>({})
-  const [price, setprice] = useState(product.price)
   const menuI18n = getI18n('menu')
   const [count, setCount] = useState(1)
   const [bill, setBill] = useState(product.price * count)
@@ -33,20 +32,20 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
     }
   }
 
-  const handleOptionChange = (itemId: string, optionValue: string, optionPrice: number ) => {
+  const handleOptionChange = (itemId: string, optionValue: string, optionPrice: number) => {
     setSelectedOptions((prevState) => ({
       ...prevState,
       [itemId]: optionValue,
-    }));
+    }))
     // Verifica se a opção foi marcada ou desmarcada
     if (optionValue) {
       // Adiciona o preço da opção ao preço total
-      setBill((prevBill) => prevBill + optionPrice);
+      setBill((prevBill) => prevBill + optionPrice)
     } else {
       // Remove o preço da opção do preço total
-      setBill((prevBill) => prevBill - optionPrice);
+      setBill((prevBill) => prevBill - optionPrice)
     }
-  };
+  }
 
   const handleOptionRadioButtonChange = (itemId: string, optionValue: string) => {
     setSelectedOptions((prevState) => ({
@@ -55,14 +54,13 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
     }))
   }
 
-
-
   return (
-    <Dialog className='light-roundedsm'
-      header={<div className=' flex justify-content-center'>{product.name}</div>}
+    <Dialog
+      className="light-roundedsm"
+      header={<div className=" flex justify-content-center">{product.name}</div>}
       visible={visible}
       onHide={onHide}
-      style={{ width: '1200px', height: '580px'}}
+      style={{ width: '1200px', height: '580px' }}
       modal
       draggable={false}
       resizable={false}
@@ -80,70 +78,80 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
         </div>
         <ScrollPanel className="lg:w-6 w:12 ml-2">
           <div className="flex align-items-center flex-wrap">
-            <div className='flex w-full flex-wrap'>
-              <div className='justify-content-start'>
+            <div className="flex w-full flex-wrap">
+              <div className="justify-content-start">
                 <p className="ml-2">{product.description}</p>
               </div>
-              <div className='flex w-full justify-content-end'>
+              <div className="flex w-full justify-content-end">
                 <h2 className="ml-2 bold">R$ {product.price}</h2>
               </div>
             </div>
             {product.items.map((item) => (
-                <div className="w-full pl-2" key={item.name}>
-                  <div className="surface-section h-4rem border-round">
-                    <div className="ml-5 pt-2 text-center">
-                      <h3 className="m-0 p-0">{item.name}</h3>
-                      <h5 className="m-0 p-0">{item.type}</h5>
-                    </div>
+              <div className="w-full pl-2" key={item.name}>
+                <div className="surface-section h-4rem border-round">
+                  <div className="ml-5 pt-2 text-center">
+                    <h3 className="m-0 p-0">{item.name}</h3>
+                    <h5 className="m-0 p-0">{item.type}</h5>
                   </div>
-                  {item.options.map((option) => (
-                    <div key={option.value} className="flex flex-row my-3 ">
-                      <div className="flex w-6 align-items-center ">
-                        <label
-                          className="ml-2 text-base"
-                          htmlFor={`${product.id}_${item.name}_${option.value}`}
-                        >
-                          {option.label}
-                        </label>
-                      </div>
-                      {item.class === 'checkbox' ? (
-                        <div className="p-checkbox p-component w-6 h-full justify-content-end ">
-                          <div className='flex '>
-                            <div>
-                              <p className='p-0 m-0 mr-2'>{option.price}</p>
-                            </div>
+                </div>
+                {item.options.map((option) => (
+                  <div key={option.value} className="flex flex-row my-3 ">
+                    <div className="flex w-6 align-items-center ">
+                      <label
+                        className="ml-2 text-base"
+                        htmlFor={`${product.id}_${item.name}_${option.value}`}
+                      >
+                        {option.label}
+                      </label>
+                    </div>
+                    {item.class === 'checkbox' ? (
+                      <div className="p-checkbox p-component w-6 h-full justify-content-end ">
+                        <div className="flex ">
+                          <div>
+                            <p className="p-0 m-0 mr-2">{option.price}</p>
+                          </div>
                           <div className="p-checkbox-box p-component p-clickable ">
                             <Checkbox
                               inputId={`${product.id}_${item.name}_${option.value}`}
                               name={`${product.id}_${item.name}_${option.value}`}
                               value={option.value}
                               onChange={(e) =>
-                                handleOptionChange(`${product.id}_${item.name}_${option.value}`, e.checked ? option.value : '', option.price)
+                                handleOptionChange(
+                                  `${product.id}_${item.name}_${option.value}`,
+                                  e.checked ? option.value : '',
+                                  option.price
+                                )
                               }
-                              checked={selectedOptions[`${product.id}_${item.name}_${option.value}`] === option.value}
+                              checked={
+                                selectedOptions[`${product.id}_${item.name}_${option.value}`] ===
+                                option.value
+                              }
                             />
                           </div>
                         </div>
                       </div>
-                      ) : (
-                        <div className="p-radiobutton p-component w-6  h-full justify-content-end ">
-                            <div className="p-radiobutton-box p-component p-clickable ">
-                              <RadioButton
-                                inputId={`${product.id}_${item.name}_${option.value}`}
-                                name={`${product.id}_${item.name}`}
-                                value={option.value}
-                                onChange={() =>
-                                  handleOptionRadioButtonChange(`${product.id}_${item.name}`, option.value)
-                                }
-                                checked={selectedOptions[`${product.id}_${item.name}`] === option.value}
-                              />
-                            </div>
-                          </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ))}
+                    ) : (
+                      <div className="p-radiobutton p-component w-6  h-full justify-content-end ">
+                        <div className="p-radiobutton-box p-component p-clickable ">
+                          <RadioButton
+                            inputId={`${product.id}_${item.name}_${option.value}`}
+                            name={`${product.id}_${item.name}`}
+                            value={option.value}
+                            onChange={() =>
+                              handleOptionRadioButtonChange(
+                                `${product.id}_${item.name}`,
+                                option.value
+                              )
+                            }
+                            checked={selectedOptions[`${product.id}_${item.name}`] === option.value}
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ))}
             <div className="flex align-items-start justify-content-start w-full ml-2">
               <div className=" p-mt-3 w-full">
                 <h3>Combinação Selecionada:</h3>

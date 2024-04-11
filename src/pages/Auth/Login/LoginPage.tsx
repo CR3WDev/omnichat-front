@@ -33,9 +33,9 @@ export const LoginPage = () => {
       password: data.password,
     }
     login(request).then((data: any) => {
-      navigate('/')
-      const LoginResponseDTO = JSON.stringify(data?.data?.LoginResponseDTO)
-      sessionStorage.setItem('LoginResponseDTO', LoginResponseDTO)
+      navigate('/chat')
+      const loginResponseDTO = JSON.stringify(data?.data)
+      sessionStorage.setItem('LoginResponseDTO', loginResponseDTO)
     })
   }
 

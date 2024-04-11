@@ -15,8 +15,4 @@ export const menuOptions: IMenuOption[] = [
     label: 'Pedidos',
     to: '/orders',
   },
-  {
-    label: 'Cardápio',
-    to: '/menu',
-  },
 ]

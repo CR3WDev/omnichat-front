@@ -1,19 +1,15 @@
 interface LoginResponseDTO {
-  token: string,
-  lawyerId: string,
-  userId: string,
-  role: string
+  tokens: {
+    access_token: string
+    refresh_token: string
+  }
+  message: string
 }
 
 export const useGetLoginResponseDTO = (): LoginResponseDTO | undefined => {
   const loginResponseDTOStringfy = sessionStorage.getItem('LoginResponseDTO')
   if (!loginResponseDTOStringfy) return undefined
-  try {
-    return JSON.parse(loginResponseDTOStringfy)
-  } catch (error) {
-    console.error('Failed to parse JSON string:', loginResponseDTOStringfy, 'Error:', error);
-    throw error;
-  }
+  return JSON.parse(loginResponseDTOStringfy)
 }
 
 export const useSetLoginResponseDTO = (loginResponseDTO: LoginResponseDTO) => {

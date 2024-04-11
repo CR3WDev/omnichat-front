@@ -1,4 +1,5 @@
 import { ErrorMessageComponent } from '@components/ErrorMessage'
+import { showToastSuccess } from '@components/GlobalToast/GlobalToastComponent.tsx'
 import { getI18n } from '@hooks/useGetI18n.ts'
 import { UseValidateEmail } from '@hooks/useValidateEmail.ts'
 import { UseValidatePassword } from '@hooks/useValidatePassword.ts'
@@ -46,6 +47,7 @@ export const UserRegister = () => {
       fullName: data?.fullName,
     }
     userRegister(request).then(() => {
+      showToastSuccess(registerI18n.success_message)
       navigate('/login')
     })
   }

@@ -34,7 +34,7 @@ export const RegisterPage = () => {
                 }}
                 className="no-underline hover:underline text-primary cursor-pointer ml-1"
               >
-                {registerI18n.home}
+                {registerI18n.login}
               </span>
             </div>
           </div>

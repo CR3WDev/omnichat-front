@@ -22,7 +22,7 @@
     "email": "Email",
     "confirm_password": "Confirmar Senha",
     "full_name": "Nome Completo",
-    "return_to": "Voltar a",
+    "return_to": "Voltar ao",
     "home": "home",
     "pick_a_password": "Defina uma senha",
     "at_least_one_uppercase": "Uma letra  maiúscula",
@@ -32,7 +32,8 @@
     "choose_a_password": "Coloque uma senha",
     "too_weak": "Senha fraca",
     "average": "Senha mediana",
-    "strong_password": "Senha forte"
+    "strong_password": "Senha forte",
+    "success_message": "Usuário Cadastrado com Sucesso!"
   },
 
   "change_password": {
@@ -82,12 +83,12 @@
     "edit_user_info": "Editar informações do usuário",
     "save": "Salvar"
   },
-  "crud":{
+  "crud": {
     "search": "Pesquisar",
     "searchfor": "Pesquisar por",
     "clear": "Limpar",
-    "register":"Cadastrar",
-    "choosecolumn":"Escolher coluna",
+    "register": "Cadastrar",
+    "choosecolumn": "Escolher coluna",
     "actions": "Ações"
   },
   "menu": {
@@ -107,7 +108,7 @@
     "payment": "Pagamentos",
     "add": "Adicionar"
   },
-  "order":{
+  "order": {
     "title": "Cadastro de Pedidos",
     "order": "Pedido",
     "actions": "Ações"
