@@ -14,3 +14,14 @@ body {
 .p-card-content {
   padding: 0;
 }
+.page-title {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.full-height {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}

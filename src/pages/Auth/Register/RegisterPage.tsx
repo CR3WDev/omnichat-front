@@ -1,6 +1,6 @@
 import { getI18n } from '@hooks/useGetI18n'
 import { useNavigate } from 'react-router-dom'
-import { UserRegister } from './components/UserRegisterComponent'
+import { UserRegister } from './components/UserRegister'
 
 export const RegisterPage = () => {
   const registerI18n = getI18n('register')

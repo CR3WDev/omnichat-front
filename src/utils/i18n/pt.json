@@ -1,5 +1,8 @@
 {
   "required_field": "Campo Obrigatório",
+  "default_success_message": "Operação realizada com Sucesso!",
+  "save": "Salvar",
+  "return": "Voltar",
   "login": {
     "title": "Bem-Vindo ao OmniChat",
     "login": "Login",
@@ -109,8 +112,10 @@
     "add": "Adicionar"
   },
   "order": {
-    "title": "Cadastro de Pedidos",
+    "title": "Módulo de Pedidos",
     "order": "Pedido",
-    "actions": "Ações"
+    "actions": "Ações",
+    "full_name": "Nome Completo",
+    "email": "Email"
   }
 }

@@ -2,7 +2,7 @@ import { getI18n } from '@hooks/useGetI18n'
 import { Button } from 'primereact/button'
 import { MdAdd } from 'react-icons/md'
 
-interface CrudButtonProps {
+type CrudButtonProps = {
   onCreate: () => void
 }
 

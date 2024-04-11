@@ -1,43 +1,102 @@
-import { Column } from 'primereact/column';
-import { DataTable } from 'primereact/datatable';
-import { Paginator } from 'primereact/paginator';
-import { ReactNode } from 'react';
-import { ColumnType } from 'types/column';
+import { setMode } from '@redux/Reducers/modeReducer'
+import { Button } from 'primereact/button'
+import { Column } from 'primereact/column'
+import { confirmDialog } from 'primereact/confirmdialog'
+import { DataTable } from 'primereact/datatable'
+import { Paginator } from 'primereact/paginator'
+import { ReactNode } from 'react'
+import { MdCreate, MdDelete, MdVisibility } from 'react-icons/md'
+import { useDispatch } from 'react-redux'
+import { ColumnType } from 'types/column'
+import { mode } from 'types/mode'
+import { CrudTableActions } from './CrudTableActions'
 
-interface CrudTableProps<T extends object> {
-  children?: ReactNode;
-  data: T[];
-  cols: ColumnType[];
-  currentPage: number;
-  rowsPerPage: number;
-  totalRecords: number;
-  onView?: () => void;
-  onEdit?: () => void;
-  onDelete?: () => void;
-  onPageChange: (event: { first: number, rows: number }) => void;
+type CrudTableProps = {
+  children?: ReactNode
+  data: any[]
+  cols: ColumnType[]
+  currentPage: number
+  rowsPerPage: number
+  totalRecords: number
+  onDelete?: () => void
+  actions?: mode[]
+  onPageChange: (event: { first: number; rows: number }) => void
 }
 
-export const CrudTable = <T extends object>({
+export const CrudTable = ({
   data,
   cols,
   children,
   currentPage,
   rowsPerPage,
+  onDelete,
+  actions,
   totalRecords,
   onPageChange,
-}: CrudTableProps<T>) => {
+}: CrudTableProps) => {
+  const dispatch = useDispatch()
+  const handleDefaultDelete = () => {
+    confirmDialog({
+      message: 'Do you want to delete this record?',
+      header: 'Delete Confirmation',
+      icon: 'pi pi-info-circle',
+      defaultFocus: 'reject',
+      acceptClassName: 'p-button-danger',
+      accept: onDelete,
+      reject: () => {},
+    })
+  }
+  const handleDefaultEdit = () => {
+    dispatch(setMode('edit'))
+  }
+  const handleDefaultView = () => {}
+
+  const defaultActions = () => {
+    const showEdit = !actions ? true : actions?.includes('edit')
+    const showDelete = !actions ? true : actions?.includes('delete')
+    const showView = !actions ? false : actions?.includes('view')
+
+    return (
+      <CrudTableActions>
+        <>
+          {showView && (
+            <div>
+              <Button text onClick={handleDefaultView}>
+                <MdVisibility className="mr-2" size="20" /> Visualizar
+              </Button>
+            </div>
+          )}
+          {showEdit && (
+            <div>
+              <Button text severity="secondary" onClick={handleDefaultEdit}>
+                <MdCreate className="mr-2" size="20" />
+                Editar
+              </Button>
+            </div>
+          )}
+          {showDelete && (
+            <div>
+              <Button text severity="danger" onClick={handleDefaultDelete}>
+                <MdDelete className="mr-2" size="20" /> Deletar
+              </Button>
+            </div>
+          )}
+        </>
+      </CrudTableActions>
+    )
+  }
   return (
     <div className="m-3">
       <DataTable value={data}>
-        {cols.map(col => (
+        {cols.map((col) => (
           <Column key={col.field} field={col.field} header={col.header} />
         ))}
-         <Column
+        <Column
           field="actions"
           header="Ações"
           headerClassName="flex justify-content-center"
-          body={children}
-          />
+          body={children ? children : defaultActions}
+        />
       </DataTable>
       <Paginator
         first={currentPage * rowsPerPage}
@@ -48,5 +107,5 @@ export const CrudTable = <T extends object>({
         className="custom-paginator"
       />
     </div>
-  );
-};
+  )
+}

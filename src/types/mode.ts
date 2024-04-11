@@ -1,1 +1,1 @@
-export type mode = 'search' | 'edit' | 'create' | 'delete'
+export type mode = 'search' | 'edit' | 'create' | 'delete' | 'view'
