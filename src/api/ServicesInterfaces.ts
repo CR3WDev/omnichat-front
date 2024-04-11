@@ -1,6 +1,8 @@
 export type ErrorResponse = {
-	httpStatus: string;
-	message: string;
-	statusCode: number;
-	timestamp: string;
-};
+  description: string
+  message: string
+  descriptionPt: string
+  statusCode: number
+  timestamp: string
+  type: string
+}

@@ -24,7 +24,7 @@
     "user": "Usuário",
     "email": "Email",
     "confirm_password": "Confirmar Senha",
-    "full_name": "Nome Completo",
+    "username": "Nome do Usuário",
     "return_to": "Voltar ao",
     "home": "home",
     "pick_a_password": "Defina uma senha",

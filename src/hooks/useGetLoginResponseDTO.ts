@@ -4,6 +4,7 @@ interface LoginResponseDTO {
     refresh_token: string
   }
   message: string
+  username: string
 }
 
 export const useGetLoginResponseDTO = (): LoginResponseDTO | undefined => {

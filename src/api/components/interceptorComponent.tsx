@@ -3,7 +3,6 @@ import { showToastError } from '@components/GlobalToast'
 import { useGetLoginResponseDTO } from '@hooks/useGetLoginResponseDTO.ts'
 import { ReactElement } from 'react'
 import { ErrorResponse } from '../ServicesInterfaces.ts'
-import { ErrorTypes } from '../enum.ts'
 
 type InterceptorProps = {
   //** Tudo que tiver dentro dele terá os tratamentos de erros */
@@ -29,12 +28,12 @@ export const InterceptorComponent = ({ children }: InterceptorProps) => {
       return response
     },
     (error) => {
-      const errorResponse: ErrorResponse = error?.response?.data?.ApiException
+      const errorResponse: ErrorResponse = error?.response?.data?.ResponseErrorDTO
       if (!errorResponse) return Promise.reject(error)
 
-      if (errorResponse.httpStatus === ErrorTypes.BadRequest) {
-        showToastError(errorResponse.message)
-        throw new Error(errorResponse.message)
+      if (errorResponse.statusCode >= 400 && errorResponse.statusCode < 500) {
+        showToastError(errorResponse.description)
+        throw new Error(errorResponse.description)
       }
       return Promise.reject(error)
     }
