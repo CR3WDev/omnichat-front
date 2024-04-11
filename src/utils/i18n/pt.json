@@ -117,5 +117,8 @@
     "actions": "Ações",
     "full_name": "Nome Completo",
     "email": "Email"
+  },
+  "dashboard": {
+    "title": "Módulo de Dashboard"
   }
 }
