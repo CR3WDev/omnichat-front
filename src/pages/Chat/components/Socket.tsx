@@ -1,19 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import socketIOClient from 'socket.io-client';
+import { useEffect, useState } from 'react';
+import { Socket, io } from 'socket.io-client';
 
 const ENDPOINT = "http://127.0.0.1:3000";
 
-export const SocketComponent: React.FC = () => {
-  const [response, setResponse] = useState("");
+export const SocketComponent = () => {
+  const [response, setResponse] = useState("Hello Word");
 
   useEffect(() => {
-    const socket = socketIOClient(ENDPOINT);
+    const socket: Socket = io(ENDPOINT);
+
     socket.on("FromAPI", (data: string) => {
       setResponse(data);
     });
 
     socket.emit("message", response);
-    return () => { socket.disconnect(); };
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   return (
@@ -22,5 +26,3 @@ export const SocketComponent: React.FC = () => {
     </div>
   );
 }
-
-

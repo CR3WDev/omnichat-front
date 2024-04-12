@@ -21,6 +21,7 @@ export const ChatListComponent = ({ setShowMessagesList, showMessagesList }: Cha
       <div className="mb-3">
         <div>
           <h2>Chats</h2>
+
         </div>
         <div className="w-full">
           <span className="p-input-icon-left w-full">
