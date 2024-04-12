@@ -3,17 +3,19 @@ import { Socket, io } from 'socket.io-client';
 
 const ENDPOINT = "http://127.0.0.1:3000";
 
-export const SocketComponent = () => {
+export const SocketService = () => {
   const [response, setResponse] = useState("Hello Word");
 
   useEffect(() => {
     const socket: Socket = io(ENDPOINT);
 
-    socket.on("FromAPI", (data: string) => {
+    socket.emit("message", response);
+
+    socket.on("response", (data: string) => {
+      console.log(data);
       setResponse(data);
     });
 
-    socket.emit("message", response);
 
     return () => {
       socket.disconnect();
