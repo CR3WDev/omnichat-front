@@ -1,6 +1,5 @@
 import { ChatMessage } from '@pages/Chat/ChatMock'
 import { Avatar } from 'primereact/avatar'
-import { SocketComponent } from '../Socket'
 
 type MessagesListItemProps = {
   //** objeto de mensagem do chat */
@@ -11,7 +10,7 @@ type MessagesListItemProps = {
 export const MessagesListItemComponent = ({ message, simpleMessage }: MessagesListItemProps) => {
   return (
     <div className={`flex ${!simpleMessage && 'mt-2'}`}>
-      <SocketComponent/>
+
       {!simpleMessage && (
         <div>
           <div className="mx-3">
