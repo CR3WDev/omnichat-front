@@ -56,16 +56,15 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
 
   return (
     <Dialog
-      className="light-roundedsm"
+      className="light-roundedsm lg:w-6 w-12 lg:h-auto h-full"
       header={<div className=" flex justify-content-center">{product.name}</div>}
       visible={visible}
       onHide={onHide}
-      style={{ width: '1200px', height: '580px' }}
       modal
       draggable={false}
       resizable={false}
       maximizable={false}
-      closable={false}
+      closable={true}
       dismissableMask
     >
       <div className="flex w-full h-full flex-wrap justify-content-center lg:flex-nowrap">
@@ -76,7 +75,7 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
             alt={product.name}
           />
         </div>
-        <ScrollPanel className="lg:w-6 w:12 ml-2">
+        <ScrollPanel className="lg:w-6 w:12 lg:ml-2 ml-0">
           <div className="flex align-items-center flex-wrap">
             <div className="flex w-full flex-wrap">
               <div className="justify-content-start">
@@ -87,11 +86,13 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
               </div>
             </div>
             {product.items.map((item) => (
-              <div className="w-full pl-2" key={item.name}>
-                <div className="surface-section h-4rem border-round">
-                  <div className="ml-5 pt-2 text-center">
-                    <h3 className="m-0 p-0">{item.name}</h3>
-                    <h5 className="m-0 p-0">{item.type}</h5>
+              <div className="w-full lg:pl-2 pl-0" key={item.name}>
+                <div className="surface-section flex w-full justify-content-center align-items-center h-4rem border-round">
+                  <div className="flex justify-content-center">
+                    <div className='flex flex-column align-items-center'>
+                      <h3 className="m-0 p-0">{item.name}</h3>
+                      <h5 className="m-0 p-0">{item.type}</h5>
+                    </div>
                   </div>
                 </div>
                 {item.options.map((option) => (
@@ -131,7 +132,7 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
                         </div>
                       </div>
                     ) : (
-                      <div className="p-radiobutton p-component w-6  h-full justify-content-end ">
+                      <div className="p-radiobutton p-component w-6 h-full justify-content-end ">
                         <div className="p-radiobutton-box p-component p-clickable ">
                           <RadioButton
                             inputId={`${product.id}_${item.name}_${option.value}`}
@@ -152,8 +153,8 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
                 ))}
               </div>
             ))}
-            <div className="flex align-items-start justify-content-start w-full ml-2">
-              <div className=" p-mt-3 w-full">
+            <div className="flex align-items-start justify-content-start w-full lg:ml-2">
+              <div className="p-mt-3 w-full">
                 <h3>Combinação Selecionada:</h3>
                 {Object.entries(selectedOptions).map(([itemId, optionValue]) => (
                   <Chip className="mx-1" key={itemId} label={optionValue} />
@@ -175,11 +176,11 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
                     </div>
                   </Card>
                   <div>
-                    <Button className="p-button-raised p-button-success h-3rem w-20rem">
+                    <Button className="p-button-raised p-button-success h-3rem lg:w-20rem  w-12">
                       <div className="flex justify-content-center align-items-center">
                         <h3>{menuI18n.add}</h3>
                       </div>
-                      <div className="flex w-full justify-content-end align-items-center">
+                      <div className="flex w-full justify-content-end align-items-center pl-1">
                         <h3>{bill}</h3>
                       </div>
                     </Button>
