@@ -5,7 +5,7 @@ import { Button } from 'primereact/button'
 import { Divider } from 'primereact/divider'
 import { MenuItem } from 'primereact/menuitem'
 import { TieredMenu } from 'primereact/tieredmenu'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useRef, useState } from 'react'
 import {
   MdAccountBox,
   MdArrowDropDown,
@@ -63,20 +63,13 @@ export const TopbarComponent = () => {
   const reloadTheme = (oldTheme: string, newTheme: string) => {
     if (!changeTheme) return undefined
     changeTheme(`lara-${oldTheme}-purple`, `lara-${newTheme}-purple`, 'theme-link', () => {
-      sessionStorage.setItem('theme', newTheme)
+      console.log('entrou')
+      console.log(oldTheme, newTheme)
+      localStorage.setItem('theme', newTheme)
       setTheme(newTheme)
     })
   }
 
-  useEffect(() => {
-    const theme = sessionStorage.getItem('theme')
-    if (!theme) {
-      sessionStorage.setItem('theme', 'dark')
-      setTheme('dark')
-    } else {
-      setTheme(theme)
-    }
-  }, [])
   return (
     <>
       <TopbarSidebarComponent

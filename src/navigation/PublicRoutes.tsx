@@ -7,7 +7,9 @@ import { ErrorPage } from '@pages/Error'
 import { HomePage } from '@pages/Home'
 import { MenuPage } from '@pages/Menu'
 import { OrdersPage } from '@pages/Orders'
+import { ProductsPage } from '@pages/Products'
 import { createBrowserRouter } from 'react-router-dom'
+import { AuthChecker } from './AuthChecker'
 
 export const router = createBrowserRouter([
   {
@@ -24,7 +26,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <HomePage />,
+    element: (
+      <AuthChecker>
+        <HomePage />
+      </AuthChecker>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
@@ -38,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: '/orders',
         element: <OrdersPage />,
+      },
+      {
+        path: '/products',
+        element: <ProductsPage />,
       },
     ],
   },

@@ -31,9 +31,9 @@ export const DashboardPage = () => {
     <div className="page-container">
       <h2 className="page-title">{dashboardI18n.title}</h2>
       <div className="flex">
-        {dashboardInformations.map((teste) => {
+        {dashboardInformations.map((teste, index: number) => {
           return (
-            <Card className="mr-2">
+            <Card className="mr-2" key={index}>
               <div className="flex align-items-center justify-content-between">
                 <div>
                   <div className="text-lg">{teste.name}</div>

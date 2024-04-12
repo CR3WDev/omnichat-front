@@ -43,6 +43,7 @@ export const LoginPage = () => {
   useEffect(() => {
     useLogout()
   }, [])
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex align-items-center justify-content-center h-screen">

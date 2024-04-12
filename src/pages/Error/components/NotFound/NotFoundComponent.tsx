@@ -20,7 +20,7 @@ export const NotFoundPage = () => {
           className="mt-5"
           outlined
           onClick={() => {
-            isLogged ? navigate('/home') : navigate('/')
+            isLogged ? navigate('/dashboard') : navigate('/login')
           }}
         >
           {ErrorPageI18n.return_to_home_page}

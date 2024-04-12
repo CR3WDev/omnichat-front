@@ -1,8 +1,8 @@
-import { IMenuOption, menuOptions } from '@pages/Home/components/SidebarHome/MenuOptions.ts'
 import { SidebarFooterComponent } from '@pages/Home/components/SidebarHome/SidebarFooterComponent.tsx'
 import { SidebarHeaderComponent } from '@pages/Home/components/SidebarHome/SidebarHeaderComponent.tsx'
 import { SidebarItemComponent } from '@pages/Home/components/SidebarHome/SidebarItemComponent.tsx'
 import { Sidebar } from 'primereact/sidebar'
+import { IMenuOption, menuOptions } from '../SidebarHome/MenuOptions'
 
 type TopbarMenuProps = {
   //** define se vai mostrar a sidebar da topbar */

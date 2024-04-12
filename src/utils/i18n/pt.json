@@ -118,6 +118,13 @@
     "full_name": "Nome Completo",
     "email": "Email"
   },
+  "products": {
+    "title": "Módulo de Pedidos",
+    "order": "Pedido",
+    "actions": "Ações",
+    "full_name": "Nome Completo",
+    "email": "Email"
+  },
   "dashboard": {
     "title": "Módulo de Dashboard"
   }

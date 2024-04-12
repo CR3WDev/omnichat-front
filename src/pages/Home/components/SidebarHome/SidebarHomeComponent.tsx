@@ -1,4 +1,4 @@
-import { IMenuOption, menuOptions } from '@pages/Home/components/SidebarHome/MenuOptions.ts'
+import { IMenuOption, menuOptions } from '@pages/Home/components/SidebarHome/MenuOptions.tsx'
 import { SidebarFooterComponent } from '@pages/Home/components/SidebarHome/SidebarFooterComponent.tsx'
 import { SidebarHeaderComponent } from '@pages/Home/components/SidebarHome/SidebarHeaderComponent.tsx'
 import { SidebarItemComponent } from '@pages/Home/components/SidebarHome/SidebarItemComponent.tsx'

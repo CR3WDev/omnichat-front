@@ -22,6 +22,7 @@ export const SidebarItemComponent = ({ menuOption, onHide }: SidebarItemProps) =
         onHide && onHide()
       }}
     >
+      {menuOption.icon && menuOption.icon}
       <span className="font-medium">{menuOption?.label}</span>
       <Ripple />
     </div>
