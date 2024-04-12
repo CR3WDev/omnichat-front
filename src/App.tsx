@@ -3,6 +3,7 @@ import { queryClient } from '@api/queryClient'
 import { GlobalLoadingComponent } from '@components/GlobalLoading'
 import { GlobalToastComponent } from '@components/GlobalToast'
 import { SizerComponent } from '@components/Sizer'
+import { ThemeComponent } from '@components/Theme/ThemeComponent'
 import { router } from '@navigation/PublicRoutes'
 import { store } from '@redux/store'
 import pt from '@utils/i18n/pt.json'
@@ -23,7 +24,9 @@ const App = () => {
             <GlobalLoadingComponent />
             <InterceptorComponent>
               <SizerComponent>
-                <RouterProvider router={router} />
+                <ThemeComponent>
+                  <RouterProvider router={router} />
+                </ThemeComponent>
               </SizerComponent>
             </InterceptorComponent>
           </QueryClientProvider>

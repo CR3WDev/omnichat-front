@@ -1,11 +1,12 @@
 import { getI18n } from '@hooks/useGetI18n'
 import { selectorIsMobile } from '@redux/Reducers/isMobileReducer'
+import { selectorTheme, setTheme } from '@redux/Reducers/themeReducer'
 import { PrimeReactContext } from 'primereact/api'
 import { Button } from 'primereact/button'
 import { Divider } from 'primereact/divider'
 import { MenuItem } from 'primereact/menuitem'
 import { TieredMenu } from 'primereact/tieredmenu'
-import { useContext, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import {
   MdAccountBox,
   MdArrowDropDown,
@@ -14,18 +15,18 @@ import {
   MdLogout,
   MdMenu,
 } from 'react-icons/md'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { TopbarSidebarComponent } from './TopbarSidebarComponent'
 
 export const TopbarComponent = () => {
-  const { changeTheme } = useContext(PrimeReactContext)
-  const [theme, setTheme] = useState<string>('dark')
+  const theme = useSelector(selectorTheme)
   const homeI18n = getI18n('home')
   const isMobile = useSelector(selectorIsMobile)
   const [showMenu, setShowMenu] = useState(false)
   const navigate = useNavigate()
   const menu = useRef<any>(null)
+  const dispatch = useDispatch()
   const items: MenuItem[] = [
     {
       label: homeI18n.profile,
@@ -40,7 +41,13 @@ export const TopbarComponent = () => {
           <MdLightMode size="20" className="mr-2" />
         ),
       command: () => {
-        reloadTheme(theme, switchTheme(theme))
+        if (theme === 'light') {
+          dispatch(setTheme('dark'))
+          localStorage.setItem('theme', 'dark')
+        } else {
+          dispatch(setTheme('light'))
+          localStorage.setItem('theme', 'light')
+        }
       },
     },
     {
@@ -54,21 +61,27 @@ export const TopbarComponent = () => {
       },
     },
   ]
+  const { changeTheme } = useContext(PrimeReactContext)
 
-  const switchTheme = (oldTheme: string) => {
-    if (oldTheme === 'light') return 'dark'
-    if (oldTheme === 'dark') return 'light'
-    return 'light'
-  }
-  const reloadTheme = (oldTheme: string, newTheme: string) => {
-    if (!changeTheme) return undefined
-    changeTheme(`lara-${oldTheme}-purple`, `lara-${newTheme}-purple`, 'theme-link', () => {
+  useEffect(() => {
+    if (!theme) return
+    console.log({ theme })
+    if (!changeTheme) return
+    changeTheme(`lara-light-purple`, `lara-dark-purple`, 'theme-link', () => {
       console.log('entrou')
-      console.log(oldTheme, newTheme)
-      localStorage.setItem('theme', newTheme)
-      setTheme(newTheme)
     })
-  }
+    // if (!changeTheme) return undefined
+    // if (theme === 'dark') {
+    //   changeTheme(`lara-light-purple`, `lara-dark-purple`, 'theme-link', () => {
+    //     console.log('entrou')
+    //   })
+    // }
+    // if (theme === 'light') {
+    //   changeTheme(`lara-dark-purple`, `lara-light-purple`, 'theme-link', () => {
+    //     console.log('entrou2')
+    //   })
+    // }
+  }, [theme])
 
   return (
     <>
