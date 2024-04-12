@@ -2,7 +2,6 @@ import { Crud } from '@components/Crud'
 import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
 import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
-import { Card } from 'primereact/card'
 import { useDispatch, useSelector } from 'react-redux'
 import { OrdersFormComponent } from './components/OrdersForm'
 
@@ -35,9 +34,6 @@ export const OrdersPage = () => {
       {(mode === 'edit' || mode === 'create') && <OrdersFormComponent />}
       {mode === 'search' && (
         <>
-          <Card className="m-3">
-            <Crud.Button onCreate={handleCreate} />
-          </Card>
           <Crud.Table
             data={cars}
             cols={cols}

@@ -1,3 +1,3 @@
 export const useLogout = () => {
-  sessionStorage.removeItem('LoginResponseDTO')
+  sessionStorage.clear()
 }

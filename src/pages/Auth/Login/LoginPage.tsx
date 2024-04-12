@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { ErrorMessageComponent } from '@components/ErrorMessage'
 import { getI18n } from '@hooks/useGetI18n.ts'
+import { useLogout } from '@hooks/useLogout.ts'
 import { postLogin } from '@pages/Auth/Login/loginServices.ts'
 import { Login } from './LoginInterfaces.ts'
 
@@ -39,6 +40,9 @@ export const LoginPage = () => {
     })
   }
 
+  useEffect(() => {
+    useLogout()
+  }, [])
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex align-items-center justify-content-center h-screen">
