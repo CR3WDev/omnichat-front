@@ -56,7 +56,7 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
 
   return (
     <Dialog
-      className="light-roundedsm lg:w-6 w-12 lg:h-auto h-full"
+      className="light-roundedsm lg:w-6 w-12 lg:h-30rem h-full"
       header={<div className=" flex justify-content-center">{product.name}</div>}
       visible={visible}
       onHide={onHide}
@@ -176,7 +176,7 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
                     </div>
                   </Card>
                   <div>
-                    <Button className="p-button-raised p-button-success h-3rem lg:w-20rem  w-12">
+                    <Button className="p-button-raised p-button-success h-3rem lg:w-12rem  w-12">
                       <div className="flex justify-content-center align-items-center">
                         <h3>{menuI18n.add}</h3>
                       </div>

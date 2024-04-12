@@ -1,30 +1,46 @@
-import { useEffect, useState } from 'react';
-import { Socket, io } from 'socket.io-client';
+import { useEffect, useRef, useState } from 'react';
+import socketIOClient, { Socket } from 'socket.io-client';
 
-const ENDPOINT = "http://127.0.0.1:3000";
+interface Message {
+  body: string;
+  senderId: string;
+}
 
-export const SocketService = () => {
-  const [response, setResponse] = useState("Hello Word");
+interface IncomingMessage extends Message {
+  ownedByCurrentUser: boolean;
+}
+
+const SOCKET_SERVER_URL = "http://127.0.0.1:3000";
+const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
+
+export const SocketService = (roomId: string) => {
+  const [messages, setMessages] = useState<IncomingMessage[]>([]);
+  const socketRef = useRef<Socket>();
 
   useEffect(() => {
-    const socket: Socket = io(ENDPOINT);
-
-    socket.emit("message", response);
-
-    socket.on("response", (data: string) => {
-      console.log(data);
-      setResponse(data);
+    socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
+      query: { roomId },
     });
 
+    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message: Message) => {
+      const incomingMessage: IncomingMessage = {
+        ...message,
+        ownedByCurrentUser: message.senderId === socketRef.current!.id,
+      };
+      setMessages((prevMessages) => [...prevMessages, incomingMessage]);
+    });
 
     return () => {
-      socket.disconnect();
+      socketRef.current!.disconnect();
     };
-  }, []);
+  }, [roomId]);
 
-  return (
-    <div>
-      <p>{response}</p>
-    </div>
-  );
-}
+  const sendMessage = (messageBody: string) => {
+    socketRef.current!.emit(NEW_CHAT_MESSAGE_EVENT, {
+      body: messageBody,
+      senderId: socketRef.current!.id,
+    });
+  };
+
+  return { messages, sendMessage };
+};

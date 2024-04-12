@@ -3,11 +3,9 @@ import bannerImage from '@utils/assets/pizzaria/BannerPizzaria.png'
 import LogoImage from '@utils/assets/pizzaria/Logo.png'
 import { Avatar } from 'primereact/avatar'
 import { Button } from 'primereact/button'
-import { Card } from 'primereact/card'
 import { Sidebar } from 'primereact/sidebar'
 import { useState } from 'react'
 import { TabMenuComponent } from '../SeeMore/SeeMoreTabMenuComponent'
-import DeliveryTime from './StoreDeliveryTimeComponent'
 import { StoreOptionsComponent } from './StoreOptionsComponent'
 import { SearchComponent } from './StoreSearchComponent'
 
@@ -79,15 +77,15 @@ export const StoreComponent = ({ StoreName, MinimumValueDelivery, data }: StoreP
         <div className="w-12">
           <SearchComponent products={data} />
         </div>
-        <div className="lg:w-8rem h-4rem lg:mx-2 ml-2 w-4 mt-2 lg:mt-0">
+        {/* <div className="lg:w-8rem h-4rem lg:mx-2 ml-2 w-4 mt-2 lg:mt-0">
           <Card
             className="w-full h-4rem mx-2 flex align-items-center justify-content-center cursor-pointer light-rounded"
             onClick={() => setVisibleOptionsDelivery(true)}
           >
             <h3>{selectedOption}</h3>
           </Card>
-        </div>
-        <DeliveryTime option={selectedOption} />
+        </div> */}
+        {/* <DeliveryTime option={selectedOption} /> */}
       </div>
     </div>
   )
