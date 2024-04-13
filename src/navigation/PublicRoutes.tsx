@@ -8,6 +8,7 @@ import { HomePage } from '@pages/Home'
 import { MenuPage } from '@pages/Menu'
 import { OrdersPage } from '@pages/Orders'
 import { ProductsPage } from '@pages/Products'
+import { UsersPage } from '@pages/Users'
 import { createBrowserRouter } from 'react-router-dom'
 import { AuthChecker } from './AuthChecker'
 
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: '/products',
         element: <ProductsPage />,
+      },
+      {
+        path: '/users',
+        element: <UsersPage />,
       },
     ],
   },
