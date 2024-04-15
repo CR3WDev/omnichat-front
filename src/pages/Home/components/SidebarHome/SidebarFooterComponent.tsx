@@ -11,7 +11,7 @@ export const SidebarFooterComponent = ({ isTopbarFooter }: SidebarFooterProps) =
         <div
           className="text-center"
           style={{
-            width: !isTopbarFooter ? '200px' : '400px',
+            width: !isTopbarFooter ? '200px' : '100%',
             overflowX: 'hidden',
             whiteSpace: 'nowrap',
             textOverflow: 'ellipsis',

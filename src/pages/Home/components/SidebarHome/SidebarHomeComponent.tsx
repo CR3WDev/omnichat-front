@@ -7,7 +7,7 @@ export const SidebarHomeComponent = () => {
   return (
     <div className="min-h-screen flex relative lg:static surface-ground">
       <div
-        className="surface-section h-screen hidden lg:block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none"
+        className="bg-gray-900 h-screen hidden lg:block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none"
         style={{ width: '300px' }}
       >
         <SidebarHeaderComponent />
