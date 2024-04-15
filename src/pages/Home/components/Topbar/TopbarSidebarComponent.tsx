@@ -15,7 +15,7 @@ export const TopbarSidebarComponent = ({ visible, onHide }: TopbarMenuProps) => 
     <Sidebar
       visible={visible}
       onHide={onHide}
-      className="w-full"
+      className="w-full bg-gray-900"
       header={() => {
         return <SidebarHeaderComponent />
       }}

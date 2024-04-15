@@ -15,20 +15,16 @@ export const ThemeComponent = ({ children }: ThemeProps) => {
     if (!theme) return
     console.log({ theme })
     if (!changeTheme) return
-    changeTheme(`lara-light-purple`, `lara-dark-purple`, 'theme-link', () => {
-      console.log('entrou')
-    })
-    // if (!changeTheme) return undefined
-    // if (theme === 'dark') {
-    //   changeTheme(`lara-light-purple`, `lara-dark-purple`, 'theme-link', () => {
-    //     console.log('entrou')
-    //   })
-    // }
-    // if (theme === 'light') {
-    //   changeTheme(`lara-dark-purple`, `lara-light-purple`, 'theme-link', () => {
-    //     console.log('entrou2')
-    //   })
-    // }
+    if (theme === 'dark') {
+      changeTheme(`lara-light-purple`, `lara-dark-purple`, 'theme-link', () => {
+        console.log('entrou')
+      })
+    }
+    if (theme === 'light') {
+      changeTheme(`lara-dark-purple`, `lara-light-purple`, 'theme-link', () => {
+        console.log('entrou')
+      })
+    }
   }, [theme])
 
   return <div>{children}</div>

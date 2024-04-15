@@ -96,7 +96,7 @@ export const TopbarComponent = () => {
           height: '60px',
           width: isMobile ? '100vw' : 'calc(100vw - 300px)',
         }}
-        className="flex bg-gray-900"
+        className={`flex bg-gray-900 ${!isMobile && 'border-left-1 surface-border'}`}
       >
         <div className="flex justify-content-between align-items-center w-full m-3">
           <div>

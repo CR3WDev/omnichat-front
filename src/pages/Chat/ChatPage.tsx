@@ -7,6 +7,7 @@ import { MessagesListComponent } from './components/MessagesList'
 
 export const ChatPage = () => {
   const [showMessagesList, setShowMessagesList] = useState(false)
+
   const isMobile = useSelector(selectorIsMobile)
   const showDivider = !(showMessagesList && isMobile)
   return (
