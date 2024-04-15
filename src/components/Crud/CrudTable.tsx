@@ -104,7 +104,7 @@ export const CrudTable = ({
         totalRecords={totalRecords}
         onPageChange={onPageChange}
         rowsPerPageOptions={[10, 20, 30]}
-        className="custom-paginator"
+        className="custom-paginator mt-3"
       />
     </div>
   )
