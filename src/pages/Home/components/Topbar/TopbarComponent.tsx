@@ -95,7 +95,7 @@ export const TopbarComponent = () => {
         style={{
           height: '60px',
           background: 'var(--surface-card)',
-          width: isMobile ? '100vw' : 'calc(100vw - 280px)',
+          width: isMobile ? '100vw' : 'calc(100vw - 300px)',
         }}
         className="flex"
       >

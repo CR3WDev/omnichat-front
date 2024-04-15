@@ -15,7 +15,7 @@ export const TopbarSidebarComponent = ({ visible, onHide }: TopbarMenuProps) => 
     <Sidebar
       visible={visible}
       onHide={onHide}
-      className="lg:w-18rem w-full"
+      className="w-full"
       header={() => {
         return <SidebarHeaderComponent />
       }}
@@ -30,7 +30,7 @@ export const TopbarSidebarComponent = ({ visible, onHide }: TopbarMenuProps) => 
           })}
         </div>
       </div>
-      <SidebarFooterComponent />
+      <SidebarFooterComponent isTopbarFooter />
     </Sidebar>
   )
 }

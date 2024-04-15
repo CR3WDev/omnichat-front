@@ -8,7 +8,7 @@ export const SidebarHomeComponent = () => {
     <div className="min-h-screen flex relative lg:static surface-ground">
       <div
         className="surface-section h-screen hidden lg:block flex-shrink-0 absolute lg:static left-0 top-0 z-1 border-right-1 surface-border select-none"
-        style={{ width: '280px' }}
+        style={{ width: '300px' }}
       >
         <SidebarHeaderComponent />
         <div style={{ height: 'calc(100vh - 80px)' }} className="flex flex-column px-3">
