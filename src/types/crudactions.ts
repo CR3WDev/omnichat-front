@@ -1,6 +1,6 @@
-export type ButtonColor = "secondary" | "success" | "info" | "warning" | "danger" | "help";
+export type iButtonColor = "secondary" | "success" | "info" | "warning" | "danger" | "help";
 
-export interface ActionType {
+export interface iActionType {
   onClick: () => void;
   icon: JSX.Element;
   severity: any;

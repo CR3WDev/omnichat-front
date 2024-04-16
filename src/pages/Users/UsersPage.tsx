@@ -1,6 +1,7 @@
 import { Crud } from '@components/Crud'
 import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
+import { ProductsPage } from '@pages/Products'
 import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
 import { useDispatch, useSelector } from 'react-redux'
 

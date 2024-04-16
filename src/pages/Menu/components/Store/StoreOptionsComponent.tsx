@@ -4,7 +4,7 @@ import { Dialog } from 'primereact/dialog'
 import { RadioButton, RadioButtonChangeEvent } from 'primereact/radiobutton'
 import { useState } from 'react'
 import { AiOutlineCar, AiOutlineUser } from 'react-icons/ai'
-import { Category } from 'types/category'
+import { iCategory } from 'types/category'
 
 interface StoreOptionsProps {
   visible: boolean
@@ -14,12 +14,12 @@ interface StoreOptionsProps {
 
 export const StoreOptionsComponent = ({ visible, onHide, onSelectOption }: StoreOptionsProps) => {
   const menuI18n = getI18n('menu')
-  const categories: Category[] = [
+  const categories: iCategory[] = [
     { name: 'Entrega', key: 'delivery', icon: <AiOutlineCar style={{ fontSize: '2rem' }} /> },
     { name: 'Retirada', key: 'pickup', icon: <AiOutlineUser style={{ fontSize: '2rem' }} /> },
   ]
 
-  const [selectedCategory, setSelectedCategory] = useState<Category>(categories[0])
+  const [selectedCategory, setSelectedCategory] = useState<iCategory>(categories[0])
 
   const handleConfirmOption = () => {
     onSelectOption(selectedCategory.name)
@@ -68,7 +68,7 @@ export const StoreOptionsComponent = ({ visible, onHide, onSelectOption }: Store
                       name="category"
                       value={category}
                       onChange={(e: RadioButtonChangeEvent) =>
-                        setSelectedCategory(e.value as Category)
+                        setSelectedCategory(e.value as iCategory)
                       }
                       checked={selectedCategory.key === category.key}
                     />

@@ -1,16 +1,16 @@
 
 import { InputText } from 'primereact/inputtext'
 import React, { useEffect, useState } from 'react'
-import { Product } from 'types/products'
+import { iProduct } from 'types/products'
 import { StoreSearchResultComponent } from './StoreSearchResultComponent'
 
 type SearchComponentProps = {
-  products: Product[]
+  products: iProduct[]
 }
 
 export const SearchComponent = ({ products }: SearchComponentProps) => {
   const [searchText, setSearchText] = useState<string>('')
-  const [searchResult, setSearchResult] = useState<Product | null>(null)
+  const [searchResult, setSearchResult] = useState<iProduct | null>(null)
   const [visible, setVisible] = useState(false)
 
   const handleSearch = () => {

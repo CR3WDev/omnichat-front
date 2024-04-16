@@ -1,17 +1,17 @@
 import { Card } from 'primereact/card';
 import { useState } from 'react';
-import { Product } from 'types/products'; // Certifique-se de que este caminho está correto
-import { ItemDetailComponent } from './ItemDetailComponent'; // Verifique também este caminho
+import { iProduct } from 'types/products';
+import { ItemDetailComponent } from './ItemDetailComponent';
 
 interface ItemTemplateProps {
-  product: Product;
+  product: iProduct;
 }
 
 export const ItemTemplateComponent = ({ product }: ItemTemplateProps) => {
   const [popupVisible, setPopupVisible] = useState(false);
 
   const handleItemClick = () => {
-    setPopupVisible(true); // Quando o item é clicado, torna o popup visível
+    setPopupVisible(true);
   };
 
   const descriptionStyle: React.CSSProperties = {

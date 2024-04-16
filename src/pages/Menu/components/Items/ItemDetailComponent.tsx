@@ -8,12 +8,12 @@ import { Dialog } from 'primereact/dialog'
 import { RadioButton } from 'primereact/radiobutton'
 import { ScrollPanel } from 'primereact/scrollpanel'
 import { useState } from 'react'
-import { Product } from 'types/products'
+import { iProduct } from 'types/products'
 
 interface ItemDetailComponentProps {
   visible: boolean
   onHide: () => void
-  product: Product
+  product: iProduct
 }
 
 export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComponentProps) => {

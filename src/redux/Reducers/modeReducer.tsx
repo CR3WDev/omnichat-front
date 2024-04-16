@@ -1,13 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { mode } from 'types/mode'
+import { imode } from 'types/mode'
 
-const initialState: mode = 'search'
+const initialState: imode = 'search'
 
 const modeSlice = createSlice({
   name: 'modeSlice',
   initialState,
   reducers: {
-    setMode: (_, { payload }: PayloadAction<any | mode>) => {
+    setMode: (_, { payload }: PayloadAction<any | imode>) => {
       return payload
     },
   },
@@ -16,5 +16,5 @@ const modeSlice = createSlice({
 export default modeSlice.reducer
 export const { setMode } = modeSlice.actions
 export const selectorMode = (state: any) => {
-  return state.modeSlice as mode
+  return state.modeSlice as imode
 }

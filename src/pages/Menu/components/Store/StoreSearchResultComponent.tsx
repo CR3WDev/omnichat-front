@@ -1,8 +1,8 @@
-import { Product } from 'types/products'
+import { iProduct } from 'types/products'
 import { ItemDetailComponent } from '../Items/ItemDetailComponent'
 
 interface StoreSearchResultProps {
-  result: Product | null
+  result: iProduct | null
   visible: boolean
   handleClick: () => void
   onHide: () => void

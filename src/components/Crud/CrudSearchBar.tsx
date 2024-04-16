@@ -4,11 +4,11 @@ import { Card } from 'primereact/card'
 import { Dropdown } from 'primereact/dropdown'
 import { InputText } from 'primereact/inputtext'
 import { useState } from 'react'
-import { ColumnType } from 'types/column'
+import { iColumnType } from 'types/column'
 
 type CrudSearchBarProps = {
   buttonOnClick?: () => void
-  columns: ColumnType[]
+  columns: iColumnType[]
   useDropdown?: boolean
 }
 

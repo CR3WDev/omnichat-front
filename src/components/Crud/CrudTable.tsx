@@ -5,21 +5,21 @@ import { confirmDialog } from 'primereact/confirmdialog'
 import { DataTable } from 'primereact/datatable'
 import { Paginator } from 'primereact/paginator'
 import { ReactNode } from 'react'
-import { MdCreate, MdDelete, MdVisibility } from 'react-icons/md'
+import { MdCreate, MdOutlineDelete, MdVisibility } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
-import { ColumnType } from 'types/column'
-import { mode } from 'types/mode'
+import { iColumnType } from 'types/column'
+import { imode } from 'types/mode'
 import { CrudTableActions } from './CrudTableActions'
 
 type CrudTableProps = {
   children?: ReactNode
   data: any[]
-  cols: ColumnType[]
+  cols: iColumnType[]
   currentPage: number
   rowsPerPage: number
   totalRecords: number
   onDelete?: () => void
-  actions?: mode[]
+  actions?: imode[]
   onPageChange: (event: { first: number; rows: number }) => void
 }
 
@@ -77,7 +77,7 @@ export const CrudTable = ({
           {showDelete && (
             <div>
               <Button text severity="danger" onClick={handleDefaultDelete}>
-                <MdDelete className="mr-2" size="20" /> Deletar
+                <MdOutlineDelete className="mr-2" size="20" /> Deletar
               </Button>
             </div>
           )}
