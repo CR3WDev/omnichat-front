@@ -1,19 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
 import socketIOClient, { Socket } from 'socket.io-client';
+import { Message } from 'types/message';
 
-interface Message {
-  body: string;
-  senderId: string;
-}
 
 interface IncomingMessage extends Message {
   ownedByCurrentUser: boolean;
 }
 
-const SOCKET_SERVER_URL = "http://127.0.0.1:3000";
+if (!process.env.REACT_APP_SOCKET_SERVER_URL) {
+  throw new Error("REACT_APP_SOCKET_SERVER_URL is not defined");
+}
+const SOCKET_SERVER_URL = process.env.REACT_APP_SOCKET_SERVER_URL;
+
 const NEW_CHAT_MESSAGE_EVENT = "newChatMessage";
 
-export const SocketService = (roomId: string) => {
+export const SocketComponent = (roomId: string) => {
   const [messages, setMessages] = useState<IncomingMessage[]>([]);
   const socketRef = useRef<Socket>();
 
