@@ -2630,7 +2630,7 @@ body {
     border-width: 0 0 1px 0;
     font-weight: 700;
     color: rgba(255, 255, 255, 0.87);
-    background: #000000;
+    background: #171717;
     transition: box-shadow 0.2s;
   }
   .p-datatable .p-datatable-tfoot > tr > td {
