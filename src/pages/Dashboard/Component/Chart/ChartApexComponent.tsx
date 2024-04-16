@@ -1,7 +1,7 @@
 import ReactApexChart from 'react-apexcharts';
 
 
-export const ApexChart = () => {
+export const ChartApexComponent = () => {
   const seriesData = [{ data: [21, 22, 10] }];
 
   const chartOptions = {

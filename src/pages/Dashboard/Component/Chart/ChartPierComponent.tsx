@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import Chart from 'react-apexcharts';
 
 interface PieChartProps {
@@ -13,7 +13,7 @@ interface PieChartProps {
   };
 }
 
-const PieChart: React.FC<PieChartProps> = ({ data, options }) => {
+export const ChartPierComponent = ({ data, options }:PieChartProps) => {
   const chartRef = useRef<any>(null);
 
   useEffect(() => {
@@ -42,9 +42,7 @@ const PieChart: React.FC<PieChartProps> = ({ data, options }) => {
 
   return (
     <div>
-      <Chart options={chartOptions} series={data.series} type="pie" height={200} ref={chartRef} />
+      <Chart options={chartOptions} series={data.series} type="pie" height={250} ref={chartRef} />
     </div>
   );
 };
-
-export default PieChart;
