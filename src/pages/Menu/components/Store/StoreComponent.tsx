@@ -33,7 +33,7 @@ export const StoreComponent = ({ StoreName, MinimumValueDelivery, data }: StoreP
         onSelectOption={handleOptionSelect}
       />
       <Sidebar
-        className="w-28rem flex justify-content-center"
+        className="lg:w-28rem sm:w-28rem w-full flex justify-content-center"
         visible={visibleSeeMore}
         position="right"
         onHide={() => setVisibleSeeMore(false)}
@@ -51,21 +51,19 @@ export const StoreComponent = ({ StoreName, MinimumValueDelivery, data }: StoreP
       </div>
       <div className="flex align-items-center justify-content-center mt-2">
         <Avatar className="lg:w-1 h-auto w-3" image={LogoImage} shape="circle" size="xlarge" />
-        <div className="flex lg:w-full w-8 h-auto align-items-center md:justify-content-center justify-content-start flex-wrap md:flex-nowrap mx-2">
+        <div className="flex lg:w-full w-8 h-auto align-items-center md:justify-content-center justify-content-start flex-wrap md:flex-nowrap lg:mx-2 ml-2">
           <div className="flex align-items-center justify-content-center md:justify-content-start md:w-8 h-2rem">
-            <h2 className="text-2xl">{StoreName}</h2>
+            <h2 className="lg:text-2xl text-base">{StoreName}</h2>
           </div>
           <div className="flex align-items-center md:justify-content-end md:w-10 lg:h-auto h-2rem lg:mx-2 ">
             <div>
-              <Button text className="cursor-pointer m-0 p-0" onClick={() => setVisibleSeeMore(true)}>
-                {menuI18n.read_more}
-              </Button>
+              <Button text label={menuI18n.read_more} className="cursor-pointer lg:text-lg text-xs m-0 p-0" onClick={() => setVisibleSeeMore(true)}/>
             </div>
             <div className="lg:px-3 p-1 text-500">
               <p> | </p>
             </div>
             <div>
-              <p className="text-xs pt-1 pl-1 text-gray-600">
+              <p className="text-xs pt-1 pl-1 ">
                 {' '}
                 {menuI18n.minimum_value} {MinimumValueDelivery.toFixed(2)}
               </p>

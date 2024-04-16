@@ -15,7 +15,7 @@ export const PaymentComponent = () => {
         <div className="w-12">
           {paymentMethods.map((method, index) => (
             <div className="mb-2 w-12 h-3rem" key={index}>
-              <Card className="mb-2 w-9 flex align-items-center h-3rem bg-gray-200">
+              <Card className="mb-2 w-9 flex align-items-center h-3rem bg-payment">
                 <div className="w-12 flex align-items-center justify-content-start">
                   <img
                     className="w-3rem"

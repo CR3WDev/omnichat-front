@@ -39,7 +39,7 @@ export const SearchComponent = ({ products }: SearchComponentProps) => {
   return (
     <div className="w-full">
       <InputText
-        className="w-full p-3 light-rounded"
+        className="w-full lg:p-3 p-2 light-rounded"
         id="searchInput"
         value={searchText}
         onChange={handleInputChange}
