@@ -1,7 +1,6 @@
 import { ErrorMessageComponent } from '@components/ErrorMessage'
 import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
-import { UseValidateEmail } from '@hooks/useValidateEmail'
 import { setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
@@ -10,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 
 export const ProductsFormComponent = () => {
-  const productsI18n = getI18n('productsI18n')
+  const productsI18n = getI18n('products')
   const dispatch = useDispatch()
   const {
     handleSubmit,
@@ -28,35 +27,32 @@ export const ProductsFormComponent = () => {
       <div className="full-height">
         <div className="flex flex-column md:flex-row">
           <div className="col-12 md:col-6">
-            <label htmlFor="">{productsI18n.full_name}</label>
+            <label htmlFor="">{productsI18n.product}</label>
             <InputText
               className={classNames('w-full my-1', {
-                'p-invalid': errors.fullName,
+                'p-invalid': errors.product,
               })}
-              placeholder={productsI18n.full_name + '*'}
-              id="fullName"
-              {...register('fullName', {
+              placeholder={productsI18n.product + '*'}
+              id="product"
+              {...register('product', {
                 required: true,
               })}
             />
-            <ErrorMessageComponent errors={errors.fullName} />
+            <ErrorMessageComponent errors={errors.product} />
           </div>
           <div className="col-12 md:col-6">
-            <label htmlFor="email">{productsI18n.email}</label>
+            <label htmlFor="price">{productsI18n.price}</label>
             <InputText
               className={classNames('w-full my-1', {
-                'p-invalid': errors.email,
+                'p-invalid': errors.price,
               })}
-              placeholder={productsI18n.email + '*'}
-              id="email"
-              {...register('email', {
+              placeholder={productsI18n.price + '*'}
+              id="price"
+              {...register('price', {
                 required: true,
-                validate: (e) => {
-                  return UseValidateEmail(e) || 'Email Inválido'
-                },
               })}
             />
-            <ErrorMessageComponent errors={errors.email} />
+            <ErrorMessageComponent errors={errors.price} />
           </div>
         </div>
       </div>

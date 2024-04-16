@@ -9,8 +9,8 @@ import { classNames } from 'primereact/utils'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 
-export const ProductsFormComponent = () => {
-  const productsI18n = getI18n('productsI18n')
+export const UsersFormComponent = () => {
+  const usersI18n = getI18n('users')
   const dispatch = useDispatch()
   const {
     handleSubmit,
@@ -28,26 +28,26 @@ export const ProductsFormComponent = () => {
       <div className="full-height">
         <div className="flex flex-column md:flex-row">
           <div className="col-12 md:col-6">
-            <label htmlFor="">{productsI18n.full_name}</label>
+            <label htmlFor="">{usersI18n.username}</label>
             <InputText
               className={classNames('w-full my-1', {
-                'p-invalid': errors.fullName,
+                'p-invalid': errors.username,
               })}
-              placeholder={productsI18n.full_name + '*'}
-              id="fullName"
-              {...register('fullName', {
+              placeholder={usersI18n.username + '*'}
+              id="username"
+              {...register('username', {
                 required: true,
               })}
             />
-            <ErrorMessageComponent errors={errors.fullName} />
+            <ErrorMessageComponent errors={errors.username} />
           </div>
           <div className="col-12 md:col-6">
-            <label htmlFor="email">{productsI18n.email}</label>
+            <label htmlFor="email">{usersI18n.email}</label>
             <InputText
               className={classNames('w-full my-1', {
                 'p-invalid': errors.email,
               })}
-              placeholder={productsI18n.email + '*'}
+              placeholder={usersI18n.email + '*'}
               id="email"
               {...register('email', {
                 required: true,

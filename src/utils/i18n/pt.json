@@ -122,8 +122,14 @@
   "products": {
     "title": "Módulo de Produtos",
     "order": "Pedido",
+    "product": "Produto",
+    "price": "Preço",
+    "email": "Email"
+  },
+  "users": {
+    "title": "Módulo de Usuários",
+    "username": "Nome do Usuário",
     "actions": "Ações",
-    "full_name": "Nome Completo",
     "email": "Email"
   },
   "dashboard": {
