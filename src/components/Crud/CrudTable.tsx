@@ -5,7 +5,7 @@ import { confirmDialog } from 'primereact/confirmdialog'
 import { DataTable } from 'primereact/datatable'
 import { Paginator } from 'primereact/paginator'
 import { ReactNode } from 'react'
-import { MdCreate, MdOutlineDelete, MdVisibility } from 'react-icons/md'
+import { MdClose, MdCreate, MdVisibility } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
 import { IColumnType } from 'types/column'
 import { IMode } from 'types/mode'
@@ -77,7 +77,7 @@ export const CrudTable = ({
           {showDelete && (
             <div>
               <Button text severity="danger" onClick={handleDefaultDelete}>
-                <MdOutlineDelete className="mr-2" size="20" /> Deletar
+                <MdClose className="mr-2" size="20" /> Deletar
               </Button>
             </div>
           )}

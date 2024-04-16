@@ -1,6 +1,7 @@
 {
   "required_field": "Campo Obrigatório",
   "default_success_message": "Operação realizada com Sucesso!",
+  "server_down": "Servidor em Manuntenção, voltaremos em breve!",
   "save": "Salvar",
   "return": "Voltar",
   "login": {

@@ -1,5 +1,6 @@
 import { api } from '@api/axios.ts'
 import { showToastError } from '@components/GlobalToast'
+import { getI18n } from '@hooks/useGetI18n.ts'
 import { useGetLoginResponseDTO } from '@hooks/useGetLoginResponseDTO.ts'
 import { ReactElement } from 'react'
 import { ErrorResponse } from '../ServicesInterfaces.ts'
@@ -28,8 +29,15 @@ export const InterceptorComponent = ({ children }: InterceptorProps) => {
       return response
     },
     (error) => {
+      if (error?.code === 'ERR_NETWORK') {
+        showToastError(getI18n('server_down'))
+        throw new Error(error?.code)
+      }
       const errorResponse: ErrorResponse = error?.response?.data?.ResponseErrorDTO
-      if (!errorResponse) return Promise.reject(error)
+
+      if (!errorResponse) {
+        return Promise.reject(error)
+      }
 
       if (errorResponse.statusCode >= 400 && errorResponse.statusCode < 500) {
         showToastError(errorResponse.description)
