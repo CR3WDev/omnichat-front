@@ -8,12 +8,12 @@ import { Dialog } from 'primereact/dialog'
 import { RadioButton } from 'primereact/radiobutton'
 import { ScrollPanel } from 'primereact/scrollpanel'
 import { useState } from 'react'
-import { iProduct } from 'types/products'
+import { IProduct } from 'types/products'
 
 interface ItemDetailComponentProps {
   visible: boolean
   onHide: () => void
-  product: iProduct
+  product: IProduct
 }
 
 export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComponentProps) => {
@@ -70,15 +70,16 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
     >
       <div className="flex w-full md:h-full  flex-column lg:flex-row justify-content-center lg:flex-nowrap">
         {product.image && (
-        <div className="lg:w-6 md:h-auto flex align-items-center justify-content-center">
+          <div className="lg:w-6 md:h-auto flex align-items-center justify-content-center">
             <img
               className="lg:w-12 md:h-full w-15rem h-10rem border-round"
               src={`https://primefaces.org/cdn/primereact/images/product/${product.image}`}
               alt={product.name}
-              style={{ width: '100%', height: '100%', objectFit: 'contain'}}
+              style={{ width: '100%', height: '100%', objectFit: 'contain' }}
             />
-        </div>)}
-        <div className='flex flex-column lg:w-6 w-full md:h-full'>
+          </div>
+        )}
+        <div className="flex flex-column lg:w-6 w-full md:h-full">
           <ScrollPanel className="lg:w-12 w:full lg:ml-2 ml-0 flex-grow-1">
             <div className="flex align-items-center flex-wrap">
               <div className="flex w-full flex-wrap">
@@ -93,7 +94,7 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
                 <div className="w-full lg:pl-2 pl-0" key={item.name}>
                   <div className="surface-section flex w-full justify-content-center align-items-center h-4rem border-round">
                     <div className="flex justify-content-center">
-                      <div className='flex flex-column align-items-center'>
+                      <div className="flex flex-column align-items-center">
                         <h3 className="m-0 p-0">{item.name}</h3>
                         <h5 className="m-0 p-0">{item.type}</h5>
                       </div>
@@ -148,7 +149,9 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
                                   option.value
                                 )
                               }
-                              checked={selectedOptions[`${product.id}_${item.name}`] === option.value}
+                              checked={
+                                selectedOptions[`${product.id}_${item.name}`] === option.value
+                              }
                             />
                           </div>
                         </div>
@@ -160,44 +163,43 @@ export const ItemDetailComponent = ({ visible, onHide, product }: ItemDetailComp
             </div>
           </ScrollPanel>
           <div className="flex flex-wrap align-items-end lg:justify-content-end justify-content-end w-full ml-0 lg:ml-2">
-            <div className='flex w-full flex-wrap justify-content-start'>
-              <div className='w-full justify-content-start'>
+            <div className="flex w-full flex-wrap justify-content-start">
+              <div className="w-full justify-content-start">
                 <h4>Combinação Selecionada</h4>
               </div>
-              <div className='w-full justify-content-start'>
+              <div className="w-full justify-content-start">
                 {Object.entries(selectedOptions).map(([itemId, optionValue]) => (
-                <Chip className="mx-1 my-1" key={itemId} label={optionValue} />
+                  <Chip className="mx-1 my-1" key={itemId} label={optionValue} />
                 ))}
               </div>
             </div>
-              <div className="flex justify-content-end align-items-center mt-2">
-                    <Card className="flex align-items-center h-3rem mr-1 ">
-                      <div className="flex align-items-center h-3rem ">
-                        <Button
-                          icon="pi pi-minus"
-                          onClick={decrement}
-                          className="p-button-rounded p-button-text"
-                        />
-                        <div className="p-mx-2">{count}</div>
-                        <Button
-                          icon="pi pi-plus"
-                          onClick={increment}
-                          className="p-button-rounded p-button-text"
-                        />
-                      </div>
-                    </Card>
-                    <div className='w-full'>
-                      <Button className="lg:h-3rem lg:w-12rem w-12 h-2rem">
-                        <div className="flex justify-content-center align-items-center">
-                          <h3>{menuI18n.add}</h3>
-                        </div>
-                        <div className="flex w-full justify-content-end align-items-center pl-1">
-                          <h3>{bill}</h3>
-                        </div>
-                      </Button>
-                    </div>
-
+            <div className="flex justify-content-end align-items-center mt-2">
+              <Card className="flex align-items-center h-3rem mr-1 ">
+                <div className="flex align-items-center h-3rem ">
+                  <Button
+                    icon="pi pi-minus"
+                    onClick={decrement}
+                    className="p-button-rounded p-button-text"
+                  />
+                  <div className="p-mx-2">{count}</div>
+                  <Button
+                    icon="pi pi-plus"
+                    onClick={increment}
+                    className="p-button-rounded p-button-text"
+                  />
+                </div>
+              </Card>
+              <div className="w-full">
+                <Button className="lg:h-3rem lg:w-12rem w-12 h-2rem">
+                  <div className="flex justify-content-center align-items-center">
+                    <h3>{menuI18n.add}</h3>
+                  </div>
+                  <div className="flex w-full justify-content-end align-items-center pl-1">
+                    <h3>{bill}</h3>
+                  </div>
+                </Button>
               </div>
+            </div>
           </div>
         </div>
       </div>

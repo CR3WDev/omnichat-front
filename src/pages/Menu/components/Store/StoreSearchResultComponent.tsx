@@ -1,8 +1,8 @@
-import { iProduct } from 'types/products'
+import { IProduct } from 'types/products'
 import { ItemDetailComponent } from '../Items/ItemDetailComponent'
 
 interface StoreSearchResultProps {
-  result: iProduct | null
+  result: IProduct | null
   visible: boolean
   handleClick: () => void
   onHide: () => void
@@ -12,7 +12,7 @@ export const StoreSearchResultComponent = ({ result, visible, onHide }: StoreSea
   return (
     <div id="searchResult">
       {result ? (
-        <ItemDetailComponent product={result} visible={visible} onHide={onHide}/>
+        <ItemDetailComponent product={result} visible={visible} onHide={onHide} />
       ) : (
         <div></div>
       )}

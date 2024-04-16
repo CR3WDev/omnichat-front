@@ -19,7 +19,7 @@ export const StoreComponent = ({ StoreName, MinimumValueDelivery, data }: StoreP
   const menuI18n = getI18n('menu')
   const [visibleSeeMore, setVisibleSeeMore] = useState(false)
   const [visibleOptionsDelivery, setVisibleOptionsDelivery] = useState(false)
-  const [selectedOption, setSelectedOption] = useState([menuI18n.delivery])
+  const [_selectedOption, setSelectedOption] = useState([menuI18n.delivery])
 
   const handleOptionSelect = (option: any) => {
     setSelectedOption(option)
@@ -57,7 +57,12 @@ export const StoreComponent = ({ StoreName, MinimumValueDelivery, data }: StoreP
           </div>
           <div className="flex align-items-center md:justify-content-end md:w-10 lg:h-auto h-2rem lg:mx-2 ">
             <div>
-              <Button text label={menuI18n.read_more} className="cursor-pointer lg:text-lg text-xs m-0 p-0" onClick={() => setVisibleSeeMore(true)}/>
+              <Button
+                text
+                label={menuI18n.read_more}
+                className="cursor-pointer lg:text-lg text-xs m-0 p-0"
+                onClick={() => setVisibleSeeMore(true)}
+              />
             </div>
             <div className="lg:px-3 p-1 text-500">
               <p> | </p>

@@ -1,4 +1,4 @@
-export interface iColumnType{
-  field: string;
-  header: string;
+export interface IColumnType {
+  field: string
+  header: string
 }

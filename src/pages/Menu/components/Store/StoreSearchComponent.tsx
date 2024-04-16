@@ -1,16 +1,15 @@
-
 import { InputText } from 'primereact/inputtext'
 import React, { useEffect, useState } from 'react'
-import { iProduct } from 'types/products'
+import { IProduct } from 'types/products'
 import { StoreSearchResultComponent } from './StoreSearchResultComponent'
 
 type SearchComponentProps = {
-  products: iProduct[]
+  products: IProduct[]
 }
 
 export const SearchComponent = ({ products }: SearchComponentProps) => {
   const [searchText, setSearchText] = useState<string>('')
-  const [searchResult, setSearchResult] = useState<iProduct | null>(null)
+  const [searchResult, setSearchResult] = useState<IProduct | null>(null)
   const [visible, setVisible] = useState(false)
 
   const handleSearch = () => {
@@ -54,5 +53,3 @@ export const SearchComponent = ({ products }: SearchComponentProps) => {
     </div>
   )
 }
-
-

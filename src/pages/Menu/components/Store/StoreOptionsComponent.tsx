@@ -4,7 +4,7 @@ import { Dialog } from 'primereact/dialog'
 import { RadioButton, RadioButtonChangeEvent } from 'primereact/radiobutton'
 import { useState } from 'react'
 import { AiOutlineCar, AiOutlineUser } from 'react-icons/ai'
-import { iCategory } from 'types/category'
+import { ICategory } from 'types/category'
 
 interface StoreOptionsProps {
   visible: boolean
@@ -14,12 +14,12 @@ interface StoreOptionsProps {
 
 export const StoreOptionsComponent = ({ visible, onHide, onSelectOption }: StoreOptionsProps) => {
   const menuI18n = getI18n('menu')
-  const categories: iCategory[] = [
+  const categories: ICategory[] = [
     { name: 'Entrega', key: 'delivery', icon: <AiOutlineCar style={{ fontSize: '2rem' }} /> },
     { name: 'Retirada', key: 'pickup', icon: <AiOutlineUser style={{ fontSize: '2rem' }} /> },
   ]
 
-  const [selectedCategory, setSelectedCategory] = useState<iCategory>(categories[0])
+  const [selectedCategory, setSelectedCategory] = useState<ICategory>(categories[0])
 
   const handleConfirmOption = () => {
     onSelectOption(selectedCategory.name)
@@ -28,7 +28,7 @@ export const StoreOptionsComponent = ({ visible, onHide, onSelectOption }: Store
 
   return (
     <Dialog
-      className='light-roundedsm'
+      className="light-roundedsm"
       header={<div style={{ textAlign: 'center' }}>{menuI18n.delivery_option}</div>}
       visible={visible}
       onHide={onHide}
@@ -68,7 +68,7 @@ export const StoreOptionsComponent = ({ visible, onHide, onSelectOption }: Store
                       name="category"
                       value={category}
                       onChange={(e: RadioButtonChangeEvent) =>
-                        setSelectedCategory(e.value as iCategory)
+                        setSelectedCategory(e.value as ICategory)
                       }
                       checked={selectedCategory.key === category.key}
                     />

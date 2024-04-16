@@ -1,12 +1,11 @@
 import { Crud } from '@components/Crud'
 import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
-import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
-import { useDispatch, useSelector } from 'react-redux'
+import { selectorMode } from '@redux/Reducers/modeReducer'
+import { useSelector } from 'react-redux'
 
 export const ProductsPage = () => {
   const mode = useSelector(selectorMode)
-  const dispatch = useDispatch()
   const productsI18n = getI18n('products')
 
   const cols = [
@@ -20,10 +19,6 @@ export const ProductsPage = () => {
     { id: 2, marca: 'Honda', modelo: 'Civic', ano: 2021 },
     { id: 3, marca: 'Ford', modelo: 'Focus', ano: 2020 },
   ]
-
-  const handleCreate = () => {
-    dispatch(setMode('create'))
-  }
 
   const handleOnDelete = () => {
     showToastSuccess(getI18n('default_success_message'))

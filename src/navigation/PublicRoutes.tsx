@@ -10,7 +10,6 @@ import { OrdersPage } from '@pages/Orders'
 import { ProductsPage } from '@pages/Products'
 import { UsersPage } from '@pages/Users'
 import { createBrowserRouter } from 'react-router-dom'
-import { AuthChecker } from './AuthChecker'
 
 export const router = createBrowserRouter([
   {
@@ -27,11 +26,7 @@ export const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: (
-      <AuthChecker>
-        <HomePage />
-      </AuthChecker>
-    ),
+    element: <HomePage />,
     errorElement: <ErrorPage />,
     children: [
       {

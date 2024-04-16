@@ -1,1 +1,1 @@
-export type imode = 'search' | 'edit' | 'create' | 'delete' | 'view'
+export type IMode = 'search' | 'edit' | 'create' | 'delete' | 'view'

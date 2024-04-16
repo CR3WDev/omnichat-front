@@ -7,19 +7,19 @@ import { Paginator } from 'primereact/paginator'
 import { ReactNode } from 'react'
 import { MdCreate, MdOutlineDelete, MdVisibility } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
-import { iColumnType } from 'types/column'
-import { imode } from 'types/mode'
+import { IColumnType } from 'types/column'
+import { IMode } from 'types/mode'
 import { CrudTableActions } from './CrudTableActions'
 
 type CrudTableProps = {
   children?: ReactNode
   data: any[]
-  cols: iColumnType[]
+  cols: IColumnType[]
   currentPage: number
   rowsPerPage: number
   totalRecords: number
   onDelete?: () => void
-  actions?: imode[]
+  actions?: IMode[]
   onPageChange: (event: { first: number; rows: number }) => void
 }
 
