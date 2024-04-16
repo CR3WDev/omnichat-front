@@ -15,7 +15,7 @@ export const DashboardPage = () => {
     labels: dataPie.labels,
     colors: darkColors,
     legendTextColor: legendTextColor,
-  };
+  }
 
   return (
     <div className="page-container">
@@ -23,7 +23,7 @@ export const DashboardPage = () => {
       <div className="flex lg:flex-row flex-column justify-content-center">
         {dashboardInformations.map((teste, index: number) => {
           return (
-            <Card className="mr-3 light-rounded my-4" key={index}>
+            <Card className="mr-3 my-4" key={index}>
               <div className="flex align-items-center justify-content-between">
                 <div>
                   <div className="text-lg">{teste.name}</div>
@@ -66,34 +66,34 @@ export const DashboardPage = () => {
           )
         })}
       </div>
-      <div className='w-full flex justify-content-center'>
-        <div className='lg:w-full w-10 flex lg:flex-row flex-column lg:justify-content-around justify-content-center'>
-          <div className='lg:w-4 lg:mb-0 mb-2 light-roundedsm'>
-            <div className='p-card'>
-              <div className='p-card w-full bg-primary flex justify-content-center align-items-center'>
-                <p className='p-0 m-0 text-white'>Balanço</p>
-                <DashboardDropdownComponent/>
+      <div className="w-full flex justify-content-center">
+        <div className="lg:w-full w-10 flex lg:flex-row flex-column lg:justify-content-around justify-content-center">
+          <div className="lg:w-4 lg:mb-0 mb-2 ">
+            <div className="p-card">
+              <div className="p-card w-full bg-primary flex justify-content-center align-items-center">
+                <p className="p-0 m-0 text-white">Balanço</p>
+                <DashboardDropdownComponent />
               </div>
-              <div className='flex w-full justify-content-center'>
-                <h2 className='text-green-500'>+ 140$</h2>
+              <div className="flex w-full justify-content-center">
+                <h2 className="text-green-500">+ 140$</h2>
               </div>
             </div>
-            <div className='p-card w-full bg-primary flex justify-content-center align-items-center'>
-              <p className='text-white'>Ultimos 5 pedidos</p>
+            <div className="p-card w-full bg-primary flex justify-content-center align-items-center">
+              <p className="text-white">Ultimos 5 pedidos</p>
             </div>
             <div>
               <DashboardDataViewComponent />
             </div>
           </div>
-          <div className='lg:w-6 flex flex-column'>
-            <div className='w-12 light-roundedsm'>
+          <div className="lg:w-6 flex flex-column">
+            <div className="w-12 ">
               <Card>
-                <ChartApexComponent/>
+                <ChartApexComponent />
               </Card>
             </div>
-            <div className='w-12 mt-2 light-roundedsm'>
+            <div className="w-12 mt-2 ">
               <Card>
-                <ChartPierComponent data={dataPie} options={options}/>
+                <ChartPierComponent data={dataPie} options={options} />
               </Card>
             </div>
           </div>

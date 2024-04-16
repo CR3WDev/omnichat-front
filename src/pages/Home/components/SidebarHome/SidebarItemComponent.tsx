@@ -16,7 +16,7 @@ export const SidebarItemComponent = ({ menuOption, onHide }: SidebarItemProps) =
 
   return (
     <div
-      className={`p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 ${isActiveOption ? '' : 'hover:surface-100'} transition-duration-150 transition-colors w-full ${isActiveOption && 'bg-primary'}`}
+      className={`p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 ${isActiveOption ? '' : 'hover:surface-200'} transition-duration-150 transition-colors w-full ${isActiveOption && 'bg-primary'}`}
       onClick={() => {
         navigate(menuOption.to)
         onHide && onHide()

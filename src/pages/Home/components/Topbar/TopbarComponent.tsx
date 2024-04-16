@@ -1,12 +1,11 @@
 import { getI18n } from '@hooks/useGetI18n'
+import { useSwitchTheme } from '@hooks/useSwitchTheme'
 import { selectorIsMobile } from '@redux/Reducers/isMobileReducer'
 import { selectorTheme, setTheme } from '@redux/Reducers/themeReducer'
-import { PrimeReactContext } from 'primereact/api'
 import { Button } from 'primereact/button'
-import { Divider } from 'primereact/divider'
 import { MenuItem } from 'primereact/menuitem'
 import { TieredMenu } from 'primereact/tieredmenu'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import {
   MdAccountBox,
   MdArrowDropDown,
@@ -42,11 +41,11 @@ export const TopbarComponent = () => {
         ),
       command: () => {
         if (theme === 'light') {
+          useSwitchTheme('dark')
           dispatch(setTheme('dark'))
-          localStorage.setItem('theme', 'dark')
         } else {
+          useSwitchTheme('light')
           dispatch(setTheme('light'))
-          localStorage.setItem('theme', 'light')
         }
       },
     },
@@ -61,27 +60,6 @@ export const TopbarComponent = () => {
       },
     },
   ]
-  const { changeTheme } = useContext(PrimeReactContext)
-
-  useEffect(() => {
-    if (!theme) return
-    console.log({ theme })
-    if (!changeTheme) return
-    changeTheme(`lara-light-purple`, `lara-dark-purple`, 'theme-link', () => {
-      console.log('entrou')
-    })
-    // if (!changeTheme) return undefined
-    // if (theme === 'dark') {
-    //   changeTheme(`lara-light-purple`, `lara-dark-purple`, 'theme-link', () => {
-    //     console.log('entrou')
-    //   })
-    // }
-    // if (theme === 'light') {
-    //   changeTheme(`lara-dark-purple`, `lara-light-purple`, 'theme-link', () => {
-    //     console.log('entrou2')
-    //   })
-    // }
-  }, [theme])
 
   return (
     <>
@@ -96,7 +74,7 @@ export const TopbarComponent = () => {
           height: '60px',
           width: isMobile ? '100vw' : 'calc(100vw - 300px)',
         }}
-        className={`flex bg-gray-900 ${!isMobile && 'border-left-1 surface-border'}`}
+        className={`flex surface-ground`}
       >
         <div className="flex justify-content-between align-items-center w-full m-3">
           <div>
@@ -123,7 +101,6 @@ export const TopbarComponent = () => {
           </div>
         </div>
       </div>
-      {theme === 'light' && <Divider layout="horizontal" className="p-0 m-0" />}
     </>
   )
 }
