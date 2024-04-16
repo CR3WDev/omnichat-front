@@ -3,10 +3,10 @@ import { Card } from 'primereact/card'
 
 import { darkColors, dashboardInformations, dataPie, legendTextColor } from '@utils/mock/dashboard'
 import { MdGroup, MdTrendingDown, MdTrendingUp } from 'react-icons/md'
-import { ApexChart } from './Component/ApexChart'
-import { DashboardDataView } from './Component/DashboardDataView'
-import { CustomDropdown } from './Component/Dropdown'
-import PieChart from './Component/PierChart'
+import { ChartApexComponent } from './Component/Chart/ChartApexComponent'
+import { ChartPierComponent } from './Component/Chart/ChartPierComponent'
+import { DashboardDataViewComponent } from './Component/DashboardDataViewComponent'
+import { DashboardDropdownComponent } from './Component/DashboardDropdownComponent'
 
 export const DashboardPage = () => {
   const dashboardI18n = getI18n('dashboard')
@@ -20,7 +20,7 @@ export const DashboardPage = () => {
   return (
     <div className="page-container">
       <h2 className="page-title">{dashboardI18n.title}</h2>
-      <div className="flex justify-content-center">
+      <div className="flex lg:flex-row flex-column justify-content-center">
         {dashboardInformations.map((teste, index: number) => {
           return (
             <Card className="mr-3 light-rounded my-4" key={index}>
@@ -66,35 +66,37 @@ export const DashboardPage = () => {
           )
         })}
       </div>
-      <div className='w-full flex justify-content-around'>
-        <div className='w-3 h-full light-roundedsm'>
-          <div className='p-card'>
+      <div className='w-full flex justify-content-center'>
+        <div className='lg:w-full w-10 flex lg:flex-row flex-column lg:justify-content-around justify-content-center'>
+          <div className='lg:w-4 lg:mb-0 mb-2 light-roundedsm'>
+            <div className='p-card'>
+              <div className='p-card w-full bg-primary flex justify-content-center align-items-center'>
+                <p className='p-0 m-0 text-white'>Balanço</p>
+                <DashboardDropdownComponent/>
+              </div>
+              <div className='flex w-full justify-content-center'>
+                <h2 className='text-green-500'>+ 140$</h2>
+              </div>
+            </div>
             <div className='p-card w-full bg-primary flex justify-content-center align-items-center'>
-              <p className='p-0 m-0 text-white'>Balanço</p>
-              <CustomDropdown/>
+              <p className='text-white'>Ultimos 5 pedidos</p>
             </div>
-            <div className='flex w-full justify-content-center'>
-              <h2 className='text-green-500'>+ 140$</h2>
+            <div>
+              <DashboardDataViewComponent />
             </div>
           </div>
-          <div className='p-card w-full bg-primary flex justify-content-center align-items-center'>
-            <p className='text-white'>Ultimos 5 pedidos</p>
+          <div className='lg:w-6 flex flex-column'>
+            <div className='w-12 light-roundedsm'>
+              <Card>
+                <ChartApexComponent/>
+              </Card>
+            </div>
+            <div className='w-12 mt-2 light-roundedsm'>
+              <Card>
+                <ChartPierComponent data={dataPie} options={options}/>
+              </Card>
+            </div>
           </div>
-          <div className=' '>
-            <DashboardDataView />
-          </div>
-          <div>
-          </div>
-        </div>
-        <div className='w-4 light-roundedsm'>
-          <Card>
-            <ApexChart/>
-          </Card>
-        </div>
-        <div className='w-4 light-roundedsm'>
-          <Card>
-            <PieChart data={dataPie} options={options}/>
-          </Card>
         </div>
       </div>
     </div>

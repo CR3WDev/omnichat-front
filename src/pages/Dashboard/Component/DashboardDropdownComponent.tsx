@@ -2,7 +2,7 @@
 import { Dropdown } from 'primereact/dropdown';
 import { useState } from 'react';
 
-export const CustomDropdown = () => {
+export const DashboardDropdownComponent = () => {
   const options = [
     {label: 'Semanal',value: 'semanal'},
     {label: 'Mensal',value: 'mensal'},

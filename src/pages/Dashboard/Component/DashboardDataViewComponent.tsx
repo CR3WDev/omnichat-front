@@ -1,6 +1,7 @@
 import 'primeflex/primeflex.css';
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
+
 interface DataItem {
     plataforma: string;
     name: string;
@@ -8,8 +9,8 @@ interface DataItem {
     price: number;
 }
 
-export const DashboardDataView = () => {
-    // Dados de exemplo
+export const DashboardDataViewComponent = () => {
+
     const data: DataItem[] = [
         { plataforma: 'Instagram', name: 'Matheus', time: '10:00', price: 10.99 },
         { plataforma: 'Telegram', name: 'Marcelo', time: '11:30', price: 5.99 },
