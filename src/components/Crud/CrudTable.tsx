@@ -1,3 +1,4 @@
+import { useFormatCurrency } from '@hooks/useFormatCurrency'
 import { setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { Column } from 'primereact/column'
@@ -51,6 +52,25 @@ export const CrudTable = ({
   }
   const handleDefaultView = () => {}
 
+  const customCols = (col: any) => {
+    switch (col?.type) {
+      case 'currency': {
+        return (
+          <Column
+            key={col.key}
+            field={col.field}
+            header={col.header}
+            body={(e: any) => {
+              return useFormatCurrency(e[col.field]) || ''
+            }}
+          />
+        )
+      }
+      default: {
+        return <Column key={col.field} field={col.field} header={col.header} />
+      }
+    }
+  }
   const defaultActions = () => {
     const showEdit = !actions ? true : actions?.includes('edit')
     const showDelete = !actions ? true : actions?.includes('delete')
@@ -88,9 +108,7 @@ export const CrudTable = ({
   return (
     <div className="m-3">
       <DataTable value={data}>
-        {cols.map((col) => (
-          <Column key={col.field} field={col.field} header={col.header} />
-        ))}
+        {cols.map((col) => customCols(col))}
         <Column
           field="actions"
           header="Ações"
