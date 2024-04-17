@@ -1,6 +1,6 @@
-import { ChatMock } from '@pages/Chat/ChatMock'
 import { getChatByUser } from '@pages/Chat/ChatServices'
 import { selectorIsMobile } from '@redux/Reducers/isMobileReducer'
+import moment from 'moment'
 import { Ripple } from 'primereact/Ripple'
 import { Avatar } from 'primereact/avatar'
 import { InputText } from 'primereact/inputtext'
@@ -17,7 +17,19 @@ export const ChatListComponent = ({ setChatSelected, chatSelected }: ChatListPro
   const isMobile = useSelector(selectorIsMobile)
 
   const { data } = getChatByUser()
-  console.log(data)
+
+  function formatarDataComMoment(dataString: string) {
+    moment.locale('pt-br')
+
+    const dataMensagem = moment(dataString)
+    const agora = moment()
+
+    if (dataMensagem.isSame(agora, 'day')) {
+      return `${dataMensagem.format('HH:mm')}`
+    } else {
+      return dataMensagem.format('DD/MM/YYYY')
+    }
+  }
 
   if (chatSelected && isMobile) return <></>
   return (
@@ -34,7 +46,7 @@ export const ChatListComponent = ({ setChatSelected, chatSelected }: ChatListPro
         </div>
       </div>
       <div style={{ maxHeight: 'calc(100vh - 48px - 150px - 2rem)', overflow: 'auto' }}>
-        {ChatMock.map((user: any, index: number) => {
+        {data?.data.data.map((user: any, index: number) => {
           return (
             <div
               key={index}
@@ -45,19 +57,21 @@ export const ChatListComponent = ({ setChatSelected, chatSelected }: ChatListPro
             >
               <div className="flex w-full">
                 <div className="mr-3">
-                  <Avatar label={user.firstLetter} size="xlarge" shape="circle" />
+                  <Avatar label={user?.sender[0]} size="xlarge" shape="circle" />
                 </div>
                 <div className="w-full  flex flex-column justify-content-center">
                   <div className="flex justify-content-between w-full">
                     <div>
-                      <span className="font-bold">{user.username}</span>
+                      <span className="font-bold">{user?.sender}</span>
                     </div>
                     <div>
-                      <span>{user.lastMessageDate}</span>
+                      <span className="text-sm">
+                        {formatarDataComMoment(user?.lastMessageTime)}
+                      </span>
                     </div>
                   </div>
                   <div>
-                    <span>{user.lastMessage}</span>
+                    <span>{user?.lastMessage}</span>
                   </div>
                 </div>
               </div>

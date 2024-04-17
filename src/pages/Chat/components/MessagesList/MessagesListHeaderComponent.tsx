@@ -31,12 +31,12 @@ export const MessagesListHeaderComponent = ({
         </div>
       )}
       <div className={'mr-2'}>
-        <Avatar label={chatSelected?.username[0]} size="large" shape="circle" />
+        <Avatar label={chatSelected?.sender[0]} size="large" shape="circle" />
       </div>
       <div className={'flex align-items-center'}>
         <div className="flex flex-column">
-          <span className={'font-bold'}>{chatSelected?.username}</span>
-          <span className="opacity-40 text-sm">85 9 9407-8873</span>
+          <span className={'font-bold'}>{chatSelected?.sender}</span>
+          <span className="opacity-40 text-sm">{chatSelected?.senderNumber}</span>
         </div>
       </div>
     </div>
