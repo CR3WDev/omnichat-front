@@ -16,16 +16,20 @@ import {
 } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { deleteLogout } from './TopbarService'
 import { TopbarSidebarComponent } from './TopbarSidebarComponent'
 
 export const TopbarComponent = () => {
-  const theme = useSelector(selectorTheme)
-  const homeI18n = getI18n('home')
-  const isMobile = useSelector(selectorIsMobile)
   const [showMenu, setShowMenu] = useState(false)
+  const homeI18n = getI18n('home')
+  const theme = useSelector(selectorTheme)
+  const isMobile = useSelector(selectorIsMobile)
   const navigate = useNavigate()
   const menu = useRef<any>(null)
   const dispatch = useDispatch()
+
+  const { mutateAsync: logout } = deleteLogout()
+
   const items: MenuItem[] = [
     {
       label: homeI18n.profile,
@@ -56,7 +60,9 @@ export const TopbarComponent = () => {
       label: homeI18n.leave,
       icon: <MdLogout size="20" className="mr-2" />,
       command: () => {
-        navigate('/login')
+        logout().then(() => {
+          navigate('/login')
+        })
       },
     },
   ]

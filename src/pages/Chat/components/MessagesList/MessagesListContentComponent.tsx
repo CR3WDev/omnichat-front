@@ -5,6 +5,7 @@ import { MdSend } from 'react-icons/md'
 import { MessagesListItemComponent } from './MessagesListItemComponent'
 
 export const MessagesListContentComponent = () => {
+  // const { messages, sendMessage } = useSocketMessage('1')
   return (
     <div className="flex flex-column flex-grow-1">
       <div

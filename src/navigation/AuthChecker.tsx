@@ -7,6 +7,6 @@ type AuthCheckerProps = {
 }
 export const AuthChecker = ({ children }: AuthCheckerProps) => {
   const loginResponseDTO = useGetLoginResponseDTO()
-  return children
+
   return loginResponseDTO ? children : <Navigate to="/login" replace />
 }
