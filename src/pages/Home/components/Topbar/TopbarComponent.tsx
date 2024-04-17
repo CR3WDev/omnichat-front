@@ -60,7 +60,7 @@ export const TopbarComponent = () => {
       label: homeI18n.leave,
       icon: <MdLogout size="20" className="mr-2" />,
       command: () => {
-        logout().then(() => {
+        logout().finally(() => {
           navigate('/login')
         })
       },
