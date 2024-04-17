@@ -3,13 +3,16 @@ import { Card } from 'primereact/card'
 
 import { useFormatCurrency } from '@hooks/useFormatCurrency'
 import { selectorTheme } from '@redux/Reducers/themeReducer'
-import { darkColors, dashboardInformations, dataPie, legendTextColor } from '@utils/mock/dashboard'
+import { dashboardInformations, dataPie } from '@utils/mock/dashboard'
+import { Column } from 'primereact/column'
+import { DataTable } from 'primereact/datatable'
 import { Dropdown } from 'primereact/dropdown'
 import { Tag } from 'primereact/tag'
 import { MdTrendingDown, MdTrendingUp } from 'react-icons/md'
 import { useSelector } from 'react-redux'
-import { ChartApexComponent } from './Component/Chart/ChartApexComponent'
+import { ChartHourComponent } from './Component/Chart/ChartHourComponent copy'
 import { ChartPierComponent } from './Component/Chart/ChartPierComponent'
+import { ChartWeekComponent } from './Component/Chart/ChartWeekComponent'
 
 export const DashboardPage = () => {
   const theme = useSelector(selectorTheme)
@@ -17,9 +20,30 @@ export const DashboardPage = () => {
 
   const options = {
     labels: dataPie.labels,
-    colors: darkColors,
-    legendTextColor: legendTextColor,
+    colors: [
+      // Definindo cores específicas para cada barra
+      '#FF4560',
+      '#008FFB',
+      '#00E396',
+      '#FEB019',
+      '#775DD0',
+      '#FF4560',
+      '#008FFB',
+      '#00E396',
+      '#FEB019',
+      '#775DD0',
+      '#3F51B5',
+      '#03A9F4',
+    ],
   }
+
+  const orders = [
+    { id: '12345', customer: 'João Silva', status: 'Entregue', value: 'R$ 50,00' },
+    { id: '12346', customer: 'Maria Oliveira', status: 'Preparando', value: 'R$ 30,00' },
+    { id: '12347', customer: 'Carlos Pereira', status: 'Cancelado', value: 'R$ 25,00' },
+    { id: '12348', customer: 'Ana Costa', status: 'A Caminho', value: 'R$ 45,00' },
+    { id: '12349', customer: 'Roberto Souza', status: 'Entregue', value: 'R$ 70,00' },
+  ]
 
   return (
     <div className="page-container">
@@ -33,7 +57,7 @@ export const DashboardPage = () => {
             <div>
               <h2 className="m-0 p-0">Turtle Pizza</h2>
               <span className="font-bold">Balanço semanal:</span>
-              <span className="font-bold" style={{ color: '#008000' }}>
+              <span className="font-bold ml-2" style={{ color: '#008000' }}>
                 + {useFormatCurrency(140)}
               </span>
             </div>
@@ -110,11 +134,58 @@ export const DashboardPage = () => {
           )
         })}
       </div>
-      <div className="flex flex mx-2">
-        <Card className={`${theme === 'light' && 'border-1  border-round-lg'} col-6`}>
-          <ChartApexComponent />
+      <div className="flex mx-3 justify-content-between">
+        <Card
+          style={{
+            width: 'calc(50% - 0.5rem)',
+            marginRight: '0.5rem',
+            borderColor: 'var(--surface-400)',
+          }}
+          className={`${theme === 'light' && 'border-1  border-round-lg'}`}
+        >
+          <h3 className="text-center">Vendas por Dia da Semana</h3>
+          <ChartWeekComponent />
         </Card>
-        <Card className={`${theme === 'light' && 'border-1  border-round-lg'} col-6`}>
+        <Card
+          style={{
+            width: 'calc(50% - 0.5rem)',
+            marginLeft: '0.5rem',
+            borderColor: 'var(--surface-400)',
+          }}
+          className={`${theme === 'light' && 'border-1  border-round-lg'}`}
+        >
+          <h3 className="text-center">Vendas por Hora</h3>
+          <ChartHourComponent />
+        </Card>
+      </div>
+      <div className="flex mx-3 justify-content-between my-3">
+        <Card
+          style={{
+            width: 'calc(50% - 0.5rem)',
+            marginRight: '0.5rem',
+            borderColor: 'var(--surface-400)',
+          }}
+          className={`${theme === 'light' && 'border-1  border-round-lg'}`}
+        >
+          <div>
+            <h3 className="text-center">Ultimos Pedidos</h3>
+            <DataTable value={orders}>
+              <Column field="id" header="Número de Pedido"></Column>
+              <Column field="customer" header="Cliente"></Column>
+              <Column field="status" header="Status"></Column>
+              <Column field="value" header="Valor do Pedido"></Column>
+            </DataTable>
+          </div>
+        </Card>
+        <Card
+          style={{
+            width: 'calc(50% - 0.5rem)',
+            marginLeft: '0.5rem',
+            borderColor: 'var(--surface-400)',
+          }}
+          className={`${theme === 'light' && 'border-1  border-round-lg'}`}
+        >
+          <h3 className="text-center">Produtos Em Destaque</h3>
           <ChartPierComponent data={dataPie} options={options} />
         </Card>
       </div>

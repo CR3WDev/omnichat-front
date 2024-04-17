@@ -43,8 +43,6 @@ export const ChartPierComponent = ({ data, options }: PieChartProps) => {
   const chartOptions = options ? { ...defaultOptions, ...options } : defaultOptions
 
   return (
-    <div>
-      <Chart options={chartOptions} series={data.series} type="pie" height={250} ref={chartRef} />
-    </div>
+    <Chart options={chartOptions} series={data.series} type="pie" height={400} ref={chartRef} />
   )
 }

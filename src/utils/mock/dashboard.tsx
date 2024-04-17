@@ -12,8 +12,6 @@ export const dataPie = {
 }
 export const darkColors = ['#388E3C', '#FFA000', '#1976D2', '#E64A19', '#6A1B9A']
 
-export const legendTextColor = 'white'
-
 export const dashboardInformations = [
   {
     name: 'Clientes',
