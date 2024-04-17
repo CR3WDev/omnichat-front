@@ -1,20 +1,23 @@
-import { useEffect, useRef } from 'react';
-import Chart from 'react-apexcharts';
+import { selectorTheme } from '@redux/Reducers/themeReducer'
+import { useEffect, useRef } from 'react'
+import Chart from 'react-apexcharts'
+import { useSelector } from 'react-redux'
 
 interface PieChartProps {
   data: {
-    labels: string[];
-    series: number[];
-  };
+    labels: string[]
+    series: number[]
+  }
   options?: {
-    labels?: string[];
-    colors?: string[];
-    legendTextColor?: string;
-  };
+    labels?: string[]
+    colors?: string[]
+    legendTextColor?: string
+  }
 }
 
-export const ChartPierComponent = ({ data, options }:PieChartProps) => {
-  const chartRef = useRef<any>(null);
+export const ChartPierComponent = ({ data, options }: PieChartProps) => {
+  const theme = useSelector(selectorTheme)
+  const chartRef = useRef<any>(null)
 
   useEffect(() => {
     if (chartRef.current && options) {
@@ -27,22 +30,21 @@ export const ChartPierComponent = ({ data, options }:PieChartProps) => {
           },
         },
         theme: {
-          mode: 'dark' as 'dark',
+          mode: theme,
         },
-
-      });
+      })
     }
-  }, [options]);
+  }, [options])
 
   const defaultOptions = {
     labels: data.labels,
-  };
+  }
 
-  const chartOptions = options ? { ...defaultOptions, ...options } : defaultOptions;
+  const chartOptions = options ? { ...defaultOptions, ...options } : defaultOptions
 
   return (
     <div>
       <Chart options={chartOptions} series={data.series} type="pie" height={250} ref={chartRef} />
     </div>
-  );
-};
+  )
+}

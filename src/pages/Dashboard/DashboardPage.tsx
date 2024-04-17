@@ -10,7 +10,6 @@ import { MdTrendingDown, MdTrendingUp } from 'react-icons/md'
 import { useSelector } from 'react-redux'
 import { ChartApexComponent } from './Component/Chart/ChartApexComponent'
 import { ChartPierComponent } from './Component/Chart/ChartPierComponent'
-import { DashboardDataViewComponent } from './DashboardDataViewComponent'
 
 export const DashboardPage = () => {
   const theme = useSelector(selectorTheme)
@@ -26,7 +25,7 @@ export const DashboardPage = () => {
     <div className="page-container">
       <h2 className="page-title">{dashboardI18n.title}</h2>
       <Card
-        className={`${theme === 'light' && 'border-1  border-round-lg mt-3 mx-3'}`}
+        className={`${theme === 'light' && 'border-1  border-round-lg'} mt-3 mx-3`}
         style={{ borderColor: 'var(--surface-400)' }}
       >
         <div className="flex justify-content-between align-items-center">
@@ -111,35 +110,13 @@ export const DashboardPage = () => {
           )
         })}
       </div>
-
-      <div className="w-full flex justify-content-center">
-        <div className="lg:w-full w-10 flex lg:flex-row flex-column lg:justify-content-around justify-content-center">
-          <div className="lg:w-4 lg:mb-0 mb-2 ">
-            <div className="p-card">
-              <div className="flex w-full justify-content-center">
-                <h2 className="text-green-500">+ 140$</h2>
-              </div>
-            </div>
-            <div className="p-card w-full bg-primary flex justify-content-center align-items-center">
-              <p className="text-white">Ultimos 5 pedidos</p>
-            </div>
-            <div>
-              <DashboardDataViewComponent />
-            </div>
-          </div>
-          <div className="lg:w-6 flex flex-column">
-            <div className="w-12 ">
-              <Card>
-                <ChartApexComponent />
-              </Card>
-            </div>
-            <div className="w-12 mt-2 ">
-              <Card>
-                <ChartPierComponent data={dataPie} options={options} />
-              </Card>
-            </div>
-          </div>
-        </div>
+      <div className="flex flex mx-2">
+        <Card className={`${theme === 'light' && 'border-1  border-round-lg'} col-6`}>
+          <ChartApexComponent />
+        </Card>
+        <Card className={`${theme === 'light' && 'border-1  border-round-lg'} col-6`}>
+          <ChartPierComponent data={dataPie} options={options} />
+        </Card>
       </div>
     </div>
   )

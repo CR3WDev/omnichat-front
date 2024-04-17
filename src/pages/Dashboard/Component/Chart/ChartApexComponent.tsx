@@ -1,8 +1,9 @@
-import ReactApexChart from 'react-apexcharts';
-
+import { selectorTheme } from '@redux/Reducers/themeReducer'
+import { useSelector } from 'react-redux'
 
 export const ChartApexComponent = () => {
-  const seriesData = [{ data: [21, 22, 10] }];
+  const theme = useSelector(selectorTheme)
+  const seriesData = [{ data: [21, 22, 10] }]
 
   const chartOptions = {
     chart: {
@@ -14,25 +15,21 @@ export const ChartApexComponent = () => {
       bar: {
         columnWidth: '45%',
         distributed: true,
-      }
+      },
     },
     dataLabels: {
-      enabled: false
+      enabled: false,
     },
     legend: {
-      show: false
+      show: false,
     },
     xaxis: {
-      categories: [
-        ['Telegram'],
-        ['Whatszap'],
-        ['Instagram'],
-      ],
+      categories: [['Telegram'], ['Whatszap'], ['Instagram']],
       labels: {
         style: {
-          fontSize: '12px'
-        }
-      }
+          fontSize: '12px',
+        },
+      },
     },
     tooltip: {
       enabled: true,
@@ -45,18 +42,16 @@ export const ChartApexComponent = () => {
       x: {
         show: true,
         format: 'dd/MM/yy HH:mm',
-        formatter: function(value: any) {
-          return value.join(', ');
-        }
+        formatter: function (value: any) {
+          return value.join(', ')
+        },
       },
     },
     // Defina o tema aqui
     theme: {
-      mode: 'dark' as 'dark',
+      mode: theme,
     },
-  };
+  }
 
-  return (
-      <ReactApexChart options={chartOptions} series={seriesData} type="bar" height={200} />
-  );
+  return <></>
 }

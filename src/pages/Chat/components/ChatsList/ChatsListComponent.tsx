@@ -1,4 +1,5 @@
 import { ChatMock } from '@pages/Chat/ChatMock'
+import { getChatByUser } from '@pages/Chat/ChatServices'
 import { selectorIsMobile } from '@redux/Reducers/isMobileReducer'
 import { Ripple } from 'primereact/Ripple'
 import { Avatar } from 'primereact/avatar'
@@ -14,6 +15,9 @@ type ChatListProps = {
 }
 export const ChatListComponent = ({ setChatSelected, chatSelected }: ChatListProps) => {
   const isMobile = useSelector(selectorIsMobile)
+
+  const { data } = getChatByUser()
+  console.log(data)
 
   if (chatSelected && isMobile) return <></>
   return (
