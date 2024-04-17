@@ -7,21 +7,20 @@ import { Dispatch, SetStateAction } from 'react'
 import { useSelector } from 'react-redux'
 
 type ChatListProps = {
-  /** useState que define se vai mostrar as mensagens ou não */
-  setShowMessagesList: Dispatch<SetStateAction<boolean>>
-  /** define se vai mostrar as mensagens ou não */
-  showMessagesList: boolean
+  /** useState que define o chat que vai ser mostrado */
+  setChatSelected: Dispatch<SetStateAction<any>>
+  /** define o chat que vai ser mostrado */
+  chatSelected: boolean
 }
-export const ChatListComponent = ({ setShowMessagesList, showMessagesList }: ChatListProps) => {
+export const ChatListComponent = ({ setChatSelected, chatSelected }: ChatListProps) => {
   const isMobile = useSelector(selectorIsMobile)
 
-  if (showMessagesList && isMobile) return <></>
+  if (chatSelected && isMobile) return <></>
   return (
     <div className=" h-full p-3 lg:w-30rem w-full">
       <div className="mb-3">
         <div>
           <h2>Chats</h2>
-
         </div>
         <div className="w-full">
           <span className="p-input-icon-left w-full">
@@ -36,7 +35,7 @@ export const ChatListComponent = ({ setShowMessagesList, showMessagesList }: Cha
             <div
               key={index}
               onClick={() => {
-                setShowMessagesList(true)
+                setChatSelected(user)
               }}
               className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
             >

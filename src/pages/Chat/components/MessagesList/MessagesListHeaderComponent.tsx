@@ -7,10 +7,15 @@ import { selectorIsMobile } from 'redux/Reducers/isMobileReducer'
 
 type MessagesListHeaderProps = {
   //** define se a lista será visível ou não no mobile */
-  setIsVisible: Dispatch<SetStateAction<boolean>>
+  chatSelected: any
+  setChatSelected: Dispatch<SetStateAction<any>>
 }
-export const MessagesListHeaderComponent = ({ setIsVisible }: MessagesListHeaderProps) => {
+export const MessagesListHeaderComponent = ({
+  chatSelected,
+  setChatSelected,
+}: MessagesListHeaderProps) => {
   const isMobile = useSelector(selectorIsMobile)
+  console.log(chatSelected)
   return (
     <div className="flex mx-3 mt-3">
       {isMobile && (
@@ -19,18 +24,18 @@ export const MessagesListHeaderComponent = ({ setIsVisible }: MessagesListHeader
             icon={<MdArrowBack size="20" />}
             text
             onClick={() => {
-              setIsVisible(false)
+              setChatSelected(undefined)
             }}
             style={{ width: 'auto', padding: 0, margin: 0 }}
           ></Button>
         </div>
       )}
       <div className={'mr-2'}>
-        <Avatar label={'M'} size="large" shape="circle" />
+        <Avatar label={chatSelected?.username[0]} size="large" shape="circle" />
       </div>
       <div className={'flex align-items-center'}>
         <div className="flex flex-column">
-          <span className={'font-bold'}>Marcelo Victor</span>
+          <span className={'font-bold'}>{chatSelected?.username}</span>
           <span className="opacity-40 text-sm">85 9 9407-8873</span>
         </div>
       </div>
