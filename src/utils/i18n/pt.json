@@ -50,9 +50,9 @@
     "send": "Enviar"
   },
   "new_password": {
-    "title": "Alterar senha",
-    "description": "Digite sua nova senha!",
-    "pick_a_password": "Defina uma senha",
+    "title": "Atualizar senha",
+    "description": "Digite sua nova senha",
+    "pick_a_password": "Defina sua senha",
     "at_least_one_uppercase": "Uma letra  maiúscula",
     "at_least_one_numeric": "Um número",
     "at_least_one_special_characters": "Um caractere especial",
@@ -60,7 +60,10 @@
     "choose_a_password": "Coloque uma senha",
     "too_weak": "Senha fraca",
     "average": "Senha mediana",
-    "strong_password": "Senha forte"
+    "strong_password": "Senha forte",
+    "password": "Senha",
+    "confirm_password": "Confirmar Senha",
+    "send": "Comfirmar"
   },
 
   "home": {
