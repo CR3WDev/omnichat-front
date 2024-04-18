@@ -2,14 +2,15 @@ import { Divider } from 'primereact/divider'
 import { Dispatch, SetStateAction } from 'react'
 import { useSelector } from 'react-redux'
 import { selectorIsMobile } from 'redux/Reducers/isMobileReducer'
+import { IChat } from 'types/chat'
 import { MessagesListContentComponent } from './MessagesListContentComponent'
 import { MessagesListHeaderComponent } from './MessagesListHeaderComponent'
 
 type MessagesListProps = {
   //** define o chat Selecionado */
-  chatSelected: boolean
+  chatSelected: IChat | undefined
   //** useState define o chat Selecionado */
-  setChatSelected: Dispatch<SetStateAction<boolean>>
+  setChatSelected: Dispatch<SetStateAction<IChat | undefined>>
 }
 export const MessagesListComponent = ({ chatSelected, setChatSelected }: MessagesListProps) => {
   const isMobile = useSelector(selectorIsMobile)
@@ -22,7 +23,7 @@ export const MessagesListComponent = ({ chatSelected, setChatSelected }: Message
     <div className={isShowMessages() + 'h-full w-full flex-column justify-content-between'}>
       <MessagesListHeaderComponent setChatSelected={setChatSelected} chatSelected={chatSelected} />
       <Divider />
-      <MessagesListContentComponent />
+      <MessagesListContentComponent chatSelected={chatSelected} />
     </div>
   )
 }

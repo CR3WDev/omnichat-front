@@ -1,6 +1,6 @@
 import { InputText } from 'primereact/inputtext'
 import React, { useEffect, useState } from 'react'
-import { IProduct } from 'types/products'
+import { IProduct } from 'types/product'
 import { StoreSearchResultComponent } from './StoreSearchResultComponent'
 
 type SearchComponentProps = {

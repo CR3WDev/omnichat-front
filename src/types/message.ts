@@ -1,4 +1,7 @@
-export interface Message {
-  body: string;
-  senderId: string;
+export interface IMessage {
+  id: number
+  sender: string
+  text: string
+  time: string
+  type: string
 }

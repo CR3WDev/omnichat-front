@@ -3,12 +3,14 @@ import { useIsFetching, useIsMutating } from 'react-query'
 import './GlobalLoadingStyle.scss'
 
 export const GlobalLoadingComponent = () => {
-  const excludedQueryKeys: string[] = []
+  const excludedQueryKeys: string[] = ['getMessagesByChatId']
   const excludedMutationsKeys: string[] = []
 
   let sum =
     useIsFetching({
-      predicate: (key: any) => !excludedQueryKeys.includes(key?.queryKey[0].toString()),
+      predicate: (key: any) => {
+        return !excludedQueryKeys.includes(key?.queryKey.toString())
+      },
     }) +
     useIsMutating({
       predicate: (key: any) =>

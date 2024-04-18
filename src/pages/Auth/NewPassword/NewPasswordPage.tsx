@@ -62,7 +62,6 @@ export const NewPasswordPage = () => {
 
   useEffect(() => {
     const token = getToken()
-    console.log(token)
     if (!token) {
       navigate('/login')
     }

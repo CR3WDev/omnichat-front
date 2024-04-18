@@ -1,13 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import socketIOClient, { Socket } from 'socket.io-client'
-import { Message } from 'types/message'
-
-interface IncomingMessage extends Message {
-  ownedByCurrentUser: boolean
-}
+import { IMessage } from 'types/message'
 
 export const useSocketMessage = (roomId: string) => {
-  const [messages, setMessages] = useState<IncomingMessage[]>([])
+  const [messages, setMessages] = useState<IMessage[]>([])
   const socketRef = useRef<Socket>()
 
   const SOCKET_SERVER_URL = import.meta.env.VITE_BASE_URL
@@ -25,10 +21,9 @@ export const useSocketMessage = (roomId: string) => {
       query: { roomId },
     })
 
-    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message: Message) => {
-      const incomingMessage: IncomingMessage = {
+    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message: IMessage) => {
+      const incomingMessage: IMessage = {
         ...message,
-        ownedByCurrentUser: message.senderId === socketRef.current!.id,
       }
       setMessages((prevMessages) => [...prevMessages, incomingMessage])
     })

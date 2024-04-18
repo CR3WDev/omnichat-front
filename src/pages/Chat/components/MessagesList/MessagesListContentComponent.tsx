@@ -1,11 +1,24 @@
-import { ChatMessage, messagesMock } from '@pages/Chat/ChatMock'
-import { Button } from 'primereact/button'
-import { InputText } from 'primereact/inputtext'
-import { MdSend } from 'react-icons/md'
+import { useEffect, useState } from 'react'
+import { IChat } from 'types/chat'
+import { IMessage } from 'types/message'
+import { MessagesListInputComponent } from './MessagesListInputComponent'
 import { MessagesListItemComponent } from './MessagesListItemComponent'
+import { getMessagesByChatId } from './MessagesListServices'
 
-export const MessagesListContentComponent = () => {
-  // const { messages, sendMessage } = useSocketMessage('1')
+type MessagesListContentProps = {
+  chatSelected: IChat | undefined
+}
+export const MessagesListContentComponent = ({ chatSelected }: MessagesListContentProps) => {
+  if (!chatSelected) return <></>
+  const [messages, setMessages] = useState<IMessage[]>([])
+  const { refetch: lastMessage } = getMessagesByChatId(chatSelected.id)
+  // const { messages:messagesBySocket, sendMessage } = useSocketMessage('1')
+  useEffect(() => {
+    lastMessage().then((data) => {
+      setMessages(data?.data?.data?.data)
+    })
+  }, [chatSelected])
+
   return (
     <div className="flex flex-column flex-grow-1">
       <div
@@ -15,30 +28,17 @@ export const MessagesListContentComponent = () => {
           overflow: 'auto',
         }}
       >
-        {messagesMock.map((message: ChatMessage, index: number) => {
+        {messages.map((message: IMessage, index: number) => {
           return (
             <MessagesListItemComponent
               message={message}
-              simpleMessage={message?.user === messagesMock[index + 1]?.user}
+              simpleMessage={message?.sender === messages[index + 1]?.sender}
               key={index}
             />
           )
         })}
       </div>
-      <div
-        className="flex"
-        style={{
-          paddingRight: '1.25rem',
-          paddingBottom: '1rem',
-          paddingLeft: '1.25rem',
-          paddingTop: '1rem',
-        }}
-      >
-        <span className="p-inputgroup w-full">
-          <InputText placeholder="Pesquise por uma conversa!" className="w-full" />
-          <Button icon={<MdSend />} />
-        </span>
-      </div>
+      <MessagesListInputComponent setMessages={setMessages} />
     </div>
   )
 }

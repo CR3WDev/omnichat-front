@@ -2,11 +2,12 @@ import { selectorIsMobile } from '@redux/Reducers/isMobileReducer'
 import { Divider } from 'primereact/divider'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { IChat } from 'types/chat'
 import { ChatListComponent } from './components/ChatsList'
 import { MessagesListComponent } from './components/MessagesList'
 
 export const ChatPage = () => {
-  const [chatSelected, setChatSelected] = useState<any>()
+  const [chatSelected, setChatSelected] = useState<IChat | undefined>()
   const isMobile = useSelector(selectorIsMobile)
   const showDivider = !(!!chatSelected && isMobile)
 

@@ -6,12 +6,13 @@ import { Avatar } from 'primereact/avatar'
 import { InputText } from 'primereact/inputtext'
 import { Dispatch, SetStateAction } from 'react'
 import { useSelector } from 'react-redux'
+import { IChat } from 'types/chat'
 
 type ChatListProps = {
   /** useState que define o chat que vai ser mostrado */
-  setChatSelected: Dispatch<SetStateAction<any>>
+  setChatSelected: Dispatch<SetStateAction<IChat | undefined>>
   /** define o chat que vai ser mostrado */
-  chatSelected: boolean
+  chatSelected: IChat | undefined
 }
 export const ChatListComponent = ({ setChatSelected, chatSelected }: ChatListProps) => {
   const isMobile = useSelector(selectorIsMobile)

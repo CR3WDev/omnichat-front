@@ -1,4 +1,4 @@
-import { IProduct } from 'types/products'
+import { IProduct } from 'types/product'
 import { ItemDetailComponent } from '../Items/ItemDetailComponent'
 
 interface StoreSearchResultProps {

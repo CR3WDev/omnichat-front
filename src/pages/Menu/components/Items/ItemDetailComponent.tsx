@@ -8,7 +8,7 @@ import { Dialog } from 'primereact/dialog'
 import { RadioButton } from 'primereact/radiobutton'
 import { ScrollPanel } from 'primereact/scrollpanel'
 import { useState } from 'react'
-import { IProduct } from 'types/products'
+import { IProduct } from 'types/product'
 
 interface ItemDetailComponentProps {
   visible: boolean

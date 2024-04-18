@@ -4,6 +4,5 @@ import { NotFoundPage } from './components/NotFound'
 
 export const ErrorPage = () => {
   const error = useRouteError()
-  console.log(isRouteErrorResponse(error))
   return isRouteErrorResponse(error) ? <NotFoundPage /> : <FrontErrorComponent />
 }

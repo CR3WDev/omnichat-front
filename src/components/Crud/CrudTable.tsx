@@ -5,7 +5,7 @@ import { Column } from 'primereact/column'
 import { confirmDialog } from 'primereact/confirmdialog'
 import { DataTable } from 'primereact/datatable'
 import { Paginator } from 'primereact/paginator'
-import { ReactNode, useEffect } from 'react'
+import { ReactNode } from 'react'
 import { MdClose, MdCreate, MdVisibility } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
 import { IColumnType } from 'types/column'
@@ -106,9 +106,7 @@ export const CrudTable = ({
       </CrudTableActions>
     )
   }
-  useEffect(() => {
-    console.log(mode)
-  }, [mode])
+
   return (
     <div className="m-3">
       <div style={{ maxHeight: '700px', overflow: 'hidden' }}>

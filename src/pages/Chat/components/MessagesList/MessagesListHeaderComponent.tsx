@@ -15,7 +15,6 @@ export const MessagesListHeaderComponent = ({
   setChatSelected,
 }: MessagesListHeaderProps) => {
   const isMobile = useSelector(selectorIsMobile)
-  console.log(chatSelected)
   return (
     <div className="flex mx-3 mt-3">
       {isMobile && (

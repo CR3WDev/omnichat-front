@@ -2,7 +2,6 @@ import { Crud } from '@components/Crud'
 import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
 import { selectorMode } from '@redux/Reducers/modeReducer'
-import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { UsersFormComponent } from './components/UsersForm'
 
@@ -81,10 +80,6 @@ export const UsersPage = () => {
   const handleOnDelete = () => {
     showToastSuccess(getI18n('default_success_message'))
   }
-
-  useEffect(() => {
-    console.log(mode)
-  }, [mode])
 
   return (
     <Crud.Root title={productsI18n.title}>

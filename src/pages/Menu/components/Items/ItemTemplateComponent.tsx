@@ -1,6 +1,6 @@
 import { Card } from 'primereact/card'
 import { useState } from 'react'
-import { IProduct } from 'types/products'
+import { IProduct } from 'types/product'
 import { ItemDetailComponent } from './ItemDetailComponent'
 
 interface ItemTemplateProps {

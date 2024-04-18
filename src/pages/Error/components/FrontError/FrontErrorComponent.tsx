@@ -13,7 +13,7 @@ export const FrontErrorComponent = () => {
       <div className="p-grid p-justify-center" style={{ maxWidth: '80vw' }}>
         <div className="flex align-items-center">
           <MdError size="40" className="mr-2" />
-          <h2>{message}</h2>
+          <h2 style={{ color: '#FF0000' }}>{message}</h2>
         </div>
         <Card>
           <div className="p-text-bold">{ErrorPageI18n.file}:</div>
