@@ -4,7 +4,7 @@ import './GlobalLoadingStyle.scss'
 
 export const GlobalLoadingComponent = () => {
   const excludedQueryKeys: string[] = ['getMessagesByChatId']
-  const excludedMutationsKeys: string[] = []
+  const excludedMutationsKeys: string[] = ['postSendMessage']
 
   let sum =
     useIsFetching({

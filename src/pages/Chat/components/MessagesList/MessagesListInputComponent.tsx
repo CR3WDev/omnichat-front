@@ -15,7 +15,7 @@ export const MessagesListInputComponent = ({
   setMessages,
   chatSelected,
 }: MessagesListInputProps) => {
-  const { handleSubmit, register, watch } = useForm()
+  const { handleSubmit, register, watch, setValue } = useForm()
 
   const { mutateAsync: sendMessage } = postSendMessage()
   const onSubmit = () => {
@@ -25,7 +25,11 @@ export const MessagesListInputComponent = ({
       chatId: chatSelected?.id,
       text: watch('inputMessage'),
     }).then((data) => {
-      console.log(data)
+      setMessages((prev: IMessage[]) => {
+        const newArray = [data?.data?.data, ...prev]
+        return newArray
+      })
+      setValue('inputMessage', '')
     })
   }
   return (
