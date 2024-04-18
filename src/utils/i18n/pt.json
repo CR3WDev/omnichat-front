@@ -1,6 +1,7 @@
 {
   "required_field": "Campo Obrigatório",
   "default_success_message": "Operação realizada com Sucesso!",
+  "email_success_message": "Email Enviado com Sucesso!",
   "server_down": "Servidor em Manuntenção, voltaremos em breve!",
   "invalid_email": "Email inválido!",
   "save": "Salvar",

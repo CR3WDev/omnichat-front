@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 import { ErrorMessageComponent } from '@components/ErrorMessage'
+import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
 import { UseValidateEmail } from '@hooks/useValidateEmail'
 import { postChangePassword } from './ChangePasswordServices'
@@ -22,9 +23,9 @@ export const ChangePasswordPage = () => {
 
   const onSubmit = (data: any) => {
     changePassword({
-      data: {
-        email: data.email,
-      },
+      email: data.email,
+    }).then(() => {
+      showToastSuccess(getI18n('email_success_message'))
     })
   }
 

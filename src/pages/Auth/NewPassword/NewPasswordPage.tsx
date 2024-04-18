@@ -6,21 +6,18 @@ import { Divider } from 'primereact/divider'
 import { Password } from 'primereact/password'
 import { classNames } from 'primereact/utils'
 import { Controller, useForm } from 'react-hook-form'
-import { Navigate, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { postNewPassword } from './NewPasswordServices'
-
-
-
 
 export const NewPasswordPage = () => {
   const newPasswordI18n = getI18n('new_password')
   const navigate = useNavigate()
 
-  const token = pegarToken();
+  // const token = pegarToken();
 
-  if (!token) {
-    return <Navigate to="/login" replace />;
-  }
+  // if (!token) {
+  //   return <Navigate to="/login" replace />
+  // }
   const {
     formState: { errors },
     handleSubmit,
@@ -32,11 +29,11 @@ export const NewPasswordPage = () => {
 
   const onSubmit = (data: any) => {
     console.log(data.password)
-     newPassword({
-       data: {
-         password:data.password,
-       },
-     })
+    newPassword({
+      data: {
+        password: data.password,
+      },
+    })
   }
 
   const passwordHeader = <div className="font-bold mb-3">{newPasswordI18n.pick_a_password}</div>
@@ -91,7 +88,6 @@ export const NewPasswordPage = () => {
                     strongLabel={newPasswordI18n.strong_password}
                     id={field.name}
                     name={field.name}
-
                   />
                   <ErrorMessageComponent errors={errors.password} />
                 </>
