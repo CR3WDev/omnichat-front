@@ -1,23 +1,21 @@
 import { ErrorMessageComponent } from '@components/ErrorMessage'
+import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
 import { UseValidatePassword } from '@hooks/useValidatePassword'
 import { Button } from 'primereact/button'
 import { Divider } from 'primereact/divider'
 import { Password } from 'primereact/password'
 import { classNames } from 'primereact/utils'
+import { useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { postNewPassword } from './NewPasswordServices'
 
 export const NewPasswordPage = () => {
   const newPasswordI18n = getI18n('new_password')
   const navigate = useNavigate()
+  const location = useLocation()
 
-  // const token = pegarToken();
-
-  // if (!token) {
-  //   return <Navigate to="/login" replace />
-  // }
   const {
     formState: { errors },
     handleSubmit,
@@ -27,12 +25,24 @@ export const NewPasswordPage = () => {
 
   const { mutateAsync: newPassword } = postNewPassword()
 
+  const getToken = () => {
+    try {
+      const searchParams = new URLSearchParams(location.search)
+      const tokenBase64 = `${searchParams.get('params')}`
+      if (!searchParams.has('params')) return undefined
+      const token = atob(tokenBase64)
+      return token
+    } catch (e) {
+      return undefined
+    }
+  }
   const onSubmit = (data: any) => {
-    console.log(data.password)
     newPassword({
-      data: {
-        password: data.password,
-      },
+      newPassword: data.password,
+      token: getToken(),
+    }).then(() => {
+      navigate('/login')
+      showToastSuccess(newPasswordI18n.success_message)
     })
   }
 
@@ -49,6 +59,14 @@ export const NewPasswordPage = () => {
       </ul>
     </>
   )
+
+  useEffect(() => {
+    const token = getToken()
+    console.log(token)
+    if (!token) {
+      navigate('/login')
+    }
+  }, [])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

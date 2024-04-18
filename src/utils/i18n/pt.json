@@ -51,8 +51,8 @@
     "send": "Enviar"
   },
   "new_password": {
-    "title": "Atualizar senha",
-    "description": "Digite sua nova senha",
+    "title": "Redefinição de Senha",
+    "description": "Insira e confirme sua nova senha abaixo.",
     "pick_a_password": "Defina sua senha",
     "at_least_one_uppercase": "Uma letra  maiúscula",
     "at_least_one_numeric": "Um número",
@@ -64,7 +64,8 @@
     "strong_password": "Senha forte",
     "password": "Senha",
     "confirm_password": "Confirmar Senha",
-    "send": "Comfirmar"
+    "success_message": "Senha Atualizada com sucesso!",
+    "send": "Enviar"
   },
 
   "home": {
