@@ -38,7 +38,7 @@ export const MessagesListContentComponent = ({ chatSelected }: MessagesListConte
           )
         })}
       </div>
-      <MessagesListInputComponent setMessages={setMessages} />
+      <MessagesListInputComponent setMessages={setMessages} chatSelected={chatSelected} />
     </div>
   )
 }

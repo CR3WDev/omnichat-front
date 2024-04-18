@@ -14,7 +14,7 @@ export const GlobalLoadingComponent = () => {
     }) +
     useIsMutating({
       predicate: (key: any) =>
-        !excludedMutationsKeys.includes(key?.options?.mutationKey[0].toString()),
+        !excludedMutationsKeys.includes(key?.options?.mutationKey.toString()),
     })
 
   const isLoading = sum
