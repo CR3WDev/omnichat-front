@@ -2,6 +2,7 @@
   "required_field": "Campo Obrigatório",
   "default_success_message": "Operação realizada com Sucesso!",
   "server_down": "Servidor em Manuntenção, voltaremos em breve!",
+  "invalid_email": "Email inválido!",
   "save": "Salvar",
   "return": "Voltar",
   "login": {
@@ -47,6 +48,19 @@
     "cancel": "Cancelar",
     "back": "Voltar",
     "send": "Enviar"
+  },
+  "new_password": {
+    "title": "Alterar senha",
+    "description": "Digite sua nova senha!",
+    "pick_a_password": "Defina uma senha",
+    "at_least_one_uppercase": "Uma letra  maiúscula",
+    "at_least_one_numeric": "Um número",
+    "at_least_one_special_characters": "Um caractere especial",
+    "at_least_eight_characters": "8 caracteres",
+    "choose_a_password": "Coloque uma senha",
+    "too_weak": "Senha fraca",
+    "average": "Senha mediana",
+    "strong_password": "Senha forte"
   },
 
   "home": {

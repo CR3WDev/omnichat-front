@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 
 import { ErrorMessageComponent } from '@components/ErrorMessage'
 import { getI18n } from '@hooks/useGetI18n'
-import { useEffect } from 'react'
+import { UseValidateEmail } from '@hooks/useValidateEmail'
+import { postChangePassword } from './ChangePasswordServices'
 
 export const ChangePasswordPage = () => {
   const changePasswordI18n = getI18n('change_password')
@@ -14,16 +15,17 @@ export const ChangePasswordPage = () => {
   const {
     formState: { errors },
     handleSubmit,
-    watch,
     register,
   } = useForm()
 
-  useEffect(() => {
-    watch('value')
-  }, [watch('value')])
+  const { mutateAsync: changePassword } = postChangePassword()
 
   const onSubmit = (data: any) => {
-    console.log(data)
+    changePassword({
+      data: {
+        email: data.email,
+      },
+    })
   }
 
   return (
@@ -46,6 +48,9 @@ export const ChangePasswordPage = () => {
               id="login"
               {...register('email', {
                 required: true,
+                validate: (e) => {
+                  return UseValidateEmail(e) || getI18n('invalid_email')
+                },
               })}
             />
             <ErrorMessageComponent errors={errors.email} />

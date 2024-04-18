@@ -70,7 +70,14 @@ export const ChatListComponent = ({ setChatSelected, chatSelected }: ChatListPro
                       </span>
                     </div>
                   </div>
-                  <div>
+                  <div
+                    style={{
+                      width: '200px',
+                      overflowX: 'hidden',
+                      whiteSpace: 'nowrap',
+                      textOverflow: 'ellipsis',
+                    }}
+                  >
                     <span>{user?.lastMessage}</span>
                   </div>
                 </div>

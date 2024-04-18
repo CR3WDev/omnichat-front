@@ -1,1 +1,1 @@
-export * from "./ChangePassword.tsx"
+export * from './ChangePasswordPage.tsx'

@@ -1,5 +1,6 @@
 import { ChangePasswordPage } from '@pages/Auth/ChangePassword'
 import { LoginPage } from '@pages/Auth/Login'
+import { NewPasswordPage } from '@pages/Auth/NewPassword'
 import { RegisterPage } from '@pages/Auth/Register'
 import { ChatPage } from '@pages/Chat/ChatPage.tsx'
 import { DashboardPage } from '@pages/Dashboard'
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
   {
     path: '/changepassword',
     element: <ChangePasswordPage />,
+  },
+  {
+    path: '/newpassword',
+    element: <NewPasswordPage />,
   },
   {
     path: '/register',
