@@ -49,6 +49,7 @@ export const MessagesListInputComponent = ({
           placeholder="Digite uma mensagem!"
           {...register('inputMessage', {})}
           className="w-full"
+          autoComplete="off"
         />
         <Button icon={<MdSend />} />
       </span>
