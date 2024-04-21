@@ -13,6 +13,10 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@fullcalendar/daygrid": "^6.1.11",
+    "@fullcalendar/interaction": "^6.1.11",
+    "@fullcalendar/react": "^6.1.11",
+    "@fullcalendar/timegrid": "^6.1.11",
     "@reduxjs/toolkit": "^2.2.1",
     "apexcharts": "^3.48.0",
     "axios": "^1.6.5",
@@ -47,6 +51,7 @@
     "@storybook/react-vite": "^8.0.0",
     "@storybook/test": "^8.0.0",
     "@types/crypto-js": "^4.2.2",
+    "@types/fullcalendar": "^3.8.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@typescript-eslint/eslint-plugin": "^6.14.0",
