@@ -4,11 +4,12 @@ import { Dispatch, SetStateAction } from 'react'
 import { MdArrowBack } from 'react-icons/md'
 import { useSelector } from 'react-redux'
 import { selectorIsMobile } from 'redux/Reducers/isMobileReducer'
+import { IChat } from 'types/chat'
 
 type MessagesListHeaderProps = {
   //** define se a lista será visível ou não no mobile */
-  chatSelected: any
-  setChatSelected: Dispatch<SetStateAction<any>>
+  chatSelected: IChat | undefined
+  setChatSelected: Dispatch<SetStateAction<IChat | undefined>>
 }
 export const MessagesListHeaderComponent = ({
   chatSelected,
@@ -30,12 +31,12 @@ export const MessagesListHeaderComponent = ({
         </div>
       )}
       <div className={'mr-2'}>
-        <Avatar label={chatSelected?.sender[0]} size="large" shape="circle" />
+        <Avatar label={chatSelected?.customerName[0]} size="large" shape="circle" />
       </div>
       <div className={'flex align-items-center'}>
         <div className="flex flex-column">
-          <span className={'font-bold'}>{chatSelected?.sender}</span>
-          <span className="opacity-40 text-sm">{chatSelected?.senderNumber}</span>
+          <span className={'font-bold'}>{chatSelected?.customerName}</span>
+          <span className="opacity-40 text-sm">{chatSelected?.customerWhatsappNumber}</span>
         </div>
       </div>
     </div>
