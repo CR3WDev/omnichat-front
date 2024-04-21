@@ -6,4 +6,5 @@ export interface IChat {
   lastMessage: string
   lastMessagetime: string
   systemUserId: number
+  lastMessageType: string
 }

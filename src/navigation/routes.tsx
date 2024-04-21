@@ -2,6 +2,7 @@ import { ChangePasswordPage } from '@pages/Auth/ChangePassword'
 import { LoginPage } from '@pages/Auth/Login'
 import { NewPasswordPage } from '@pages/Auth/NewPassword'
 import { RegisterPage } from '@pages/Auth/Register'
+import { CalendarPage } from '@pages/Calendar/CalendarPage'
 import { ChatPage } from '@pages/Chat/ChatPage.tsx'
 import { DashboardPage } from '@pages/Dashboard'
 import { ErrorPage } from '@pages/Error'
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
       {
         path: '/users',
         element: <UsersPage />,
+      },
+      {
+        path: '/calendar',
+        element: <CalendarPage />,
       },
     ],
   },

@@ -5,6 +5,7 @@ import { Ripple } from 'primereact/Ripple'
 import { Avatar } from 'primereact/avatar'
 import { InputText } from 'primereact/inputtext'
 import { Dispatch, SetStateAction } from 'react'
+import { LuCheckCheck } from 'react-icons/lu'
 import { useSelector } from 'react-redux'
 import { IChat } from 'types/chat'
 
@@ -79,6 +80,9 @@ export const ChatListComponent = ({ setChatSelected, chatSelected }: ChatListPro
                       textOverflow: 'ellipsis',
                     }}
                   >
+                    {chat?.lastMessageType === 'outgoing' && (
+                      <LuCheckCheck size={20} className="mr-1" />
+                    )}
                     <span>{chat?.lastMessage}</span>
                   </div>
                 </div>

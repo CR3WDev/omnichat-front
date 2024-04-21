@@ -4,4 +4,5 @@ export interface IMessage {
   text: string
   time: string
   type: string
+  isBotMessage: boolean
 }

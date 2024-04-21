@@ -1,5 +1,12 @@
 import { ReactElement } from 'react'
-import { MdBarChart, MdGroup, MdMessage, MdReceiptLong, MdViewList } from 'react-icons/md'
+import {
+  MdBarChart,
+  MdCalendarMonth,
+  MdGroup,
+  MdMessage,
+  MdReceiptLong,
+  MdViewList,
+} from 'react-icons/md'
 
 export interface IMenuOption {
   label: string
@@ -31,5 +38,10 @@ export const menuOptions: IMenuOption[] = [
     label: 'Usuários',
     to: '/users',
     icon: <MdGroup size="20" className="mr-2" />,
+  },
+  {
+    label: 'Calendário',
+    to: '/calendar',
+    icon: <MdCalendarMonth size="20" className="mr-2" />,
   },
 ]
