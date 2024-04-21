@@ -51,6 +51,7 @@ export const ProductsPage = () => {
   const handleOnDelete = () => {
     showToastSuccess(getI18n('default_success_message'))
   }
+
   return (
     <Crud.Root title={productsI18n.title}>
       {(mode === 'edit' || mode === 'create') && <ProductsFormComponent />}

@@ -1,9 +1,9 @@
 export interface IChat {
+  customerName: string
+  customerUserId: number
+  customerWhatsappNumber: string
   id: number
   lastMessage: string
   lastMessagetime: string
-  sender: string
-  senderNumber: string
-  customerUserId: number
   systemUserId: number
 }

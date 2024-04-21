@@ -1,5 +1,5 @@
 import { useFormatCurrency } from '@hooks/useFormatCurrency'
-import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
+import { setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { Column } from 'primereact/column'
 import { confirmDialog } from 'primereact/confirmdialog'
@@ -7,7 +7,7 @@ import { DataTable } from 'primereact/datatable'
 import { Paginator } from 'primereact/paginator'
 import { ReactNode } from 'react'
 import { MdClose, MdCreate, MdVisibility } from 'react-icons/md'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { IColumnType } from 'types/column'
 import { IMode } from 'types/mode'
 import { CrudTableActions } from './CrudTableActions'
@@ -36,7 +36,6 @@ export const CrudTable = ({
   onPageChange,
 }: CrudTableProps) => {
   const dispatch = useDispatch()
-  const mode = useSelector(selectorMode)
   const handleDefaultDelete = () => {
     confirmDialog({
       message: 'Do you want to delete this record?',

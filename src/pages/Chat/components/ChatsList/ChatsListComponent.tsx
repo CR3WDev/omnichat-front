@@ -47,28 +47,27 @@ export const ChatListComponent = ({ setChatSelected, chatSelected }: ChatListPro
         </div>
       </div>
       <div style={{ maxHeight: 'calc(100vh - 48px - 150px - 2rem)', overflow: 'auto' }}>
-        {data?.data.data.map((chat: any, index: number) => {
+        {data?.data.data.map((chat: IChat, index: number) => {
           return (
             <div
               key={index}
               onClick={() => {
-                console.log(chat)
                 setChatSelected(chat)
               }}
               className="p-ripple flex align-items-center cursor-pointer p-3 border-round text-700 hover:surface-100 transition-duration-150 transition-colors w-full"
             >
               <div className="flex w-full">
                 <div className="mr-3">
-                  <Avatar label={chat?.sender[0]} size="xlarge" shape="circle" />
+                  <Avatar label={chat?.customerName[0]} size="xlarge" shape="circle" />
                 </div>
                 <div className="w-full  flex flex-column justify-content-center">
                   <div className="flex justify-content-between w-full">
                     <div>
-                      <span className="font-bold">{chat?.sender}</span>
+                      <span className="font-bold">{chat?.customerName}</span>
                     </div>
                     <div>
                       <span className="text-sm">
-                        {formatarDataComMoment(chat?.lastMessageTime)}
+                        {formatarDataComMoment(chat?.lastMessagetime)}
                       </span>
                     </div>
                   </div>
