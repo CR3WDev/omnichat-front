@@ -1088,7 +1088,7 @@ body {
     background: rgba(255, 255, 255, 0.87);
   }
   .p-inputswitch.p-inputswitch-checked:not(.p-disabled):hover .p-inputswitch-slider {
-    background: #c4b5fd;
+    background: #7c3aed;
   }
   .p-inputswitch.p-invalid .p-inputswitch-slider {
     border-color: #fca5a5;
@@ -1560,8 +1560,8 @@ body {
     color: rgba(255, 255, 255, 0.87);
   }
   .p-selectbutton .p-button.p-highlight:hover {
-    background: #c4b5fd;
-    border-color: #c4b5fd;
+    background: #7c3aed;
+    border-color: #7c3aed;
     color: rgba(255, 255, 255, 0.87);
   }
   .p-selectbutton .p-button.p-highlight:hover .p-button-icon-left,
@@ -1756,8 +1756,8 @@ body {
     color: rgba(255, 255, 255, 0.87);
   }
   .p-togglebutton.p-button.p-highlight:hover {
-    background: #c4b5fd;
-    border-color: #c4b5fd;
+    background: #7c3aed;
+    border-color: #7c3aed;
     color: rgba(255, 255, 255, 0.87);
   }
   .p-togglebutton.p-button.p-highlight:hover .p-button-icon-left,
@@ -1777,9 +1777,9 @@ body {
     border-radius: 6px;
   }
   .p-button:not(:disabled):hover {
-    background: #c4b5fd;
+    background: #7c3aed;
     color: rgba(255, 255, 255, 0.87);
-    border-color: #c4b5fd;
+    border-color: #7c3aed;
   }
   .p-button:not(:disabled):active {
     background: #ddd6fe;
@@ -4087,7 +4087,7 @@ body {
     right: -1rem;
   }
   .p-overlaypanel .p-overlaypanel-close:enabled:hover {
-    background: #c4b5fd;
+    background: #7c3aed;
     color: rgba(255, 255, 255, 0.87);
   }
   .p-overlaypanel:after {

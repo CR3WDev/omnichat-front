@@ -19,6 +19,7 @@ export const MessagesListInputComponent = ({
 
   const { mutateAsync: sendMessage } = postSendMessage()
   const onSubmit = () => {
+    if (watch('inputMessage') === '') return
     sendMessage({
       systemUserId: chatSelected?.systemUserId,
       customerUserId: chatSelected?.customerUserId,
