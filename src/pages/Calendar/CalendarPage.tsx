@@ -18,7 +18,7 @@ export const CalendarPage = () => {
       >
         <FullCalendar
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
-          initialView="listWeek"
+          initialView="dayGridMonth"
           weekends={true}
           events={[
             { title: 'Cabelo e Barba Marcelo', date: '2024-04-22', start: '2024-04-23T15:30:00' },

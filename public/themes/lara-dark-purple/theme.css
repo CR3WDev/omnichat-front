@@ -13,7 +13,7 @@
   --text-color: rgba(255, 255, 255, 0.87);
   --text-color-secondary: rgba(255, 255, 255, 0.6);
   --primary-color: #a78bfa;
-  --primary-color-text: #030712;
+  --primary-color-text: rgba(255, 255, 255, 0.87);
   --surface-0: #171717;
   --surface-50: #212121;
   --surface-100: #2f2f2f;
@@ -771,7 +771,7 @@ body {
   }
   .p-checkbox .p-checkbox-box .p-checkbox-icon {
     transition-duration: 0.2s;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
     font-size: 14px;
   }
   .p-checkbox .p-checkbox-box .p-checkbox-icon.p-icon {
@@ -785,7 +785,7 @@ body {
   .p-checkbox .p-checkbox-box.p-highlight:not(.p-disabled):hover {
     border-color: #ddd6fe;
     background: #ddd6fe;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
     border-color: #a78bfa;
@@ -799,7 +799,7 @@ body {
   .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
     border-color: #ddd6fe;
     background: #ddd6fe;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-checkbox.p-invalid > .p-checkbox-box {
     border-color: #fca5a5;
@@ -1085,7 +1085,7 @@ body {
     background: #a78bfa;
   }
   .p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
-    background: #030712;
+    background: rgba(255, 255, 255, 0.87);
   }
   .p-inputswitch.p-inputswitch-checked:not(.p-disabled):hover .p-inputswitch-slider {
     background: #c4b5fd;
@@ -1473,7 +1473,7 @@ body {
     width: 12px;
     height: 12px;
     transition-duration: 0.2s;
-    background-color: #030712;
+    background-color: rgba(255, 255, 255, 0.87);
   }
   .p-radiobutton .p-radiobutton-box.p-highlight {
     border-color: #a78bfa;
@@ -1482,7 +1482,7 @@ body {
   .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
     border-color: #ddd6fe;
     background: #ddd6fe;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-radiobutton.p-invalid > .p-radiobutton-box {
     border-color: #fca5a5;
@@ -1553,20 +1553,20 @@ body {
   .p-selectbutton .p-button.p-highlight {
     background: #a78bfa;
     border-color: #a78bfa;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-selectbutton .p-button.p-highlight .p-button-icon-left,
   .p-selectbutton .p-button.p-highlight .p-button-icon-right {
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-selectbutton .p-button.p-highlight:hover {
     background: #c4b5fd;
     border-color: #c4b5fd;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-selectbutton .p-button.p-highlight:hover .p-button-icon-left,
   .p-selectbutton .p-button.p-highlight:hover .p-button-icon-right {
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-selectbutton.p-invalid > .p-button {
     border-color: #fca5a5;
@@ -1749,26 +1749,26 @@ body {
   .p-togglebutton.p-button.p-highlight {
     background: #a78bfa;
     border-color: #a78bfa;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-togglebutton.p-button.p-highlight .p-button-icon-left,
   .p-togglebutton.p-button.p-highlight .p-button-icon-right {
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-togglebutton.p-button.p-highlight:hover {
     background: #c4b5fd;
     border-color: #c4b5fd;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-togglebutton.p-button.p-highlight:hover .p-button-icon-left,
   .p-togglebutton.p-button.p-highlight:hover .p-button-icon-right {
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-togglebutton.p-button.p-invalid > .p-button {
     border-color: #fca5a5;
   }
   .p-button {
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
     background: #a78bfa;
     border: 1px solid #a78bfa;
     padding: 0.75rem 1.25rem;
@@ -1778,12 +1778,12 @@ body {
   }
   .p-button:not(:disabled):hover {
     background: #c4b5fd;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
     border-color: #c4b5fd;
   }
   .p-button:not(:disabled):active {
     background: #ddd6fe;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
     border-color: #ddd6fe;
   }
   .p-button.p-button-outlined {
@@ -1865,7 +1865,7 @@ body {
     height: 1rem;
     line-height: 1rem;
     color: #a78bfa;
-    background-color: #030712;
+    background-color: rgba(255, 255, 255, 0.87);
   }
   .p-button.p-button-raised {
     box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
@@ -3640,7 +3640,7 @@ body {
     border-radius: 50%;
     width: 1rem;
     height: 1rem;
-    background-color: #030712;
+    background-color: rgba(255, 255, 255, 0.87);
   }
   .p-timeline .p-timeline-event-connector {
     background-color: #363636;
@@ -4077,7 +4077,7 @@ body {
   }
   .p-overlaypanel .p-overlaypanel-close {
     background: #a78bfa;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
     width: 2rem;
     height: 2rem;
     transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
@@ -4088,7 +4088,7 @@ body {
   }
   .p-overlaypanel .p-overlaypanel-close:enabled:hover {
     background: #c4b5fd;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
   .p-overlaypanel:after {
     border: solid transparent;
@@ -5902,7 +5902,7 @@ body {
   }
   .p-tag {
     background: #a78bfa;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
     font-size: 0.75rem;
     font-weight: 700;
     padding: 0.25rem 0.4rem;
@@ -5958,7 +5958,7 @@ body {
     background: #a78bfa;
   }
   .p-progressbar .p-progressbar-label {
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
     line-height: 1.5rem;
   }
   .p-terminal {
@@ -5974,7 +5974,7 @@ body {
   }
   .p-badge {
     background: #a78bfa;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
     font-size: 0.75rem;
     font-weight: 700;
     min-width: 1.5rem;
@@ -6015,7 +6015,7 @@ body {
   }
   .p-tag {
     background: #a78bfa;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
     font-size: 0.75rem;
     font-weight: 700;
     padding: 0.25rem 0.4rem;
@@ -6118,6 +6118,6 @@ body {
   }
   .p-steps .p-steps-item.p-highlight .p-steps-number {
     background: #a78bfa;
-    color: #030712;
+    color: rgba(255, 255, 255, 0.87);
   }
 }
