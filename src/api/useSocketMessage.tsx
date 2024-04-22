@@ -1,37 +1,26 @@
-import { useEffect, useRef, useState } from 'react'
-import socketIOClient, { Socket } from 'socket.io-client'
+import { useEffect, useState } from 'react'
+import { io } from 'socket.io-client'
+import { IChat } from 'types/chat'
 import { IMessage } from 'types/message'
 
-export const useSocketMessage = (roomId: string) => {
+export const useSocketMessage = (chatSelected: IChat) => {
+  const socket = io(import.meta.env.VITE_BASE_URL)
   const [messages, setMessages] = useState<IMessage[]>([])
-  const socketRef = useRef<Socket>()
-
-  const SOCKET_SERVER_URL = import.meta.env.VITE_BASE_URL
-  const NEW_CHAT_MESSAGE_EVENT = 'newChatMessage'
-
-  const sendMessage = (messageBody: string) => {
-    socketRef.current!.emit(NEW_CHAT_MESSAGE_EVENT, {
-      body: messageBody,
-      senderId: socketRef.current!.id,
-    })
-  }
 
   useEffect(() => {
-    socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
-      query: { roomId },
-    })
-
-    socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message: IMessage) => {
-      const incomingMessage: IMessage = {
-        ...message,
-      }
-      setMessages((prevMessages) => [...prevMessages, incomingMessage])
+    if (!chatSelected) {
+      console.log('entrou')
+      socket.off('response')
+      return
+    }
+    socket.on('response', (response) => {
+      console.log(response)
     })
 
     return () => {
-      socketRef.current!.disconnect()
+      socket.off('response')
     }
-  }, [roomId])
+  }, [chatSelected])
 
-  return { messages, sendMessage }
+  return { messages }
 }

@@ -3,6 +3,7 @@ import { InputText } from 'primereact/inputtext'
 import { Dispatch, SetStateAction } from 'react'
 import { useForm } from 'react-hook-form'
 import { MdSend } from 'react-icons/md'
+import { io } from 'socket.io-client'
 import { IChat } from 'types/chat'
 import { IMessage } from 'types/message'
 import { postSendMessage } from './MessagesListServices'
@@ -16,20 +17,23 @@ export const MessagesListInputComponent = ({
   chatSelected,
 }: MessagesListInputProps) => {
   const { handleSubmit, register, watch, setValue } = useForm()
+  const socket = io('http://localhost:3000')
 
   const { mutateAsync: sendMessage } = postSendMessage()
+
   const onSubmit = () => {
-    if (watch('inputMessage') === '') return
+    if (!watch('inputMessage').trim()) return
     sendMessage({
       systemUserId: chatSelected?.systemUserId,
       customerUserId: chatSelected?.customerUserId,
       chatId: chatSelected?.id,
       text: watch('inputMessage'),
     }).then((data) => {
-      setMessages((prev: IMessage[]) => {
-        const newArray = [data?.data?.data, ...prev]
-        return newArray
-      })
+      // setMessages((prev: IMessage[]) => {
+      //   const newArray = [data?.data?.data, ...prev]
+      //   return newArray
+      // })
+      socket.emit('message', watch('inputMessage'))
       setValue('inputMessage', '')
     })
   }

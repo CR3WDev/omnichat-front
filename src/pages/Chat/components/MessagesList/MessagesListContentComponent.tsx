@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { io } from 'socket.io-client'
 import { IChat } from 'types/chat'
 import { IMessage } from 'types/message'
 import { MessagesListInputComponent } from './MessagesListInputComponent'
@@ -11,13 +12,24 @@ type MessagesListContentProps = {
 export const MessagesListContentComponent = ({ chatSelected }: MessagesListContentProps) => {
   if (!chatSelected) return <></>
   const [messages, setMessages] = useState<IMessage[]>([])
+  const socket = io('http://localhost:3000')
   const { refetch: lastMessage } = getMessagesByChatId(chatSelected.id)
-  // const { messages:messagesBySocket, sendMessage } = useSocketMessage('1')
+  // const { messages: messagesBySocket } = useSocketMessage(chatSelected)
+
   useEffect(() => {
     lastMessage().then((data) => {
       setMessages(data?.data?.data?.data)
     })
   }, [chatSelected])
+
+  useEffect(() => {
+    socket.on('message', (response) => {
+      console.log({ response })
+    })
+    return () => {
+      socket.off('message')
+    }
+  }, [])
 
   return (
     <div className="flex flex-column flex-grow-1">
