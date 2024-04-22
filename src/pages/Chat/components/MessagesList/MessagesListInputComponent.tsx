@@ -17,7 +17,7 @@ export const MessagesListInputComponent = ({
   chatSelected,
 }: MessagesListInputProps) => {
   const { handleSubmit, register, watch, setValue } = useForm()
-  const socket = io('http://localhost:3000')
+  const socket = io('http://localhost:3001')
 
   const { mutateAsync: sendMessage } = postSendMessage()
 
