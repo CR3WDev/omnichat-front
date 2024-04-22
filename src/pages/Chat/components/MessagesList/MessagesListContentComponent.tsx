@@ -12,7 +12,7 @@ type MessagesListContentProps = {
 export const MessagesListContentComponent = ({ chatSelected }: MessagesListContentProps) => {
   if (!chatSelected) return <></>
   const [messages, setMessages] = useState<IMessage[]>([])
-  const socket = io('http://localhost:3001')
+  const socket = io('http://localhost:3000')
   const { refetch: lastMessage } = getMessagesByChatId(chatSelected.id)
   // const { messages: messagesBySocket } = useSocketMessage(chatSelected)
 
