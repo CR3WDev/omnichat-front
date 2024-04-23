@@ -10,7 +10,7 @@ type InterceptorProps = {
   children: ReactElement
 }
 
-export const InterceptorComponent = ({ children }: InterceptorProps) => {
+export const Interceptor = ({ children }: InterceptorProps) => {
   api.interceptors.request.use(
     (config) => {
       const LoginResponseDTO = useGetLoginResponseDTO()

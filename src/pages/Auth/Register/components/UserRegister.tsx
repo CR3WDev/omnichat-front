@@ -10,8 +10,8 @@ import { Password } from 'primereact/password'
 import { classNames } from 'primereact/utils'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
-import { Register } from '../../RegisterInterfaces.ts'
-import { postRegister } from '../../RegisterServices.ts'
+import { IUserRegister } from '../RegisterInterfaces'
+import { postRegister } from '../RegisterServices'
 
 export const UserRegister = () => {
   const registerI18n = getI18n('register')
@@ -41,7 +41,7 @@ export const UserRegister = () => {
   } = useForm()
 
   const onSubmit = (data: any) => {
-    const request: Register = {
+    const request: IUserRegister = {
       email: data?.email,
       password: data?.password,
       username: data?.username,

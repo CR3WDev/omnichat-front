@@ -78,6 +78,9 @@ export const CrudTable = ({
         ...prev,
         sortField: event.sortField,
         sortOrder: event.sortOrder,
+        first: 0,
+        page: 0,
+        pageCount: 1,
       }
     })
   }

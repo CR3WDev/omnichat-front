@@ -1,6 +1,6 @@
-import { InterceptorComponent } from '@api/components'
+import { Interceptor } from '@api/components/interceptor'
 import { queryClient } from '@api/queryClient'
-import { GlobalLoadingComponent } from '@components/GlobalLoading'
+import { GlobalLoading } from '@components/GlobalLoading/GlobalLoading'
 import { GlobalToast } from '@components/GlobalToast'
 import { Sizer } from '@components/Sizer'
 import { Theme } from '@components/Theme'
@@ -22,14 +22,14 @@ const App = () => {
       <PrimeReactProvider>
         <Provider store={store}>
           <QueryClientProvider client={queryClient}>
-            <GlobalLoadingComponent />
-            <InterceptorComponent>
+            <GlobalLoading />
+            <Interceptor>
               <Sizer>
                 <Theme>
                   <RouterProvider router={router} />
                 </Theme>
               </Sizer>
-            </InterceptorComponent>
+            </Interceptor>
           </QueryClientProvider>
         </Provider>
       </PrimeReactProvider>
