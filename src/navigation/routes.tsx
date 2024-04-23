@@ -7,7 +7,6 @@ import { ChatPage } from '@pages/Chat/ChatPage.tsx'
 import { DashboardPage } from '@pages/Dashboard'
 import { ErrorPage } from '@pages/Error'
 import { HomePage } from '@pages/Home'
-import { MenuPage } from '@pages/Menu'
 import { OrdersPage } from '@pages/Orders'
 import { ProductsPage } from '@pages/Products'
 import { UsersPage } from '@pages/Users'
@@ -65,9 +64,5 @@ export const router = createBrowserRouter([
         element: <CalendarPage />,
       },
     ],
-  },
-  {
-    path: '/menu/example',
-    element: <MenuPage />,
   },
 ])

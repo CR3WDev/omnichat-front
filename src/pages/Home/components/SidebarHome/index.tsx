@@ -1,1 +1,1 @@
-export * from './SidebarHomeComponent.tsx'
+export * from './SidebarHome.tsx'

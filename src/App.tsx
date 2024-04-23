@@ -1,9 +1,9 @@
 import { InterceptorComponent } from '@api/components'
 import { queryClient } from '@api/queryClient'
 import { GlobalLoadingComponent } from '@components/GlobalLoading'
-import { GlobalToastComponent } from '@components/GlobalToast'
-import { SizerComponent } from '@components/Sizer'
-import { ThemeComponent } from '@components/Theme/ThemeComponent'
+import { GlobalToast } from '@components/GlobalToast'
+import { Sizer } from '@components/Sizer'
+import { Theme } from '@components/Theme'
 import { router } from '@navigation/routes'
 import { store } from '@redux/store'
 import { QueryClientProvider } from '@tanstack/react-query'
@@ -24,16 +24,16 @@ const App = () => {
           <QueryClientProvider client={queryClient}>
             <GlobalLoadingComponent />
             <InterceptorComponent>
-              <SizerComponent>
-                <ThemeComponent>
+              <Sizer>
+                <Theme>
                   <RouterProvider router={router} />
-                </ThemeComponent>
-              </SizerComponent>
+                </Theme>
+              </Sizer>
             </InterceptorComponent>
           </QueryClientProvider>
         </Provider>
       </PrimeReactProvider>
-      <GlobalToastComponent />
+      <GlobalToast />
     </>
   )
 }

@@ -1,5 +1,5 @@
 import { ErrorMessageComponent } from '@components/ErrorMessage'
-import { showToastSuccess } from '@components/GlobalToast/GlobalToastComponent.tsx'
+import { showToastSuccess } from '@components/GlobalToast.tsx'
 import { getI18n } from '@hooks/useGetI18n.ts'
 import { UseValidateEmail } from '@hooks/useValidateEmail.ts'
 import { UseValidatePassword } from '@hooks/useValidatePassword.ts'

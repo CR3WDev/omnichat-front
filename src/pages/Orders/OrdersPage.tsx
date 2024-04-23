@@ -3,7 +3,7 @@ import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
 import { selectorMode } from '@redux/Reducers/modeReducer'
 import { useSelector } from 'react-redux'
-import { OrdersFormComponent } from './components/OrdersForm'
+import { OrdersForm } from './components/OrdersForm'
 
 export const OrdersPage = () => {
   const mode = useSelector(selectorMode)
@@ -88,11 +88,11 @@ export const OrdersPage = () => {
   }
   return (
     <Crud.Root title={orderI18n.title}>
-      {(mode === 'edit' || mode === 'create') && <OrdersFormComponent />}
+      {(mode === 'edit' || mode === 'create') && <OrdersForm />}
       {mode === 'search' && (
         <>
           <Crud.SearchBar columns={colsSearch}></Crud.SearchBar>
-          <Crud.Table
+          {/* <Crud.Table
             data={orders}
             cols={cols}
             currentPage={0}
@@ -100,7 +100,7 @@ export const OrdersPage = () => {
             rowsPerPage={20}
             totalRecords={99}
             onPageChange={(event) => console.log('Página alterada:', event)}
-          ></Crud.Table>
+          ></Crud.Table> */}
         </>
       )}
     </Crud.Root>

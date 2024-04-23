@@ -1,1 +1,1 @@
-export * from './MessagesListComponent'
+export * from './MessagesList'

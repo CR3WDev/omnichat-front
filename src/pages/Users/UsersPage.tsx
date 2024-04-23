@@ -3,7 +3,7 @@ import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
 import { selectorMode } from '@redux/Reducers/modeReducer'
 import { useSelector } from 'react-redux'
-import { UsersFormComponent } from './components/UsersForm'
+import { UsersForm } from './components/UsersForm'
 
 export const UsersPage = () => {
   const mode = useSelector(selectorMode)
@@ -83,7 +83,7 @@ export const UsersPage = () => {
 
   return (
     <Crud.Root title={productsI18n.title}>
-      {(mode === 'edit' || mode === 'create') && <UsersFormComponent />}
+      {(mode === 'edit' || mode === 'create') && <UsersForm />}
       {mode === 'search' && (
         <>
           <Crud.SearchBar columns={colsSearch}></Crud.SearchBar>

@@ -1,13 +1,13 @@
-import { TopbarComponent } from '@pages/Home/components/Topbar'
-import { SidebarHomeComponent } from 'pages/Home/components/SidebarHome'
 import { Outlet } from 'react-router-dom'
+import { SidebarHome } from './components/SidebarHome'
+import { Topbar } from './components/Topbar'
 
 export const HomePage = () => {
   return (
     <div className="flex">
-      <SidebarHomeComponent />
+      <SidebarHome />
       <div>
-        <TopbarComponent />
+        <Topbar />
         <div
           style={{ height: 'calc(100vh - 60px)', overflow: 'auto' }}
           className="flex justify-content-center align-items-center"

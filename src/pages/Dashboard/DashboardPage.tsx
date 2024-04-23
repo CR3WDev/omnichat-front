@@ -10,9 +10,9 @@ import { Dropdown } from 'primereact/dropdown'
 import { Tag } from 'primereact/tag'
 import { MdTrendingDown, MdTrendingUp } from 'react-icons/md'
 import { useSelector } from 'react-redux'
-import { ChartHourComponent } from './Component/Chart/ChartHourComponent copy'
-import { ChartPierComponent } from './Component/Chart/ChartPierComponent'
-import { ChartWeekComponent } from './Component/Chart/ChartWeekComponent'
+import { ChartHour } from './Component/Chart/ChartHour'
+import { ChartPie } from './Component/Chart/ChartPie'
+import { ChartWeek } from './Component/Chart/ChartWeek'
 
 export const DashboardPage = () => {
   const theme = useSelector(selectorTheme)
@@ -144,7 +144,7 @@ export const DashboardPage = () => {
           className={`${theme === 'light' && 'border-1  border-round-lg'}`}
         >
           <h3 className="text-center">Vendas por Dia da Semana</h3>
-          <ChartWeekComponent />
+          <ChartWeek />
         </Card>
         <Card
           style={{
@@ -155,7 +155,7 @@ export const DashboardPage = () => {
           className={`${theme === 'light' && 'border-1  border-round-lg'}`}
         >
           <h3 className="text-center">Vendas por Hora</h3>
-          <ChartHourComponent />
+          <ChartHour />
         </Card>
       </div>
       <div className="flex mx-3 justify-content-between my-3">
@@ -186,7 +186,7 @@ export const DashboardPage = () => {
           className={`${theme === 'light' && 'border-1  border-round-lg'}`}
         >
           <h3 className="text-center">Produtos Em Destaque</h3>
-          <ChartPierComponent data={dataPie} options={options} />
+          <ChartPie data={dataPie} options={options} />
         </Card>
       </div>
     </div>

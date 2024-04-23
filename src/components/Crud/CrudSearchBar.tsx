@@ -13,7 +13,7 @@ type CrudSearchBarProps = {
 
 export const CrudSearchBar = ({ columns }: CrudSearchBarProps) => {
   const crudI18n = getI18n('crud')
-  const [selectedColumn, setSelectedColumn] = useState(columns ? columns[0].field : '')
+  const [selectedColumn, _setSelectedColumn] = useState(columns ? columns[0].field : '')
   const [searchValues, setSearchValues] = useState<{ [key: string]: string }>({})
 
   const handleSearchInputChange = (field: string, value: string) => {

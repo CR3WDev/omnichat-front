@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { IProduct } from 'types/product'
 import { ITableConfig } from 'types/tableConfig'
-import { ProductsFormComponent } from './components/ProductsForm'
+import { ProductsForm } from './components/ProductsForm'
 import { deleteProducts, getTableProducts } from './ProductsServices'
 
 export const ProductsPage = () => {
@@ -37,7 +37,7 @@ export const ProductsPage = () => {
 
   return (
     <Crud.Root title={productsI18n.title}>
-      {(mode === 'edit' || mode === 'create') && <ProductsFormComponent />}
+      {(mode === 'edit' || mode === 'create') && <ProductsForm />}
       {mode === 'search' && (
         <>
           <Crud.SearchBar columns={colsPesquisa}></Crud.SearchBar>
