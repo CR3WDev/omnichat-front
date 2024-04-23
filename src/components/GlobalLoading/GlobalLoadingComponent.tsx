@@ -1,5 +1,5 @@
+import { useIsFetching, useIsMutating } from '@tanstack/react-query'
 import { ProgressSpinner } from 'primereact/progressspinner'
-import { useIsFetching, useIsMutating } from 'react-query'
 import './GlobalLoadingStyle.scss'
 
 export const GlobalLoadingComponent = () => {

@@ -1,12 +1,9 @@
 export interface IProduct {
-  id: string
-  code: string
-  name: string
+  barcode: string
   description: string
-  image: string
-  price: number
-  category: string
-  items: IItem[]
+  id: number
+  price: string
+  title: string
 }
 
 export interface IItem {

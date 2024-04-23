@@ -17,10 +17,11 @@ type CrudTableProps = {
   children?: ReactNode
   data: any[]
   cols: IColumnType[]
+  setRowSelected: Dispatch<SetStateAction<any>>
   setTableConfig: Dispatch<SetStateAction<ITableConfig>>
   tableConfig: ITableConfig
   totalRecords: number
-  onDelete?: () => void
+  onDelete?: (rowSelected: any) => void
   actions?: IMode[]
 }
 
@@ -29,20 +30,24 @@ export const CrudTable = ({
   cols,
   children,
   tableConfig,
+  setRowSelected,
   setTableConfig,
   onDelete,
   actions,
   totalRecords,
 }: CrudTableProps) => {
   const dispatch = useDispatch()
-  const handleDefaultDelete = () => {
+  const handleDefaultDelete = (rowSelected: any) => {
+    setRowSelected(rowSelected)
     confirmDialog({
       message: 'Do you want to delete this record?',
       header: 'Delete Confirmation',
       icon: 'pi pi-info-circle',
       defaultFocus: 'reject',
       acceptClassName: 'p-button-danger',
-      accept: onDelete,
+      accept: () => {
+        onDelete && onDelete(rowSelected)
+      },
       reject: () => {},
     })
   }
@@ -66,10 +71,13 @@ export const CrudTable = ({
       }
     })
   }
-  const handleDefaultEdit = () => {
+  const handleDefaultEdit = (rowSelected: any) => {
+    setRowSelected(rowSelected)
     dispatch(setMode('edit'))
   }
-  const handleDefaultView = () => {}
+  const handleDefaultView = (rowSelected: any) => {
+    setRowSelected(rowSelected)
+  }
 
   const customCols = (col: any) => {
     switch (col?.type) {
@@ -94,7 +102,7 @@ export const CrudTable = ({
       }
     }
   }
-  const defaultActions = () => {
+  const defaultActions = (rowSelected: any) => {
     const showEdit = !actions ? true : actions?.includes('edit')
     const showDelete = !actions ? true : actions?.includes('delete')
     const showView = !actions ? false : actions?.includes('view')
@@ -104,14 +112,25 @@ export const CrudTable = ({
         <>
           {showView && (
             <div>
-              <Button text onClick={handleDefaultView}>
+              <Button
+                text
+                onClick={() => {
+                  handleDefaultView(rowSelected)
+                }}
+              >
                 <MdVisibility className="mr-2" size="20" /> Visualizar
               </Button>
             </div>
           )}
           {showEdit && (
             <div>
-              <Button text severity="secondary" onClick={handleDefaultEdit}>
+              <Button
+                text
+                severity="secondary"
+                onClick={() => {
+                  handleDefaultEdit(rowSelected)
+                }}
+              >
                 <MdCreate className="mr-2" size="20" />
                 Editar
               </Button>
@@ -119,7 +138,13 @@ export const CrudTable = ({
           )}
           {showDelete && (
             <div>
-              <Button text severity="danger" onClick={handleDefaultDelete}>
+              <Button
+                text
+                severity="danger"
+                onClick={() => {
+                  handleDefaultDelete(rowSelected)
+                }}
+              >
                 <MdClose className="mr-2" size="20" /> Deletar
               </Button>
             </div>
@@ -156,7 +181,7 @@ export const CrudTable = ({
             header="Ações"
             className="p-2"
             headerClassName="flex justify-content-center"
-            body={children ? children : defaultActions}
+            body={(rowSelected) => (children ? children : defaultActions(rowSelected))}
           />
         </DataTable>
       </div>

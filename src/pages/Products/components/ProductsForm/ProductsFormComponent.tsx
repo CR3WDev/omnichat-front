@@ -21,13 +21,12 @@ export const ProductsFormComponent = () => {
 
   const { mutateAsync: newProducts } = postNewProducts()
   const handleCreate = (data: any) => {
-    console.log({ data })
     newProducts(
       {
-        title: data.product,
+        name: data.name,
         price: data.price,
         description: 'teste',
-        barcode: '123',
+        barcode: '',
       },
       {
         onSuccess: () => {
@@ -43,29 +42,29 @@ export const ProductsFormComponent = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="page-container full-height">
-      <div className="full-height">
+      <div className="full-height mx-2">
         <div className="flex flex-column md:flex-row">
           <div className="col-12 md:col-6">
-            <label htmlFor="">{productsI18n.product}</label>
+            <label className="font-bold">{productsI18n.product + '*'}</label>
             <InputText
               className={classNames('w-full my-1', {
-                'p-invalid': errors.product,
+                'p-invalid': errors.name,
               })}
-              placeholder={productsI18n.product + '*'}
-              id="product"
-              {...register('product', {
+              placeholder={productsI18n.product}
+              id="name"
+              {...register('name', {
                 required: true,
               })}
             />
-            <ErrorMessageComponent errors={errors.product} />
+            <ErrorMessageComponent errors={errors.name} />
           </div>
           <div className="col-12 md:col-6">
-            <label htmlFor="price">{productsI18n.price}</label>
+            <label className="font-bold">{productsI18n.price + '*'}</label>
             <InputText
               className={classNames('w-full my-1', {
                 'p-invalid': errors.price,
               })}
-              placeholder={productsI18n.price + '*'}
+              placeholder={productsI18n.price}
               id="price"
               {...register('price', {
                 required: true,

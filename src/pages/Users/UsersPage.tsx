@@ -87,15 +87,13 @@ export const UsersPage = () => {
       {mode === 'search' && (
         <>
           <Crud.SearchBar columns={colsSearch}></Crud.SearchBar>
-          <Crud.Table
+          {/* <Crud.Table
+
             data={users}
             cols={colsSearch}
-            currentPage={0}
             onDelete={handleOnDelete}
-            rowsPerPage={20}
             totalRecords={999}
-            onPageChange={(event) => console.log('Página alterada:', event)}
-          ></Crud.Table>
+          ></Crud.Table> */}
         </>
       )}
     </Crud.Root>
