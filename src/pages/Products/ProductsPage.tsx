@@ -16,7 +16,7 @@ export const ProductsPage = () => {
   const productsI18n = getI18n('products')
   const dispatch = useDispatch()
   const [rowSelected, setRowSelected] = useState<IProduct | undefined>()
-  const [tableConfig, setTableConfig] = useState<ITableConfig>(useDefaultTableConfig('title'))
+  const [tableConfig, setTableConfig] = useState<ITableConfig>(useDefaultTableConfig('name'))
   const { refetch: getProducts, data } = getTableProducts(tableConfig)
   const { mutateAsync: removeProducts } = deleteProducts(rowSelected?.id)
 

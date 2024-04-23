@@ -1,17 +1,12 @@
 import { useFormatCurrency } from '@hooks/useFormatCurrency'
 import { getI18n } from '@hooks/useGetI18n'
-import { setMode } from '@redux/Reducers/modeReducer'
-import { Button } from 'primereact/button'
 import { Column } from 'primereact/column'
-import { confirmDialog } from 'primereact/confirmdialog'
 import { DataTable, DataTablePageEvent, DataTableSortEvent } from 'primereact/datatable'
-import { Dispatch, ReactNode, SetStateAction, useEffect } from 'react'
-import { MdClose, MdCreate, MdVisibility } from 'react-icons/md'
-import { useDispatch } from 'react-redux'
+import { Dispatch, ReactNode, SetStateAction } from 'react'
 import { IColumnType } from 'types/column'
 import { IMode } from 'types/mode'
 import { ITableConfig } from 'types/tableConfig'
-import { CrudTableActions } from './CrudTableActions'
+import { CrudTableDefaultActions } from './CrudTableDefaultActions'
 
 type CrudTableProps = {
   children?: ReactNode
@@ -36,21 +31,6 @@ export const CrudTable = ({
   actions,
   totalRecords,
 }: CrudTableProps) => {
-  const dispatch = useDispatch()
-  const handleDefaultDelete = (rowSelected: any) => {
-    setRowSelected(rowSelected)
-    confirmDialog({
-      message: 'Do you want to delete this record?',
-      header: 'Delete Confirmation',
-      icon: 'pi pi-info-circle',
-      defaultFocus: 'reject',
-      acceptClassName: 'p-button-danger',
-      accept: () => {
-        onDelete && onDelete(rowSelected)
-      },
-      reject: () => {},
-    })
-  }
   const onPageChange = (event: DataTablePageEvent) => {
     setTableConfig((prev) => {
       return {
@@ -70,13 +50,6 @@ export const CrudTable = ({
         sortOrder: event.sortOrder,
       }
     })
-  }
-  const handleDefaultEdit = (rowSelected: any) => {
-    setRowSelected(rowSelected)
-    dispatch(setMode('edit'))
-  }
-  const handleDefaultView = (rowSelected: any) => {
-    setRowSelected(rowSelected)
   }
 
   const customCols = (col: any) => {
@@ -102,61 +75,6 @@ export const CrudTable = ({
       }
     }
   }
-  const defaultActions = (rowSelected: any) => {
-    const showEdit = !actions ? true : actions?.includes('edit')
-    const showDelete = !actions ? true : actions?.includes('delete')
-    const showView = !actions ? false : actions?.includes('view')
-
-    return (
-      <CrudTableActions>
-        <>
-          {showView && (
-            <div>
-              <Button
-                text
-                onClick={() => {
-                  handleDefaultView(rowSelected)
-                }}
-              >
-                <MdVisibility className="mr-2" size="20" /> Visualizar
-              </Button>
-            </div>
-          )}
-          {showEdit && (
-            <div>
-              <Button
-                text
-                severity="secondary"
-                onClick={() => {
-                  handleDefaultEdit(rowSelected)
-                }}
-              >
-                <MdCreate className="mr-2" size="20" />
-                Editar
-              </Button>
-            </div>
-          )}
-          {showDelete && (
-            <div>
-              <Button
-                text
-                severity="danger"
-                onClick={() => {
-                  handleDefaultDelete(rowSelected)
-                }}
-              >
-                <MdClose className="mr-2" size="20" /> Deletar
-              </Button>
-            </div>
-          )}
-        </>
-      </CrudTableActions>
-    )
-  }
-
-  useEffect(() => {
-    console.log({ tableConfig })
-  }, [tableConfig])
 
   return (
     <div className="m-3">
@@ -181,7 +99,18 @@ export const CrudTable = ({
             header="Ações"
             className="p-2"
             headerClassName="flex justify-content-center"
-            body={(rowSelected) => (children ? children : defaultActions(rowSelected))}
+            body={(rowSelected) =>
+              children ? (
+                children
+              ) : (
+                <CrudTableDefaultActions
+                  actions={actions}
+                  onDelete={onDelete}
+                  rowSelected={rowSelected}
+                  setRowSelected={setRowSelected}
+                />
+              )
+            }
           />
         </DataTable>
       </div>
