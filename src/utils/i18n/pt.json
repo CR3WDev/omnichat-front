@@ -7,6 +7,7 @@
   "save": "Salvar",
   "return": "Voltar",
   "table_empty_message": "Nenhum Elemento Cadastrado!",
+
   "login": {
     "title": "Bem-Vindo ao OmniChat",
     "login": "Login",
@@ -113,7 +114,9 @@
     "clear": "Limpar",
     "register": "Cadastrar",
     "choosecolumn": "Escolher coluna",
-    "actions": "Ações"
+    "actions": "Ações",
+    "delete_confirmation": "Confirmação de Exclusão",
+    "delete_confirmation_message": "Tem certeza que deseja excluir permanentemente esse item?"
   },
   "menu": {
     "read_more": "Saiba mais",

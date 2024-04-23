@@ -11,7 +11,7 @@ import { CrudTableDefaultActions } from './CrudTableDefaultActions'
 type CrudTableProps = {
   children?: ReactNode
   data: any[]
-  cols: IColumnType[]
+  columns: IColumnType[]
   setRowSelected: Dispatch<SetStateAction<any>>
   setTableConfig: Dispatch<SetStateAction<ITableConfig>>
   tableConfig: ITableConfig
@@ -22,7 +22,7 @@ type CrudTableProps = {
 
 export const CrudTable = ({
   data,
-  cols,
+  columns,
   children,
   tableConfig,
   setRowSelected,
@@ -31,6 +31,36 @@ export const CrudTable = ({
   actions,
   totalRecords,
 }: CrudTableProps) => {
+  const customColumns = (column: IColumnType) => {
+    switch (column?.type) {
+      case 'currency': {
+        return (
+          <Column
+            key={column.field}
+            field={column.field}
+            className="p-2"
+            sortable
+            header={column.header}
+            body={(e: any) => {
+              return useFormatCurrency(e[column.field]) || ''
+            }}
+          />
+        )
+      }
+      default: {
+        return (
+          <Column
+            key={column.field}
+            field={column.field}
+            header={column.header}
+            sortable
+            className="p-2"
+          />
+        )
+      }
+    }
+  }
+
   const onPageChange = (event: DataTablePageEvent) => {
     setTableConfig((prev) => {
       return {
@@ -52,30 +82,6 @@ export const CrudTable = ({
     })
   }
 
-  const customCols = (col: any) => {
-    switch (col?.type) {
-      case 'currency': {
-        return (
-          <Column
-            key={col.key}
-            field={col.field}
-            className="p-2"
-            sortable
-            header={col.header}
-            body={(e: any) => {
-              return useFormatCurrency(e[col.field]) || ''
-            }}
-          />
-        )
-      }
-      default: {
-        return (
-          <Column key={col.field} field={col.field} header={col.header} sortable className="p-2" />
-        )
-      }
-    }
-  }
-
   return (
     <div className="m-3">
       <div style={{ maxHeight: '700px', overflow: 'hidden' }}>
@@ -93,7 +99,9 @@ export const CrudTable = ({
           onPage={onPageChange}
           rowsPerPageOptions={[5, 10, 20]}
         >
-          {cols.map((col) => customCols(col))}
+          {columns.map((col) => {
+            return customColumns(col)
+          })}
           <Column
             field="actions"
             header="Ações"

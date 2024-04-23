@@ -51,7 +51,7 @@ export const ProductsPage = () => {
           </Card>
           <Crud.Table
             data={data?.data.data || []}
-            cols={cols}
+            columns={cols}
             setRowSelected={setRowSelected}
             setTableConfig={setTableConfig}
             onDelete={handleOnDelete}

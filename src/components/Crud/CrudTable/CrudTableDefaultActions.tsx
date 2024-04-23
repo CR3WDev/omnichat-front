@@ -1,3 +1,4 @@
+import { getI18n } from '@hooks/useGetI18n'
 import { setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { confirmDialog } from 'primereact/confirmdialog'
@@ -19,6 +20,7 @@ export const CrudTableDefaultActions = ({
   setRowSelected,
   onDelete,
 }: CrudTableDefaultActions) => {
+  const crudI18n = getI18n('crud')
   const dispatch = useDispatch()
   const showEdit = !actions ? true : actions?.includes('edit')
   const showDelete = !actions ? true : actions?.includes('delete')
@@ -36,8 +38,8 @@ export const CrudTableDefaultActions = ({
   const handleDefaultDelete = (rowSelected: any) => {
     setRowSelected(rowSelected)
     confirmDialog({
-      message: 'Do you want to delete this record?',
-      header: 'Delete Confirmation',
+      message: crudI18n.delete_confirmation_message,
+      header: crudI18n.delete_confirmation,
       icon: 'pi pi-info-circle',
       defaultFocus: 'reject',
       acceptClassName: 'p-button-danger',
