@@ -1,39 +1,38 @@
 import { useFormatCurrency } from '@hooks/useFormatCurrency'
+import { getI18n } from '@hooks/useGetI18n'
 import { setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { Column } from 'primereact/column'
 import { confirmDialog } from 'primereact/confirmdialog'
-import { DataTable } from 'primereact/datatable'
-import { Paginator } from 'primereact/paginator'
-import { ReactNode } from 'react'
+import { DataTable, DataTablePageEvent, DataTableSortEvent } from 'primereact/datatable'
+import { Dispatch, ReactNode, SetStateAction, useEffect } from 'react'
 import { MdClose, MdCreate, MdVisibility } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
 import { IColumnType } from 'types/column'
 import { IMode } from 'types/mode'
+import { ITableConfig } from 'types/tableConfig'
 import { CrudTableActions } from './CrudTableActions'
 
 type CrudTableProps = {
   children?: ReactNode
   data: any[]
   cols: IColumnType[]
-  currentPage: number
-  rowsPerPage: number
+  setTableConfig: Dispatch<SetStateAction<ITableConfig>>
+  tableConfig: ITableConfig
   totalRecords: number
   onDelete?: () => void
   actions?: IMode[]
-  onPageChange: (event: { first: number; rows: number }) => void
 }
 
 export const CrudTable = ({
   data,
   cols,
   children,
-  currentPage,
-  rowsPerPage,
+  tableConfig,
+  setTableConfig,
   onDelete,
   actions,
   totalRecords,
-  onPageChange,
 }: CrudTableProps) => {
   const dispatch = useDispatch()
   const handleDefaultDelete = () => {
@@ -45,6 +44,26 @@ export const CrudTable = ({
       acceptClassName: 'p-button-danger',
       accept: onDelete,
       reject: () => {},
+    })
+  }
+  const onPageChange = (event: DataTablePageEvent) => {
+    setTableConfig((prev) => {
+      return {
+        ...prev,
+        rows: event.rows,
+        page: event.page,
+        pageCount: event.pageCount,
+        first: event.first,
+      }
+    })
+  }
+  const onSortChange = (event: DataTableSortEvent) => {
+    setTableConfig((prev) => {
+      return {
+        ...prev,
+        sortField: event.sortField,
+        sortOrder: event.sortOrder,
+      }
     })
   }
   const handleDefaultEdit = () => {
@@ -59,6 +78,8 @@ export const CrudTable = ({
           <Column
             key={col.key}
             field={col.field}
+            className="p-2"
+            sortable
             header={col.header}
             body={(e: any) => {
               return useFormatCurrency(e[col.field]) || ''
@@ -67,7 +88,9 @@ export const CrudTable = ({
         )
       }
       default: {
-        return <Column key={col.field} field={col.field} header={col.header} />
+        return (
+          <Column key={col.field} field={col.field} header={col.header} sortable className="p-2" />
+        )
       }
     }
   }
@@ -106,27 +129,37 @@ export const CrudTable = ({
     )
   }
 
+  useEffect(() => {
+    console.log({ tableConfig })
+  }, [tableConfig])
+
   return (
     <div className="m-3">
       <div style={{ maxHeight: '700px', overflow: 'hidden' }}>
-        <DataTable value={data}>
+        <DataTable
+          value={data}
+          paginator
+          rows={tableConfig?.rows}
+          first={tableConfig?.first}
+          totalRecords={totalRecords}
+          lazy
+          onSort={onSortChange}
+          sortField={tableConfig?.sortField}
+          emptyMessage={getI18n('table_empty_message')}
+          sortOrder={tableConfig.sortOrder}
+          onPage={onPageChange}
+          rowsPerPageOptions={[5, 10, 20]}
+        >
           {cols.map((col) => customCols(col))}
           <Column
             field="actions"
             header="Ações"
+            className="p-2"
             headerClassName="flex justify-content-center"
             body={children ? children : defaultActions}
           />
         </DataTable>
       </div>
-      <Paginator
-        first={currentPage * rowsPerPage}
-        rows={rowsPerPage}
-        totalRecords={totalRecords}
-        onPageChange={onPageChange}
-        rowsPerPageOptions={[10, 20, 30]}
-        className="custom-paginator mt-3"
-      />
     </div>
   )
 }

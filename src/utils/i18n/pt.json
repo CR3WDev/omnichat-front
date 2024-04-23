@@ -6,6 +6,7 @@
   "invalid_email": "Email inválido!",
   "save": "Salvar",
   "return": "Voltar",
+  "table_empty_message": "Nenhum Elemento Cadastrado!",
   "login": {
     "title": "Bem-Vindo ao OmniChat",
     "login": "Login",

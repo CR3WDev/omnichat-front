@@ -40,7 +40,7 @@ export const CrudSearchBar = ({ columns, useDropdown = false }: CrudSearchBarPro
             options={columns}
             onChange={handleColumnChange}
           />
-          <div className="ml-3">
+          <div>
             <InputText
               placeholder={`${crudI18n.searchfor} ${selectedColumn}`}
               value={searchValues[selectedColumn] || ''}

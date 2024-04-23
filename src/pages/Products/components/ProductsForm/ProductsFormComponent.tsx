@@ -1,14 +1,16 @@
 import { ErrorMessageComponent } from '@components/ErrorMessage'
 import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
-import { setMode } from '@redux/Reducers/modeReducer'
+import { postNewProducts } from '@pages/Products/ProductsServices'
+import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { classNames } from 'primereact/utils'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const ProductsFormComponent = () => {
+  const mode = useSelector(selectorMode)
   const productsI18n = getI18n('products')
   const dispatch = useDispatch()
   const {
@@ -17,9 +19,26 @@ export const ProductsFormComponent = () => {
     formState: { errors },
   } = useForm()
 
-  const onSubmit = () => {
-    showToastSuccess(getI18n('default_success_message'))
-    dispatch(setMode('search'))
+  const { mutateAsync: newProducts } = postNewProducts()
+  const handleCreate = (data: any) => {
+    console.log({ data })
+    newProducts(
+      {
+        title: data.product,
+        price: data.price,
+        description: 'teste',
+        barcode: '123',
+      },
+      {
+        onSuccess: () => {
+          showToastSuccess(getI18n('default_success_message'))
+          dispatch(setMode('search'))
+        },
+      }
+    )
+  }
+  const onSubmit = (data: any) => {
+    if (mode === 'create') handleCreate(data)
   }
 
   return (
