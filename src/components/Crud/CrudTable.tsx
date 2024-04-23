@@ -146,7 +146,7 @@ export const CrudTable = ({
           onSort={onSortChange}
           sortField={tableConfig?.sortField}
           emptyMessage={getI18n('table_empty_message')}
-          sortOrder={tableConfig.sortOrder}
+          sortOrder={tableConfig?.sortOrder}
           onPage={onPageChange}
           rowsPerPageOptions={[5, 10, 20]}
         >
