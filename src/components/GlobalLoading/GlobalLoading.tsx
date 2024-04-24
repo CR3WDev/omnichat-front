@@ -11,7 +11,7 @@ export const GlobalLoading = () => {
       predicate: (key: any) => {
         return !(
           excludedQueryKeys.includes(key?.queryKey.toString()) ||
-          key?.queryKey.toString().includes('DataTable')
+          (key?.queryKey && key?.queryKey?.toString().includes('DataTable'))
         )
       },
     }) +
@@ -19,7 +19,7 @@ export const GlobalLoading = () => {
       predicate: (key: any) => {
         return !(
           excludedMutationsKeys.includes(key?.queryKey.toString()) ||
-          key?.queryKey.toString().includes('DataTable')
+          (key?.queryKey && key?.queryKey?.toString().includes('DataTable'))
         )
       },
     })
