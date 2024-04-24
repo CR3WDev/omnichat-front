@@ -1,7 +1,5 @@
-import { DataTableFilterMeta } from 'primereact/datatable'
-
 export interface ITableConfig {
-  filters: DataTableFilterMeta[]
+  filters: ITableConfigFilters[]
   sortField: string
   sortOrder: 0 | 1 | -1 | null | undefined
   page?: number
@@ -11,6 +9,6 @@ export interface ITableConfig {
 }
 export interface ITableConfigFilters {
   field: string
-  op: 'match'
+  op: 'MATCH'
   value: string
 }

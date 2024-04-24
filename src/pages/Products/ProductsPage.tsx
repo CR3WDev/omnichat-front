@@ -22,8 +22,8 @@ export const ProductsPage = () => {
 
   const cols = [
     { field: 'name', header: 'Produto' },
-    { field: 'description', header: 'Descrição' },
     { field: 'price', header: 'Preço', type: 'currency' },
+    { field: 'description', header: 'Descrição' },
   ]
   const colsPesquisa = [{ field: 'name', header: 'Produto' }]
 
@@ -40,7 +40,7 @@ export const ProductsPage = () => {
       {(mode === 'edit' || mode === 'create') && <ProductsForm rowSelected={rowSelected} />}
       {mode === 'search' && (
         <>
-          <Crud.SearchBar columns={colsPesquisa}></Crud.SearchBar>
+          <Crud.SearchBar columns={colsPesquisa} setTableConfig={setTableConfig}></Crud.SearchBar>
           <Card className="m-3">
             <Button
               label="cadastrar"

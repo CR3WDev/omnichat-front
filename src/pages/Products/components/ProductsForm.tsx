@@ -5,6 +5,7 @@ import { postNewProducts, putUpdateProducts } from '@pages/Products/ProductsServ
 import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
+import { InputTextarea } from 'primereact/inputtextarea'
 import { classNames } from 'primereact/utils'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
@@ -31,7 +32,7 @@ export const ProductsForm = ({ rowSelected }: ProductsFormProps) => {
       {
         name: data.name,
         price: data.price,
-        description: 'teste',
+        description: data.description,
         barcode: '',
       },
       {
@@ -67,7 +68,7 @@ export const ProductsForm = ({ rowSelected }: ProductsFormProps) => {
     <form onSubmit={handleSubmit(onSubmit)} className="page-container full-height">
       <div className="full-height mx-2">
         <div className="flex flex-column md:flex-row">
-          <div className="col-12 md:col-6">
+          <div className="col-12 md:col-6 pb-0">
             <label className="font-bold">{productsI18n.product + '*'}</label>
             <InputText
               className={classNames('w-full my-1', {
@@ -81,13 +82,14 @@ export const ProductsForm = ({ rowSelected }: ProductsFormProps) => {
             />
             <ErrorMessageComponent errors={errors.name} />
           </div>
-          <div className="col-12 md:col-6">
+          <div className="col-12 md:col-6 pb-0">
             <label className="font-bold">{productsI18n.price + '*'}</label>
             <InputText
               className={classNames('w-full my-1', {
                 'p-invalid': errors.price,
               })}
               placeholder={productsI18n.price}
+              keyfilter="money"
               id="price"
               {...register('price', {
                 required: true,
@@ -96,7 +98,25 @@ export const ProductsForm = ({ rowSelected }: ProductsFormProps) => {
             <ErrorMessageComponent errors={errors.price} />
           </div>
         </div>
+        <div className="flex flex-column md:flex-row">
+          <div className="col-12">
+            <label className="font-bold">{productsI18n.description + '*'}</label>
+            <InputTextarea
+              className={classNames('w-full my-1', {
+                'p-invalid': errors.description,
+              })}
+              placeholder={productsI18n.description}
+              autoResize
+              id="description"
+              {...register('description', {
+                required: true,
+              })}
+            />
+            <ErrorMessageComponent errors={errors.description} />
+          </div>
+        </div>
       </div>
+
       <div className="flex justify-content-end m-2">
         <div className="mr-2">
           <Button

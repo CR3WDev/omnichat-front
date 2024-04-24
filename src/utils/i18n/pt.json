@@ -149,6 +149,7 @@
     "order": "Pedido",
     "product": "Produto",
     "price": "Preço",
+    "description": "Descrição",
     "email": "Email"
   },
   "users": {

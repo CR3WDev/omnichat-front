@@ -17,6 +17,7 @@ export const CalendarPage = () => {
         className={`m-3 p-3 border-round-lg ${theme === 'light' && 'border-1'} `}
       >
         <FullCalendar
+          locale="pt-br"
           plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
           initialView="dayGridMonth"
           weekends={true}
