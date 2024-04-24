@@ -43,6 +43,8 @@ export const CrudTableDefaultActions = ({
       icon: 'pi pi-info-circle',
       defaultFocus: 'reject',
       acceptClassName: 'p-button-danger',
+      acceptLabel: getI18n('remove'),
+      rejectLabel: getI18n('cancel'),
       accept: () => {
         onDelete && onDelete(rowSelected)
       },

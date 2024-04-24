@@ -6,21 +6,20 @@ export const GlobalLoading = () => {
   const excludedQueryKeys: string[] = ['getMessagesByChatId']
   const excludedMutationsKeys: string[] = ['postSendMessage']
 
+  const removeSomeKeys = (excludedKeys: string[], key: string) => {
+    if (excludedKeys.includes(`${key}`) || key.includes('DataTable')) return false
+    return true
+  }
+
   let sum =
     useIsFetching({
       predicate: (key: any) => {
-        return !(
-          excludedQueryKeys.includes(key?.queryKey.toString()) ||
-          (key?.queryKey && key?.queryKey?.toString().includes('DataTable'))
-        )
+        return removeSomeKeys(excludedQueryKeys, `${key?.queryKey[0]}`)
       },
     }) +
     useIsMutating({
       predicate: (key: any) => {
-        return !(
-          excludedMutationsKeys.includes(key?.queryKey.toString()) ||
-          (key?.queryKey && key?.queryKey?.toString().includes('DataTable'))
-        )
+        return removeSomeKeys(excludedMutationsKeys, `${key?.options.mutationKey[0]}`)
       },
     })
 

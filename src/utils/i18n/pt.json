@@ -7,6 +7,8 @@
   "save": "Salvar",
   "return": "Voltar",
   "table_empty_message": "Nenhum Elemento Cadastrado!",
+  "cancel": "Cancelar",
+  "remove": "Excluir",
 
   "login": {
     "title": "Bem-Vindo ao OmniChat",

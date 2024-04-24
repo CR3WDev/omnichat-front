@@ -37,7 +37,7 @@ export const ProductsPage = () => {
 
   return (
     <Crud.Root title={productsI18n.title}>
-      {(mode === 'edit' || mode === 'create') && <ProductsForm />}
+      {(mode === 'edit' || mode === 'create') && <ProductsForm rowSelected={rowSelected} />}
       {mode === 'search' && (
         <>
           <Crud.SearchBar columns={colsPesquisa}></Crud.SearchBar>

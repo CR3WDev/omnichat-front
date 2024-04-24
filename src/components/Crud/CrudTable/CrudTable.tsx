@@ -41,6 +41,8 @@ export const CrudTable = ({
             className="p-2"
             sortable
             header={column.header}
+            bodyClassName="text-center"
+            alignHeader={'center'}
             body={(e: any) => {
               return useFormatCurrency(e[column.field]) || ''
             }}
@@ -51,8 +53,10 @@ export const CrudTable = ({
         return (
           <Column
             key={column.field}
+            bodyClassName="text-center"
             field={column.field}
             header={column.header}
+            alignHeader={'center'}
             sortable
             className="p-2"
           />
@@ -86,8 +90,8 @@ export const CrudTable = ({
   }
 
   return (
-    <div className="m-3">
-      <div style={{ maxHeight: '700px', overflow: 'hidden' }}>
+    <div className="m-3 pb-3">
+      <div>
         <DataTable
           value={data}
           paginator
@@ -96,11 +100,13 @@ export const CrudTable = ({
           totalRecords={totalRecords}
           lazy
           onSort={onSortChange}
+          scrollable
           sortField={tableConfig?.sortField}
           emptyMessage={getI18n('table_empty_message')}
           sortOrder={tableConfig?.sortOrder}
           onPage={onPageChange}
           rowsPerPageOptions={[5, 10, 20]}
+          scrollHeight="700px"
         >
           {columns.map((col) => {
             return customColumns(col)
@@ -109,7 +115,7 @@ export const CrudTable = ({
             field="actions"
             header="Ações"
             className="p-2"
-            headerClassName="flex justify-content-center"
+            headerClassName="flex justify-content-center text-center"
             body={(rowSelected) =>
               children ? (
                 children

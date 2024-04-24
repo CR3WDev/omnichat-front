@@ -10,3 +10,6 @@ export const postNewProducts = () => {
 export const deleteProducts = (id?: number) => {
   return useService().useDelete('getDataTableProducts', `/products/${id}`)
 }
+export const putUpdateProducts = (id?: number) => {
+  return useService().usePut('getDataTableProducts', `/products/${id}`)
+}

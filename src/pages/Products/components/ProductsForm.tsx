@@ -1,15 +1,19 @@
 import { ErrorMessageComponent } from '@components/ErrorMessage'
 import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
-import { postNewProducts } from '@pages/Products/ProductsServices'
+import { postNewProducts, putUpdateProducts } from '@pages/Products/ProductsServices'
 import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { classNames } from 'primereact/utils'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
+import { IProduct } from 'types/product'
 
-export const ProductsForm = () => {
+interface ProductsFormProps {
+  rowSelected?: IProduct
+}
+export const ProductsForm = ({ rowSelected }: ProductsFormProps) => {
   const mode = useSelector(selectorMode)
   const productsI18n = getI18n('products')
   const dispatch = useDispatch()
@@ -17,9 +21,11 @@ export const ProductsForm = () => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm()
+  } = useForm({ defaultValues: rowSelected })
 
   const { mutateAsync: newProducts } = postNewProducts()
+  const { mutateAsync: updateProducts } = putUpdateProducts(rowSelected?.id)
+
   const handleCreate = (data: any) => {
     newProducts(
       {
@@ -36,8 +42,25 @@ export const ProductsForm = () => {
       }
     )
   }
+  const handleUpdate = (data: any) => {
+    updateProducts(
+      {
+        name: data.name,
+        price: data.price,
+        description: data.description,
+        barcode: rowSelected?.barcode,
+      },
+      {
+        onSuccess: () => {
+          showToastSuccess(getI18n('default_success_message'))
+          dispatch(setMode('search'))
+        },
+      }
+    )
+  }
   const onSubmit = (data: any) => {
     if (mode === 'create') handleCreate(data)
+    if (mode === 'edit') handleUpdate(data)
   }
 
   return (
