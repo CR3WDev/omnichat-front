@@ -45,6 +45,7 @@ export const UserRegister = () => {
       email: data?.email,
       password: data?.password,
       username: data?.username,
+      companyName: data?.companyName,
     }
     userRegister(request).then(() => {
       showToastSuccess(registerI18n.success_message)
@@ -54,6 +55,19 @@ export const UserRegister = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <div className="mb-2">
+        <InputText
+          className={classNames('w-full', {
+            'p-invalid': errors.companyName,
+          })}
+          placeholder={registerI18n.companyName + '*'}
+          id="companyName"
+          {...register('companyName', {
+            required: true,
+          })}
+        />
+        <ErrorMessageComponent errors={errors.companyName} />
+      </div>
       <div className="mb-2">
         <InputText
           className={classNames('w-full', {

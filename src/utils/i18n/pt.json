@@ -25,6 +25,7 @@
     "title": "Criar conta",
     "login": "Login",
     "password": "Senha",
+    "companyName": "Nome da Empresa",
     "create_account": "Criar conta",
     "already_have_an_account": "Já possui conta?",
     "go_login": "Logue-se",
