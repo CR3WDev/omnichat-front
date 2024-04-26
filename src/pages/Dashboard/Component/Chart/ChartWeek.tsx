@@ -6,7 +6,7 @@ export const ChartWeek = () => {
   const theme = useSelector(selectorTheme)
   const seriesData = [
     {
-      name: 'Vendas',
+      name: 'Agendamentos',
       data: [45, 52, 38, 24, 33, 26, 21], // Dados de vendas ao longo dos dias da semana
     },
   ]

@@ -1,13 +1,7 @@
 import { MdCancel, MdCheckCircle, MdGroup, MdShoppingCart } from 'react-icons/md'
 
 export const dataPie = {
-  labels: [
-    'Pizza de Calabresa',
-    'Pizza de Frango',
-    'Pizza Portuguesa',
-    'Pizza de Peperoni',
-    'Pêssegos',
-  ],
+  labels: ['Corte', 'Corte e Barba', 'Selagem', 'Barba', 'Sombrancelha'],
   series: [30, 20, 25, 15, 10],
 }
 export const darkColors = ['#388E3C', '#FFA000', '#1976D2', '#E64A19', '#6A1B9A']

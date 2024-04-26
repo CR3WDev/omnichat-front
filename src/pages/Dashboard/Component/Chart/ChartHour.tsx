@@ -7,7 +7,7 @@ export const ChartHour = () => {
 
   const seriesData = [
     {
-      name: 'Vendas',
+      name: 'Agendamentos',
       data: [10, 30, 45, 52, 38, 60, 75, 55, 38, 20, 15, 5], // Exemplo de vendas por hora
     },
   ]

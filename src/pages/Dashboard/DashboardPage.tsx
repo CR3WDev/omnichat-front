@@ -143,7 +143,7 @@ export const DashboardPage = () => {
           }}
           className={`${theme === 'light' && 'border-1  border-round-lg'}`}
         >
-          <h3 className="text-center">Vendas por Dia da Semana</h3>
+          <h3 className="text-center">Agendamentos por Dia da Semana</h3>
           <ChartWeek />
         </Card>
         <Card
@@ -154,7 +154,7 @@ export const DashboardPage = () => {
           }}
           className={`${theme === 'light' && 'border-1  border-round-lg'}`}
         >
-          <h3 className="text-center">Vendas por Hora</h3>
+          <h3 className="text-center">Agendamentos por Hora</h3>
           <ChartHour />
         </Card>
       </div>
@@ -168,12 +168,11 @@ export const DashboardPage = () => {
           className={`${theme === 'light' && 'border-1  border-round-lg'}`}
         >
           <div>
-            <h3 className="text-center">Ultimos Pedidos</h3>
+            <h3 className="text-center">Ultimos Clientes</h3>
             <DataTable value={orders}>
               <Column field="id" header="Número de Pedido"></Column>
               <Column field="customer" header="Cliente"></Column>
-              <Column field="status" header="Status"></Column>
-              <Column field="value" header="Valor do Pedido"></Column>
+              <Column field="value" header="Valor Pago"></Column>
             </DataTable>
           </div>
         </Card>
