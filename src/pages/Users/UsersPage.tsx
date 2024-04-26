@@ -1,17 +1,21 @@
 import { Crud } from '@components/Crud'
 import { showToastSuccess } from '@components/GlobalToast'
+import { useDefaultTableConfig } from '@hooks/useDefaultTableConfig'
 import { getI18n } from '@hooks/useGetI18n'
 import { selectorMode } from '@redux/Reducers/modeReducer'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import { UsersForm } from './components/UsersForm'
 
 export const UsersPage = () => {
   const mode = useSelector(selectorMode)
   const productsI18n = getI18n('users')
-
-  const colsSearch = [
+  const [rowSelected, setRowSelected] = useState()
+  const [tableConfig, setTableConfig] = useState(useDefaultTableConfig('username'))
+  const cols = [
     { field: 'username', header: 'Nome do Usuário' },
     { field: 'email', header: 'Email' },
+    { field: 'type', header: 'Tipo' },
   ]
 
   const users = [
@@ -86,14 +90,16 @@ export const UsersPage = () => {
       {(mode === 'edit' || mode === 'create') && <UsersForm />}
       {mode === 'search' && (
         <>
-          <Crud.SearchBar columns={colsSearch}></Crud.SearchBar>
-          {/* <Crud.Table
-
+          <Crud.SearchBar columns={cols} setTableConfig={setTableConfig}></Crud.SearchBar>
+          <Crud.Table
+            setRowSelected={setRowSelected}
+            tableConfig={tableConfig}
+            setTableConfig={setTableConfig}
             data={users}
-            cols={colsSearch}
+            columns={cols}
             onDelete={handleOnDelete}
             totalRecords={999}
-          ></Crud.Table> */}
+          ></Crud.Table>
         </>
       )}
     </Crud.Root>
