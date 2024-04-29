@@ -1,8 +1,5 @@
 interface LoginResponseDTO {
-  tokens: {
-    access_token: string
-    refresh_token: string
-  }
+  token: string
   message: string
   username: string
 }

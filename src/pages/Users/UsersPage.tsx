@@ -10,7 +10,7 @@ import { UsersForm } from './components/UsersForm'
 export const UsersPage = () => {
   const mode = useSelector(selectorMode)
   const productsI18n = getI18n('users')
-  const [rowSelected, setRowSelected] = useState()
+  const [_rowSelected, setRowSelected] = useState()
   const [tableConfig, setTableConfig] = useState(useDefaultTableConfig('username'))
   const cols = [
     { field: 'username', header: 'Nome do Usuário' },

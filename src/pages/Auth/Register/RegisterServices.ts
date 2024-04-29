@@ -1,6 +1,6 @@
 import { useService } from '@api/useServices.ts'
-import { Register } from './RegisterInterfaces.ts'
+import { IUserRegister } from './RegisterInterfaces'
 
 export const postRegister = () => {
-  return useService().usePost<Register>('register', '/auth/register')
+  return useService().usePost<IUserRegister>('register', '/auth/register')
 }

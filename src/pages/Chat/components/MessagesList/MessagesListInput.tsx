@@ -12,7 +12,7 @@ type MessagesListInputProps = {
   setMessages: Dispatch<SetStateAction<IMessage[]>>
   chatSelected: IChat | undefined
 }
-export const MessagesListInput = ({ setMessages, chatSelected }: MessagesListInputProps) => {
+export const MessagesListInput = ({ chatSelected }: MessagesListInputProps) => {
   const { handleSubmit, register, watch, setValue } = useForm()
   const socket = io('http://localhost:3000')
 
@@ -25,7 +25,7 @@ export const MessagesListInput = ({ setMessages, chatSelected }: MessagesListInp
       customerUserId: chatSelected?.customerUserId,
       chatId: chatSelected?.id,
       text: watch('inputMessage'),
-    }).then((data) => {
+    }).then((_data) => {
       // setMessages((prev: IMessage[]) => {
       //   const newArray = [data?.data?.data, ...prev]
       //   return newArray
