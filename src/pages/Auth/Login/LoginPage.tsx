@@ -90,16 +90,6 @@ export const LoginPage = () => {
             <Button className="w-full" label={loginI18n.login} />
           </div>
           <div className="text-center">
-            <div className="mb-1">
-              <span
-                onClick={() => {
-                  navigate('/changepassword')
-                }}
-                className="no-underline hover:underline text-primary cursor-pointer"
-              >
-                {loginI18n.reset_password}
-              </span>
-            </div>
             <div className="flex flex-wrap align-items-center justify-content-center p-2">
               <span>{loginI18n.no_account}</span>
               <span
@@ -109,6 +99,16 @@ export const LoginPage = () => {
                 className="no-underline hover:underline text-primary cursor-pointer ml-1"
               >
                 {loginI18n.register}
+              </span>
+            </div>
+            <div className="mb-1">
+              <span
+                onClick={() => {
+                  navigate('/changepassword')
+                }}
+                className="no-underline hover:underline text-primary cursor-pointer"
+              >
+                {loginI18n.reset_password}
               </span>
             </div>
           </div>

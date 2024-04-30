@@ -1,39 +1,48 @@
 import { ErrorMessageComponent } from '@components/ErrorMessage'
 import { showToastSuccess } from '@components/GlobalToast'
+import { PasswordFooter } from '@components/PasswordFooter'
+import { PasswordHeader } from '@components/PasswordHeader'
 import { getI18n } from '@hooks/useGetI18n'
-import { postNewProducts, putUpdateProducts } from '@pages/Products/ProductsServices'
+import { UseValidateEmail } from '@hooks/useValidateEmail'
+import { UseValidatePassword } from '@hooks/useValidatePassword'
 import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
-import { InputTextarea } from 'primereact/inputtextarea'
+import { Password } from 'primereact/password'
 import { classNames } from 'primereact/utils'
-import { useForm } from 'react-hook-form'
+import { Dispatch, SetStateAction, useEffect } from 'react'
+import { Controller, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { IProduct } from 'types/product'
+import { IUsers } from 'types/users'
+import { postNewUsers, putUpdateUsers } from '../UsersServices'
 
 interface UsersFormProps {
-  rowSelected?: IProduct
+  rowSelected?: IUsers
+  setRowSelected: Dispatch<SetStateAction<IUsers | undefined>>
 }
-export const UsersForm = ({ rowSelected }: UsersFormProps) => {
+export const UsersForm = ({ rowSelected, setRowSelected }: UsersFormProps) => {
   const mode = useSelector(selectorMode)
-  const productsI18n = getI18n('products')
+  const usersI18n = getI18n('users')
+  const passwordComponentI18n = getI18n('password_component')
   const dispatch = useDispatch()
   const {
     handleSubmit,
     register,
+    control,
+    watch,
     formState: { errors },
   } = useForm({ defaultValues: rowSelected })
 
-  const { mutateAsync: newProducts } = postNewProducts()
-  const { mutateAsync: updateProducts } = putUpdateProducts(rowSelected?.id)
+  const { mutateAsync: newUsers } = postNewUsers()
+  const { mutateAsync: updateUsers } = putUpdateUsers(rowSelected?.id)
 
   const handleCreate = (data: any) => {
-    newProducts(
+    newUsers(
       {
-        name: data.name,
-        price: data.price,
-        description: data.description,
-        barcode: '',
+        username: data.username,
+        email: data.email,
+        permission: 'Common',
+        password: data?.password,
       },
       {
         onSuccess: () => {
@@ -44,12 +53,11 @@ export const UsersForm = ({ rowSelected }: UsersFormProps) => {
     )
   }
   const handleUpdate = (data: any) => {
-    updateProducts(
+    updateUsers(
       {
-        name: data.name,
-        price: data.price,
-        description: data.description,
-        barcode: rowSelected?.barcode,
+        username: data.username,
+        email: data.email,
+        permission: rowSelected?.permission,
       },
       {
         onSuccess: () => {
@@ -64,57 +72,111 @@ export const UsersForm = ({ rowSelected }: UsersFormProps) => {
     if (mode === 'edit') handleUpdate(data)
   }
 
+  useEffect(() => {
+    return () => {
+      setRowSelected(undefined)
+    }
+  }, [])
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="page-container full-height">
       <div className="full-height mx-2">
         <div className="flex flex-column md:flex-row">
           <div className="col-12 md:col-6 pb-0">
-            <label className="font-bold">{productsI18n.product + '*'}</label>
+            <label className="font-bold">{usersI18n.username + '*'}</label>
             <InputText
               className={classNames('w-full my-1', {
-                'p-invalid': errors.name,
+                'p-invalid': errors.username,
               })}
-              placeholder={productsI18n.product}
+              placeholder={usersI18n.username}
               id="name"
-              {...register('name', {
+              {...register('username', {
                 required: true,
               })}
             />
-            <ErrorMessageComponent errors={errors.name} />
+            <ErrorMessageComponent errors={errors.username} />
           </div>
           <div className="col-12 md:col-6 pb-0">
-            <label className="font-bold">{productsI18n.price + '*'}</label>
+            <label className="font-bold">{usersI18n.email + '*'}</label>
             <InputText
               className={classNames('w-full my-1', {
-                'p-invalid': errors.price,
+                'p-invalid': errors.email,
               })}
-              placeholder={productsI18n.price}
-              keyfilter="money"
-              id="price"
-              {...register('price', {
+              placeholder={usersI18n.email}
+              id="email"
+              {...register('email', {
                 required: true,
+                validate: (e) => {
+                  return UseValidateEmail(e) || getI18n('invalid_email')
+                },
               })}
             />
-            <ErrorMessageComponent errors={errors.price} />
+            <ErrorMessageComponent errors={errors.email} />
           </div>
         </div>
-        <div className="flex flex-column md:flex-row">
-          <div className="col-12">
-            <label className="font-bold">{productsI18n.description + '*'}</label>
-            <InputTextarea
-              className={classNames('w-full my-1', {
-                'p-invalid': errors.description,
-              })}
-              placeholder={productsI18n.description}
-              autoResize
-              id="description"
-              {...register('description', {
-                required: true,
-              })}
-            />
-            <ErrorMessageComponent errors={errors.description} />
+        {mode === 'create' && (
+          <div className="flex flex-column md:flex-row">
+            <div className="col-12 md:col-6 pb-0">
+              <Controller
+                name="password"
+                control={control}
+                rules={{
+                  required: true,
+                  validate: (e) => {
+                    return UseValidatePassword(`${e}`) || 'Senha Inválida'
+                  },
+                }}
+                render={({ field, fieldState }) => (
+                  <>
+                    <Password
+                      onChange={(e) => field.onChange(e)}
+                      className={classNames({ 'p-invalid': fieldState.error }, 'w-full')}
+                      header={<PasswordHeader />}
+                      footer={<PasswordFooter />}
+                      placeholder={passwordComponentI18n.password + '*'}
+                      strongRegex={'^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&()_+])(?!.*\\s).{8,20}$'}
+                      inputStyle={{ width: '100%' }}
+                      maxLength={20}
+                      toggleMask
+                      promptLabel={passwordComponentI18n.choose_a_password}
+                      weakLabel={passwordComponentI18n.too_weak}
+                      mediumLabel={passwordComponentI18n.average}
+                      strongLabel={passwordComponentI18n.strong_password}
+                      id={field.name}
+                      name={field.name}
+                    />
+                    <ErrorMessageComponent errors={errors.password} />
+                  </>
+                )}
+              />
+            </div>
+            <div className="col-12 md:col-6 pb-0">
+              <Controller
+                name="confirmPassword"
+                control={control}
+                rules={{
+                  required: true,
+                  validate: (e: string) => {
+                    return e === watch('password') || 'Senhas devem ser iguais!'
+                  },
+                }}
+                render={({ field, fieldState }) => (
+                  <div className="custom-password">
+                    <Password
+                      onChange={(e) => field.onChange(e)}
+                      placeholder={passwordComponentI18n.confirm_password + '*'}
+                      className={classNames({ 'p-invalid': fieldState.error }, 'w-full')}
+                      feedback={false}
+                      toggleMask
+                      inputStyle={{ width: '100%' }}
+                    />
+                    <ErrorMessageComponent errors={errors.confirmPassword} />
+                  </div>
+                )}
+              />
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       <div className="flex justify-content-end m-2">

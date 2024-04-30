@@ -48,7 +48,12 @@ export const CrudTableDefaultActions = ({
       accept: () => {
         onDelete && onDelete(rowSelected)
       },
-      reject: () => {},
+      reject: () => {
+        setRowSelected(undefined)
+      },
+      onHide: () => {
+        setRowSelected(undefined)
+      },
     })
   }
 

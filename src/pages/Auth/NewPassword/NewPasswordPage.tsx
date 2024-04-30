@@ -1,9 +1,10 @@
 import { ErrorMessageComponent } from '@components/ErrorMessage'
 import { showToastSuccess } from '@components/GlobalToast'
+import { PasswordFooter } from '@components/PasswordFooter'
+import { PasswordHeader } from '@components/PasswordHeader'
 import { getI18n } from '@hooks/useGetI18n'
 import { UseValidatePassword } from '@hooks/useValidatePassword'
 import { Button } from 'primereact/button'
-import { Divider } from 'primereact/divider'
 import { Password } from 'primereact/password'
 import { classNames } from 'primereact/utils'
 import { useEffect } from 'react'
@@ -46,20 +47,6 @@ export const NewPasswordPage = () => {
     })
   }
 
-  const passwordHeader = <div className="font-bold mb-3">{newPasswordI18n.pick_a_password}</div>
-  const passwordFooter = (
-    <>
-      <Divider />
-      <p className="mt-2">Ao menos:</p>
-      <ul className="pl-2 ml-2 mt-0 line-height-3">
-        <li>{newPasswordI18n.at_least_one_uppercase}</li>
-        <li>{newPasswordI18n.at_least_one_numeric}</li>
-        <li>{newPasswordI18n.at_least_one_special_characters}</li>
-        <li>{newPasswordI18n.at_least_eight_characters}</li>
-      </ul>
-    </>
-  )
-
   useEffect(() => {
     const token = getToken()
     if (!token) {
@@ -92,8 +79,8 @@ export const NewPasswordPage = () => {
                   <Password
                     onChange={(e) => field.onChange(e)}
                     className={classNames({ 'p-invalid': fieldState.error })}
-                    header={passwordHeader}
-                    footer={passwordFooter}
+                    header={<PasswordHeader />}
+                    footer={<PasswordFooter />}
                     placeholder={newPasswordI18n.password + '*'}
                     strongRegex={'^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&()_+])(?!.*\\s).{8,20}$'}
                     inputStyle={{ width: '100%' }}

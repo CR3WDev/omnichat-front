@@ -36,8 +36,10 @@ export const ProductsPage = () => {
   }, [tableConfig])
 
   return (
-    <Crud.Root title={productsI18n.title}>
-      {(mode === 'edit' || mode === 'create') && <ProductsForm rowSelected={rowSelected} />}
+    <Crud.Root title={productsI18n.title} setRowSelected={setRowSelected}>
+      {(mode === 'edit' || mode === 'create') && (
+        <ProductsForm rowSelected={rowSelected} setRowSelected={setRowSelected} />
+      )}
       {mode === 'search' && (
         <>
           <Crud.SearchBar columns={colsPesquisa} setTableConfig={setTableConfig}></Crud.SearchBar>

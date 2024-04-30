@@ -7,14 +7,16 @@ import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { InputTextarea } from 'primereact/inputtextarea'
 import { classNames } from 'primereact/utils'
+import { Dispatch, SetStateAction, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { IProduct } from 'types/product'
 
 interface ProductsFormProps {
   rowSelected?: IProduct
+  setRowSelected: Dispatch<SetStateAction<IProduct | undefined>>
 }
-export const ProductsForm = ({ rowSelected }: ProductsFormProps) => {
+export const ProductsForm = ({ rowSelected, setRowSelected }: ProductsFormProps) => {
   const mode = useSelector(selectorMode)
   const productsI18n = getI18n('products')
   const dispatch = useDispatch()
@@ -63,6 +65,12 @@ export const ProductsForm = ({ rowSelected }: ProductsFormProps) => {
     if (mode === 'create') handleCreate(data)
     if (mode === 'edit') handleUpdate(data)
   }
+
+  useEffect(() => {
+    return () => {
+      setRowSelected(undefined)
+    }
+  }, [])
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="page-container full-height">

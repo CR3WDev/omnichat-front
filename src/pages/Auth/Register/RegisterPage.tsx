@@ -26,17 +26,6 @@ export const RegisterPage = () => {
                 {registerI18n.go_login}
               </span>
             </div>
-            <div className="mt-2">
-              <span>{registerI18n.return_to}</span>
-              <span
-                onClick={() => {
-                  navigate('/login')
-                }}
-                className="no-underline hover:underline text-primary cursor-pointer ml-1"
-              >
-                {registerI18n.login}
-              </span>
-            </div>
           </div>
         </div>
       </div>

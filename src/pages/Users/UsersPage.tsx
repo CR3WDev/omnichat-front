@@ -6,16 +6,16 @@ import { Button } from 'primereact/button'
 import { Card } from 'primereact/card'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { IProduct } from 'types/product'
 import { ITableConfig } from 'types/tableConfig'
+import { IUsers } from 'types/users'
 import { UsersForm } from './components/UsersForm'
-import { deleteUsers, getTableUsers } from './ProductsServices'
+import { deleteUsers, getTableUsers } from './UsersServices'
 
 export const UsersPage = () => {
   const mode = useSelector(selectorMode)
   const productsI18n = getI18n('products')
   const dispatch = useDispatch()
-  const [rowSelected, setRowSelected] = useState<IProduct | undefined>()
+  const [rowSelected, setRowSelected] = useState<IUsers | undefined>()
   const [tableConfig, setTableConfig] = useState<ITableConfig>(useDefaultTableConfig('username'))
   const { refetch: getProducts, data } = getTableUsers(tableConfig)
   const { mutateAsync: removeProducts } = deleteUsers(rowSelected?.id)
@@ -40,7 +40,9 @@ export const UsersPage = () => {
 
   return (
     <Crud.Root title={productsI18n.title}>
-      {(mode === 'edit' || mode === 'create') && <UsersForm rowSelected={rowSelected} />}
+      {(mode === 'edit' || mode === 'create') && (
+        <UsersForm rowSelected={rowSelected} setRowSelected={setRowSelected} />
+      )}
       {mode === 'search' && (
         <>
           <Crud.SearchBar columns={columnsSearch} setTableConfig={setTableConfig}></Crud.SearchBar>
