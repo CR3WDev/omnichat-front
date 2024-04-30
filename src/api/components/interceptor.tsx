@@ -39,7 +39,7 @@ export const Interceptor = ({ children }: InterceptorProps) => {
         return Promise.reject(error)
       }
 
-      if (errorResponse.statusCode >= 400 && errorResponse.statusCode < 500) {
+      if (errorResponse.statusCode >= 400 && errorResponse.statusCode <= 500) {
         showToastError(errorResponse.description)
         throw new Error(errorResponse.description)
       }

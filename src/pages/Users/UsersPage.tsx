@@ -1,104 +1,65 @@
 import { Crud } from '@components/Crud'
-import { showToastSuccess } from '@components/GlobalToast'
 import { useDefaultTableConfig } from '@hooks/useDefaultTableConfig'
 import { getI18n } from '@hooks/useGetI18n'
-import { selectorMode } from '@redux/Reducers/modeReducer'
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
+import { Button } from 'primereact/button'
+import { Card } from 'primereact/card'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { IProduct } from 'types/product'
+import { ITableConfig } from 'types/tableConfig'
 import { UsersForm } from './components/UsersForm'
+import { deleteUsers, getTableUsers } from './ProductsServices'
 
 export const UsersPage = () => {
   const mode = useSelector(selectorMode)
-  const productsI18n = getI18n('users')
-  const [_rowSelected, setRowSelected] = useState()
-  const [tableConfig, setTableConfig] = useState(useDefaultTableConfig('username'))
-  const cols = [
-    { field: 'username', header: 'Nome do Usuário' },
+  const productsI18n = getI18n('products')
+  const dispatch = useDispatch()
+  const [rowSelected, setRowSelected] = useState<IProduct | undefined>()
+  const [tableConfig, setTableConfig] = useState<ITableConfig>(useDefaultTableConfig('username'))
+  const { refetch: getProducts, data } = getTableUsers(tableConfig)
+  const { mutateAsync: removeProducts } = deleteUsers(rowSelected?.id)
+
+  const columns = [
+    { field: 'username', header: 'Nome de Usuário' },
     { field: 'email', header: 'Email' },
-    { field: 'type', header: 'Tipo' },
+    { field: 'permission', header: 'Tipo de Usuário' },
+  ]
+  const columnsSearch = [
+    { field: 'username', header: 'Nome de Usuário' },
+    { field: 'email', header: 'Email' },
   ]
 
-  const users = [
-    {
-      id: 1,
-      username: 'pizzaLover123',
-      email: 'pizzalover123@example.com',
-      type: 'COMUM',
-    },
-    {
-      id: 2,
-      username: 'ovenMaster',
-      email: 'ovenmaster@example.com',
-      type: 'ADMINISTRADOR',
-    },
-    {
-      id: 3,
-      username: 'cheesySlice',
-      email: 'cheesyslice@example.com',
-      type: 'COMUM',
-    },
-    {
-      id: 4,
-      username: 'doughTwister',
-      email: 'doughtwister@example.com',
-      type: 'COMUM',
-    },
-    {
-      id: 5,
-      username: 'adminPizza',
-      email: 'adminpizza@example.com',
-      type: 'ADMINISTRADOR',
-    },
-    {
-      id: 6,
-      username: 'sliceOfHeaven',
-      email: 'sliceofheaven@example.com',
-      type: 'COMUM',
-    },
-    {
-      id: 7,
-      username: 'toppingMaster',
-      email: 'toppingmaster@example.com',
-      type: 'COMUM',
-    },
-    {
-      id: 8,
-      username: 'crustCruncher',
-      email: 'crustcruncher@example.com',
-      type: 'COMUM',
-    },
-    {
-      id: 9,
-      username: 'sauceSorcerer',
-      email: 'saucesorcerer@example.com',
-      type: 'ADMINISTRADOR',
-    },
-    {
-      id: 10,
-      username: 'cheeseChampion',
-      email: 'cheesechampion@example.com',
-      type: 'COMUM',
-    },
-  ]
-
-  const handleOnDelete = () => {
-    showToastSuccess(getI18n('default_success_message'))
+  const handleOnDelete = (_row: any) => {
+    removeProducts()
   }
+
+  useEffect(() => {
+    getProducts()
+  }, [tableConfig])
 
   return (
     <Crud.Root title={productsI18n.title}>
-      {(mode === 'edit' || mode === 'create') && <UsersForm />}
+      {(mode === 'edit' || mode === 'create') && <UsersForm rowSelected={rowSelected} />}
       {mode === 'search' && (
         <>
-          <Crud.SearchBar columns={cols} setTableConfig={setTableConfig}></Crud.SearchBar>
+          <Crud.SearchBar columns={columnsSearch} setTableConfig={setTableConfig}></Crud.SearchBar>
+          <Card className="m-3">
+            <Button
+              label="cadastrar"
+              onClick={() => {
+                dispatch(setMode('create'))
+              }}
+            ></Button>
+          </Card>
           <Crud.Table
+            data={data?.data.data || []}
+            columns={columns}
             setRowSelected={setRowSelected}
-            tableConfig={tableConfig}
             setTableConfig={setTableConfig}
-            data={users}
-            columns={cols}
             onDelete={handleOnDelete}
-            totalRecords={999}
+            tableConfig={tableConfig}
+            totalRecords={data?.data.totalRecords || 0}
           ></Crud.Table>
         </>
       )}
