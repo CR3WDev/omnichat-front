@@ -36,7 +36,7 @@ export const ProductsPage = () => {
   }, [tableConfig])
 
   return (
-    <Crud.Root title={productsI18n.title} setRowSelected={setRowSelected}>
+    <Crud.Root title={productsI18n.title}>
       {(mode === 'edit' || mode === 'create') && (
         <ProductsForm rowSelected={rowSelected} setRowSelected={setRowSelected} />
       )}

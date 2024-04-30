@@ -3,7 +3,7 @@ import { getI18n } from '@hooks/useGetI18n'
 import { Button } from 'primereact/button'
 import { Card } from 'primereact/card'
 import { InputText } from 'primereact/inputtext'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { IColumnType } from 'types/column'
 import { ITableConfig, ITableConfigFilters } from 'types/tableConfig'
 
@@ -47,10 +47,6 @@ export const CrudSearchBar = ({ columns, setTableConfig }: CrudSearchBarProps) =
       </div>
     )
   }
-
-  useEffect(() => {
-    console.log(searchValues)
-  }, [searchValues])
 
   return (
     <Card className="m-3">

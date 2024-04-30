@@ -9,6 +9,7 @@ import { ErrorPage } from '@pages/Error'
 import { HomePage } from '@pages/Home'
 import { OrdersPage } from '@pages/Orders'
 import { ProductsPage } from '@pages/Products'
+import { SchedulingPage } from '@pages/Scheduling/SchedulingPage'
 import { UsersPage } from '@pages/Users'
 import { createBrowserRouter } from 'react-router-dom'
 import { AuthChecker } from './AuthChecker'
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
   {
     path: '/register',
     element: <RegisterPage />,
+  },
+  {
+    path: '/scheduling',
+    element: <SchedulingPage />,
   },
   {
     path: '/',
