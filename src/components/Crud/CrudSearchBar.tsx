@@ -40,7 +40,7 @@ export const CrudSearchBar = ({ columns, setTableConfig }: CrudSearchBarProps) =
     return (
       <div className={index !== 0 ? 'ml-2' : ''}>
         <InputText
-          placeholder={`${crudI18n.searchfor} ${column.header}`}
+          placeholder={`${column.header}`}
           value={searchValues[column.field] || ''}
           onChange={(e) => handleSearchInputChange(column.field, e.target.value)}
         />
