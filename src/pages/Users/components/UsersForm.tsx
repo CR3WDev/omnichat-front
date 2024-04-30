@@ -41,7 +41,7 @@ export const UsersForm = ({ rowSelected, setRowSelected }: UsersFormProps) => {
       {
         username: data.username,
         email: data.email,
-        permission: 'Common',
+        userType: 'Common',
         password: data?.password,
       },
       {
@@ -57,7 +57,7 @@ export const UsersForm = ({ rowSelected, setRowSelected }: UsersFormProps) => {
       {
         username: data.username,
         email: data.email,
-        permission: rowSelected?.permission,
+        userType: rowSelected?.userType,
       },
       {
         onSuccess: () => {
