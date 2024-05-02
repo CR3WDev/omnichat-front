@@ -16,7 +16,7 @@ type CrudTableProps = {
   setTableConfig: Dispatch<SetStateAction<ITableConfig>>
   tableConfig: ITableConfig
   totalRecords: number
-  onDelete?: (rowSelected: any) => void
+  onDelete?: (rowSelected: any) => Promise<void>
   actions?: IMode[]
 }
 

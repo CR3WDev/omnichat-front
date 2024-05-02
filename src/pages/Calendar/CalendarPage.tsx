@@ -1,8 +1,3 @@
-import dayGridPlugin from '@fullcalendar/daygrid'
-import interactionPlugin from '@fullcalendar/interaction'
-import listPlugin from '@fullcalendar/list'
-import FullCalendar from '@fullcalendar/react'
-import timeGridPlugin from '@fullcalendar/timegrid'
 import { selectorTheme } from '@redux/Reducers/themeReducer'
 import { useSelector } from 'react-redux'
 
@@ -16,7 +11,7 @@ export const CalendarPage = () => {
         style={{ borderColor: 'var(--surface-400)' }}
         className={`m-3 p-3 border-round-lg ${theme === 'light' && 'border-1'} `}
       >
-        <FullCalendar
+        {/* <FullCalendar
           locale="pt-br"
           headerToolbar={{
             left: 'prev,next today',
@@ -54,7 +49,7 @@ export const CalendarPage = () => {
               start: '2024-04-27T15:00:00',
             },
           ]}
-        />
+        /> */}
       </div>
     </div>
   )

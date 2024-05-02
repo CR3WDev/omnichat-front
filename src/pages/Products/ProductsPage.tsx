@@ -27,8 +27,8 @@ export const ProductsPage = () => {
   ]
   const colsPesquisa = [{ field: 'name', header: 'Produto' }]
 
-  const handleOnDelete = (_row: any) => {
-    removeProducts()
+  const handleOnDelete = async (_row: any) => {
+    await removeProducts()
   }
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export const ProductsPage = () => {
   }, [tableConfig])
 
   return (
-    <Crud.Root title={productsI18n.title}>
+    <Crud.Root title={productsI18n.title} setRowSelected={setRowSelected}>
       {(mode === 'edit' || mode === 'create') && (
         <ProductsForm rowSelected={rowSelected} setRowSelected={setRowSelected} />
       )}

@@ -12,7 +12,7 @@ interface CrudTableDefaultActions {
   rowSelected: any
   actions?: IMode[]
   setRowSelected: Dispatch<SetStateAction<any>>
-  onDelete?: (rowSelected: any) => void
+  onDelete?: (rowSelected: any) => Promise<void>
 }
 export const CrudTableDefaultActions = ({
   rowSelected,
@@ -46,14 +46,16 @@ export const CrudTableDefaultActions = ({
       acceptLabel: getI18n('remove'),
       rejectLabel: getI18n('cancel'),
       accept: () => {
-        onDelete && onDelete(rowSelected)
+        {
+          onDelete && onDelete(rowSelected)
+        }
       },
-      reject: () => {
-        setRowSelected(undefined)
-      },
-      onHide: () => {
-        setRowSelected(undefined)
-      },
+      // reject: () => {
+      //   setRowSelected(undefined)
+      // },
+      // onHide: () => {
+      //   setRowSelected(undefined)
+      // },
     })
   }
 

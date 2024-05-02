@@ -5,6 +5,7 @@ import { PasswordHeader } from '@components/PasswordHeader'
 import { getI18n } from '@hooks/useGetI18n'
 import { UseValidateEmail } from '@hooks/useValidateEmail'
 import { UseValidatePassword } from '@hooks/useValidatePassword'
+import { postNewUsers, putUpdateUsers } from '@pages/Users/UsersServices'
 import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
@@ -14,12 +15,12 @@ import { Dispatch, SetStateAction, useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { IUsers } from 'types/users'
-import { postNewUsers, putUpdateUsers } from '../UsersServices'
 
 interface UsersFormProps {
   rowSelected?: IUsers
   setRowSelected: Dispatch<SetStateAction<IUsers | undefined>>
 }
+
 export const UsersForm = ({ rowSelected, setRowSelected }: UsersFormProps) => {
   const mode = useSelector(selectorMode)
   const usersI18n = getI18n('users')
