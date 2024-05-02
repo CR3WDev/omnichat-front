@@ -23,7 +23,7 @@ export const UsersPage = () => {
   const columns = [
     { field: 'username', header: 'Nome de Usuário' },
     { field: 'email', header: 'Email' },
-    { field: 'permission', header: 'Tipo de Usuário' },
+    { field: 'userType', header: 'Tipo de Usuário' },
   ]
   const columnsSearch = [
     { field: 'username', header: 'Nome de Usuário' },
