@@ -1,3 +1,5 @@
+import { Barber } from "types/barber";
+
 export const mockAdv = [
   {
     id: 'a01',
@@ -198,5 +200,34 @@ export const scheduleData = [
   { day: 'Sábado', open: '12:00', close: '00:00' },
   { day: 'Domingo', open: '12:00', close: '23:00' },
 ]
+
+export const barbers: Barber[] = [
+  {
+    name: 'junin',
+    services: ['Corte', 'Barba'],
+    workingHours: {
+      Monday: { start: '08:00', end: '16:00' },
+      Tuesday: { start: '08:30', end: '17:00' },
+      Wednesday: { start: '09:00', end: '16:30' },
+      Thursday: { start: '08:00', end: '16:00' },
+      Friday: { start: '08:30', end: '17:00' },
+      Saturday: { start: '10:00', end: '15:30' },
+      Sunday: { start: '', end: '' }, // Domingo não trabalha
+    },
+  },
+  {
+    name: 'marcelo',
+    services: ['Corte', 'Sobrancelha'],
+    workingHours: {
+      Monday: { start: '09:00', end: '17:00' },
+      Tuesday: { start: '09:30', end: '17:30' },
+      Wednesday: { start: '08:00', end: '15:30' },
+      Thursday: { start: '09:00', end: '17:00' },
+      Friday: { start: '09:30', end: '17:30' },
+      Saturday: { start: '10:00', end: '15:30' },
+      Sunday: { start: '', end: '' }, // Domingo não trabalha
+    },
+  },
+];
 
 

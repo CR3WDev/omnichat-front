@@ -2,6 +2,7 @@ import { Dialog } from 'primereact/dialog';
 import { Dropdown } from 'primereact/dropdown';
 import { MultiSelect } from 'primereact/multiselect';
 import { useState } from 'react';
+import { Barber } from 'types/barber';
 
 interface Props {
   isVisible: boolean;
@@ -14,13 +15,8 @@ interface Props {
   barbers: Barber[];
 }
 
-interface Barber {
-  name: string;
-  services: string[];
-  workingHours: { [key: string]: { start: string; end: string } };
-}
 
-export const SchedulingConfirmDialog: React.FC<Props> = ({ isVisible, setIsVisible, onClose, selectedBarber, selectedService, selectedTime, selectedDate, barbers }: Props) => {
+export const SchedulingConfirmDialog = ({ isVisible, setIsVisible, onClose, selectedBarber, selectedService, selectedTime, selectedDate, barbers }: Props) => {
   const [selectedServices, setSelectedServices] = useState<string[]>(selectedService ? [selectedService] : []);
 
   const handleServiceChange = (e: any) => {
