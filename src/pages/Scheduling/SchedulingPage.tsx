@@ -36,8 +36,6 @@ export const SchedulingPage = () => {
     setSelectedDate(event.value);
   };
 
-
-
   const handleConfirmDialogClose = (confirmed: boolean) => {
     setIsVisible(false);
     if (confirmed) {
@@ -111,6 +109,7 @@ export const SchedulingPage = () => {
             <div>
               <h2>Selecione a Data</h2>
               <DateSelection
+                barberSchedule={selectedBarber ? selectedBarber.workingHours : {}}
                 date={date}
                 handleDateClick={handleDateClick}
               />
