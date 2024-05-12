@@ -1,6 +1,7 @@
 import { useDefaultTableConfig } from '@hooks/useDefaultTableConfig'
 import { getI18n } from '@hooks/useGetI18n'
 import { Button } from 'primereact/button'
+import { Calendar } from 'primereact/calendar'
 import { Card } from 'primereact/card'
 import { InputText } from 'primereact/inputtext'
 import { Dispatch, SetStateAction, useState } from 'react'
@@ -37,15 +38,32 @@ export const CrudSearchBar = ({ columns, setTableConfig }: CrudSearchBarProps) =
     setTableConfig(useDefaultTableConfig(columns[0].field))
   }
   const renderSearchFields = (column: IColumnType, index: number) => {
-    return (
-      <div className={index !== 0 ? 'ml-2' : ''}>
-        <InputText
-          placeholder={`${column.header}`}
-          value={searchValues[column.field] || ''}
-          onChange={(e) => handleSearchInputChange(column.field, e.target.value)}
-        />
-      </div>
-    )
+    switch (column.type) {
+      case 'date': {
+        return (
+          <div className={index !== 0 ? 'ml-2' : ''}>
+            <Calendar
+              placeholder={`${column.header}`}
+              value={searchValues[column.field] || ''}
+              locale="pt"
+              dateFormat="dd/mm/yy"
+              onChange={(e) => handleSearchInputChange(column.field, e.target.value)}
+            />
+          </div>
+        )
+      }
+      default: {
+        return (
+          <div className={index !== 0 ? 'ml-2' : ''}>
+            <InputText
+              placeholder={`${column.header}`}
+              value={searchValues[column.field] || ''}
+              onChange={(e) => handleSearchInputChange(column.field, e.target.value)}
+            />
+          </div>
+        )
+      }
+    }
   }
 
   return (

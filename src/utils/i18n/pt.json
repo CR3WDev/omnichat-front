@@ -20,10 +20,12 @@
     "return": "Voltar",
     "home": "home"
   },
-  "users": {
-    "username": "Nome do Usuário",
-    "email": "Email",
-    "permission": "Tipo de Usuário"
+  "calendar": {
+    "title": "Módulo de Agendamentos",
+    "service": "Serviços",
+    "clientName": "Nome do Cliente",
+    "serviceProvider": "Prestador de Serviço",
+    "scheduling": "Agendamento"
   },
   "register": {
     "title": "Criar conta",
@@ -164,6 +166,9 @@
   "users": {
     "title": "Módulo de Usuários",
     "username": "Nome do Usuário",
+    "password": "Senha",
+    "confirm_password": "Confirmar Senha",
+    "usertype": "Tipo de Usuário",
     "actions": "Ações",
     "email": "Email"
   },

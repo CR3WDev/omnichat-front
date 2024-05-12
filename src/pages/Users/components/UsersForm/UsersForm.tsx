@@ -8,6 +8,7 @@ import { UseValidatePassword } from '@hooks/useValidatePassword'
 import { postNewUsers, putUpdateUsers } from '@pages/Users/UsersServices'
 import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
+import { Dropdown } from 'primereact/dropdown'
 import { InputText } from 'primereact/inputtext'
 import { Password } from 'primereact/password'
 import { classNames } from 'primereact/utils'
@@ -26,6 +27,10 @@ export const UsersForm = ({ rowSelected, setRowSelected }: UsersFormProps) => {
   const usersI18n = getI18n('users')
   const passwordComponentI18n = getI18n('password_component')
   const dispatch = useDispatch()
+  const userTypeList = [
+    { userType: 'ADMIM', code: 1 },
+    { userType: 'PRESTADOR DE SERVIÇO', code: 2 },
+  ]
   const {
     handleSubmit,
     register,
@@ -42,7 +47,7 @@ export const UsersForm = ({ rowSelected, setRowSelected }: UsersFormProps) => {
       {
         username: data.username,
         email: data.email,
-        userType: 'Common',
+        userType: data.userType,
         password: data?.password,
       },
       {
@@ -98,6 +103,38 @@ export const UsersForm = ({ rowSelected, setRowSelected }: UsersFormProps) => {
             <ErrorMessageComponent errors={errors.username} />
           </div>
           <div className="col-12 md:col-6 pb-0">
+            <Controller
+              name="userType"
+              control={control}
+              rules={{ required: true }}
+              render={({ field: { name, onChange, value }, formState: { errors } }) => {
+                return (
+                  <div className="flex flex-column">
+                    <div>
+                      <label className="font-bold">{usersI18n.usertype + '*'}</label>
+                    </div>
+                    <Dropdown
+                      name={name}
+                      id={name}
+                      value={value}
+                      className="my-1"
+                      onChange={(e) => {
+                        onChange(e.target.value)
+                      }}
+                      optionLabel="userType"
+                      placeholder="Selcione um Tipo de Usuário"
+                      options={userTypeList}
+                      optionValue="code"
+                    ></Dropdown>
+                  </div>
+                )
+              }}
+            ></Controller>
+            <ErrorMessageComponent errors={errors.userType} />
+          </div>
+        </div>
+        <div className="flex flex-column md:flex-row">
+          <div className="col-12 pb-0">
             <label className="font-bold">{usersI18n.email + '*'}</label>
             <InputText
               className={classNames('w-full my-1', {
@@ -128,7 +165,10 @@ export const UsersForm = ({ rowSelected, setRowSelected }: UsersFormProps) => {
                   },
                 }}
                 render={({ field, fieldState }) => (
-                  <>
+                  <div className="flex flex-column">
+                    <div>
+                      <label className="font-bold">{usersI18n.password + '*'}</label>
+                    </div>
                     <Password
                       onChange={(e) => field.onChange(e)}
                       className={classNames({ 'p-invalid': fieldState.error }, 'w-full')}
@@ -147,7 +187,7 @@ export const UsersForm = ({ rowSelected, setRowSelected }: UsersFormProps) => {
                       name={field.name}
                     />
                     <ErrorMessageComponent errors={errors.password} />
-                  </>
+                  </div>
                 )}
               />
             </div>
@@ -162,7 +202,10 @@ export const UsersForm = ({ rowSelected, setRowSelected }: UsersFormProps) => {
                   },
                 }}
                 render={({ field, fieldState }) => (
-                  <div className="custom-password">
+                  <div className="flex flex-column custom-password">
+                    <div>
+                      <label className="font-bold">{usersI18n.confirm_password + '*'}</label>
+                    </div>
                     <Password
                       onChange={(e) => field.onChange(e)}
                       placeholder={passwordComponentI18n.confirm_password + '*'}

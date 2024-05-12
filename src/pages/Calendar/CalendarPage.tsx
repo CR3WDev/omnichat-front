@@ -1,56 +1,71 @@
-import { selectorTheme } from '@redux/Reducers/themeReducer'
-import { useSelector } from 'react-redux'
+import { Crud } from '@components/Crud'
+import { useDefaultTableConfig } from '@hooks/useDefaultTableConfig'
+import { getI18n } from '@hooks/useGetI18n'
+import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
+import { Button } from 'primereact/button'
+import { Card } from 'primereact/card'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { ICalendar } from 'types/calendar'
+import { ITableConfig } from 'types/tableConfig'
+import { deleteUsers, getTableUsers } from './UsersServices'
+import { CalendarForm } from './components/CalendarForm'
 
 export const CalendarPage = () => {
-  const theme = useSelector(selectorTheme)
+  const mode = useSelector(selectorMode)
+  const usersI18n = getI18n('calendar')
+  const dispatch = useDispatch()
+  const [rowSelected, setRowSelected] = useState<ICalendar | undefined>()
+  const [tableConfig, setTableConfig] = useState<ITableConfig>(useDefaultTableConfig('username'))
+  const { refetch: getProducts, data } = getTableUsers(tableConfig)
+  const { mutateAsync: removeProducts } = deleteUsers(rowSelected?.id)
+
+  const columns = [
+    { field: 'customerUser', header: 'Nome do Cliente' },
+    { field: 'agendamento', header: 'Data do Agendamento' },
+    { field: 'systemUser', header: 'Prestador de Serviço' },
+  ]
+  const columnsSearch = [
+    { field: 'customerUser', header: 'Nome do Cliente' },
+    { field: 'agendamento', header: 'Data do Agendamento', type: 'date' },
+    { field: 'systemUser', header: 'Prestador de Serviço' },
+  ]
+
+  const handleOnDelete = async (_row: any) => {
+    await removeProducts()
+  }
+
+  useEffect(() => {
+    getProducts()
+  }, [tableConfig])
 
   return (
-    <div className="page-container">
-      <h2 className="mx-3 mt-3 m-0">Módulo de Calendário</h2>
-      <div
-        style={{ borderColor: 'var(--surface-400)' }}
-        className={`m-3 p-3 border-round-lg ${theme === 'light' && 'border-1'} `}
-      >
-        {/* <FullCalendar
-          locale="pt-br"
-          headerToolbar={{
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
-          }}
-          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin, listPlugin]}
-          initialView="listWeek"
-          weekends={true}
-          events={[
-            { title: 'Cabelo e Barba Marcelo', date: '2024-04-22', start: '2024-04-23T15:30:00' },
-            { title: 'Cabelo Davi', date: '2024-04-23', start: '2024-04-23T14:30:00' },
-            { title: 'Corte Clássico José', date: '2024-04-26', start: '2024-04-26T10:00:00' },
-            { title: 'Barba Detalhada Carlos', date: '2024-04-26', start: '2024-04-26T11:00:00' },
-            { title: 'Corte e Lavagem Pedro', date: '2024-04-26', start: '2024-04-26T12:00:00' },
-            {
-              title: 'Hidratação de Barba Thiago',
-              date: '2024-04-26',
-              start: '2024-04-26T13:00:00',
-            },
-            { title: 'Cabelo Estilizado Lucas', date: '2024-04-27', start: '2024-04-27T09:30:00' },
-            {
-              title: 'Barba e Sobrancelha Felipe',
-              date: '2024-04-27',
-              start: '2024-04-27T10:30:00',
-            },
-            {
-              title: 'Cabelo e Barba Renovação Alex',
-              date: '2024-04-27',
-              start: '2024-04-27T11:30:00',
-            },
-            {
-              title: 'Tintura de Cabelo e Barba Marco',
-              date: '2024-04-27',
-              start: '2024-04-27T15:00:00',
-            },
-          ]}
-        /> */}
-      </div>
-    </div>
+    <Crud.Root title={usersI18n.title} setRowSelected={setRowSelected}>
+      {(mode === 'edit' || mode === 'create') && (
+        <CalendarForm rowSelected={rowSelected} setRowSelected={setRowSelected} />
+      )}
+      {mode === 'search' && (
+        <>
+          <Crud.SearchBar columns={columnsSearch} setTableConfig={setTableConfig}></Crud.SearchBar>
+          <Card className="m-3">
+            <Button
+              label="cadastrar"
+              onClick={() => {
+                dispatch(setMode('create'))
+              }}
+            ></Button>
+          </Card>
+          <Crud.Table
+            data={data?.data.data || []}
+            columns={columns}
+            setRowSelected={setRowSelected}
+            setTableConfig={setTableConfig}
+            onDelete={handleOnDelete}
+            tableConfig={tableConfig}
+            totalRecords={data?.data.totalRecords || 0}
+          ></Crud.Table>
+        </>
+      )}
+    </Crud.Root>
   )
 }

@@ -13,7 +13,7 @@ import { deleteUsers, getTableUsers } from './UsersServices'
 
 export const UsersPage = () => {
   const mode = useSelector(selectorMode)
-  const productsI18n = getI18n('products')
+  const usersI18n = getI18n('users')
   const dispatch = useDispatch()
   const [rowSelected, setRowSelected] = useState<IUsers | undefined>()
   const [tableConfig, setTableConfig] = useState<ITableConfig>(useDefaultTableConfig('username'))
@@ -39,7 +39,7 @@ export const UsersPage = () => {
   }, [tableConfig])
 
   return (
-    <Crud.Root title={productsI18n.title} setRowSelected={setRowSelected}>
+    <Crud.Root title={usersI18n.title} setRowSelected={setRowSelected}>
       {(mode === 'edit' || mode === 'create') && (
         <UsersForm rowSelected={rowSelected} setRowSelected={setRowSelected} />
       )}

@@ -28,7 +28,7 @@ export const menuOptions: IMenuOption[] = [
     icon: <MdGroup size="20" className="mr-2" />,
   },
   {
-    label: 'Calendário',
+    label: 'Agendamentos',
     to: '/calendar',
     icon: <MdCalendarMonth size="20" className="mr-2" />,
   },
