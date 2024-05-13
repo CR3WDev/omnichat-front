@@ -1,7 +1,6 @@
 import { ErrorMessageComponent } from '@components/ErrorMessage'
 import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
-import { postNewUsers, putUpdateUsers } from '@pages/Users/UsersServices'
 import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { Calendar } from 'primereact/calendar'
@@ -9,11 +8,11 @@ import { Dropdown } from 'primereact/dropdown'
 import { InputText } from 'primereact/inputtext'
 import { MultiSelect } from 'primereact/multiselect'
 import { classNames } from 'primereact/utils'
-import { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { ICalendar } from 'types/calendar'
-import { getServiceProviders } from '@pages/Scheduling/SchedulingService.ts'
+import { getServiceProvider, postNewCalendar, putUpdateCalendar } from '../calendarServices'
 
 interface CalendarFormProps {
   rowSelected?: ICalendar
@@ -24,26 +23,16 @@ export const CalendarForm = ({ rowSelected, setRowSelected }: CalendarFormProps)
   const mode = useSelector(selectorMode)
   const calendarI18n = getI18n('calendar')
   const dispatch = useDispatch()
-  const { status, data: serviceProviderNames } = getServiceProviders()
-
-  const [serviceProviderList, setServiceProviderList] = useState([])
-
-  useEffect(() => {
-    if (status === 'success') {
-      const list = serviceProviderNames?.map((name: string) => ({
-        serviceProvider: name,
-        code: 1,
-      }))
-      setServiceProviderList(list)
-    }
-  }, [status, serviceProviderNames])
-
+  const serviceProviderList = [
+    { serviceProvider: 'Marcelo', code: 1 },
+    { serviceProvider: 'Aguiar', code: 2 },
+    { serviceProvider: 'Mateus', code: 3 },
+  ]
   const serviceList = [
     { service: 'Corte', code: 1 },
     { service: 'Barba', code: 2 },
     { service: 'Sombrancelha', code: 3 },
   ]
-
   const {
     handleSubmit,
     register,
@@ -52,8 +41,9 @@ export const CalendarForm = ({ rowSelected, setRowSelected }: CalendarFormProps)
     formState: { errors },
   } = useForm({ defaultValues: rowSelected })
 
-  const { mutateAsync: newUsers } = postNewUsers()
-  const { mutateAsync: updateUsers } = putUpdateUsers(rowSelected?.id)
+  const { mutateAsync: newUsers } = postNewCalendar()
+  const { mutateAsync: updateUsers } = putUpdateCalendar(rowSelected?.id)
+  const { data: serviceProviderResponse } = getServiceProvider()
 
   const handleCreate = (data: any) => {
     newUsers(
@@ -193,12 +183,13 @@ export const CalendarForm = ({ rowSelected, setRowSelected }: CalendarFormProps)
                       id={name}
                       locale="pt"
                       dateFormat="dd/mm/yy"
+                      //@ts-ignore
                       value={value}
                       className="my-1"
                       onChange={(e) => {
                         onChange(e.target.value)
                       }}
-                      placeholder="selecione a data do agendamento"
+                      placeholder="selecione um prestador de serviço"
                     ></Calendar>
                   </div>
                 )
