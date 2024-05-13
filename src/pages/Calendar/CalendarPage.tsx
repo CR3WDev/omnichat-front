@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ICalendar } from 'types/calendar'
 import { ITableConfig } from 'types/tableConfig'
-import { deleteUsers, getTableUsers } from './UsersServices'
+import { deleteCalendar, getTableCalendar } from './calendarServices'
 import { CalendarForm } from './components/CalendarForm'
 
 export const CalendarPage = () => {
@@ -16,9 +16,11 @@ export const CalendarPage = () => {
   const usersI18n = getI18n('calendar')
   const dispatch = useDispatch()
   const [rowSelected, setRowSelected] = useState<ICalendar | undefined>()
-  const [tableConfig, setTableConfig] = useState<ITableConfig>(useDefaultTableConfig('username'))
-  const { refetch: getProducts, data } = getTableUsers(tableConfig)
-  const { mutateAsync: removeProducts } = deleteUsers(rowSelected?.id)
+  const [tableConfig, setTableConfig] = useState<ITableConfig>(
+    useDefaultTableConfig('customer_user_id')
+  )
+  const { refetch: getProducts, data } = getTableCalendar(tableConfig)
+  const { mutateAsync: removeProducts } = deleteCalendar(rowSelected?.id)
 
   const columns = [
     { field: 'customerUser', header: 'Nome do Cliente' },

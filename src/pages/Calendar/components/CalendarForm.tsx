@@ -1,7 +1,6 @@
 import { ErrorMessageComponent } from '@components/ErrorMessage'
 import { showToastSuccess } from '@components/GlobalToast'
 import { getI18n } from '@hooks/useGetI18n'
-import { postNewUsers, putUpdateUsers } from '@pages/Users/UsersServices'
 import { selectorMode, setMode } from '@redux/Reducers/modeReducer'
 import { Button } from 'primereact/button'
 import { Calendar } from 'primereact/calendar'
@@ -13,6 +12,7 @@ import { Dispatch, SetStateAction, useEffect } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { ICalendar } from 'types/calendar'
+import { getServiceProvider, postNewCalendar, putUpdateCalendar } from '../calendarServices'
 
 interface CalendarFormProps {
   rowSelected?: ICalendar
@@ -41,8 +41,9 @@ export const CalendarForm = ({ rowSelected, setRowSelected }: CalendarFormProps)
     formState: { errors },
   } = useForm({ defaultValues: rowSelected })
 
-  const { mutateAsync: newUsers } = postNewUsers()
-  const { mutateAsync: updateUsers } = putUpdateUsers(rowSelected?.id)
+  const { mutateAsync: newUsers } = postNewCalendar()
+  const { mutateAsync: updateUsers } = putUpdateCalendar(rowSelected?.id)
+  const { data: serviceProviderResponse } = getServiceProvider()
 
   const handleCreate = (data: any) => {
     newUsers(
@@ -182,6 +183,7 @@ export const CalendarForm = ({ rowSelected, setRowSelected }: CalendarFormProps)
                       id={name}
                       locale="pt"
                       dateFormat="dd/mm/yy"
+                      //@ts-ignore
                       value={value}
                       className="my-1"
                       onChange={(e) => {
