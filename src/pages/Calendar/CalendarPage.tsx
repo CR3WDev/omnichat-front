@@ -17,7 +17,7 @@ export const CalendarPage = () => {
   const dispatch = useDispatch()
   const [rowSelected, setRowSelected] = useState<ICalendar | undefined>()
   const [tableConfig, setTableConfig] = useState<ITableConfig>(
-    useDefaultTableConfig('customer_user_id')
+    useDefaultTableConfig('id')
   )
   const { refetch: getProducts, data } = getTableCalendar(tableConfig)
   const { mutateAsync: removeProducts } = deleteCalendar(rowSelected?.id)
