@@ -9,10 +9,11 @@ import { Dropdown } from 'primereact/dropdown'
 import { InputText } from 'primereact/inputtext'
 import { MultiSelect } from 'primereact/multiselect'
 import { classNames } from 'primereact/utils'
-import { Dispatch, SetStateAction, useEffect } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { ICalendar } from 'types/calendar'
+import { getServiceProviders } from '@pages/Scheduling/SchedulingService.ts'
 
 interface CalendarFormProps {
   rowSelected?: ICalendar
@@ -23,16 +24,26 @@ export const CalendarForm = ({ rowSelected, setRowSelected }: CalendarFormProps)
   const mode = useSelector(selectorMode)
   const calendarI18n = getI18n('calendar')
   const dispatch = useDispatch()
-  const serviceProviderList = [
-    { serviceProvider: 'Marcelo', code: 1 },
-    { serviceProvider: 'Aguiar', code: 2 },
-    { serviceProvider: 'Mateus', code: 3 },
-  ]
+  const { status, data: serviceProviderNames } = getServiceProviders()
+
+  const [serviceProviderList, setServiceProviderList] = useState([])
+
+  useEffect(() => {
+    if (status === 'success') {
+      const list = serviceProviderNames?.map((name: string) => ({
+        serviceProvider: name,
+        code: 1,
+      }))
+      setServiceProviderList(list)
+    }
+  }, [status, serviceProviderNames])
+
   const serviceList = [
     { service: 'Corte', code: 1 },
     { service: 'Barba', code: 2 },
     { service: 'Sombrancelha', code: 3 },
   ]
+
   const {
     handleSubmit,
     register,
@@ -187,7 +198,7 @@ export const CalendarForm = ({ rowSelected, setRowSelected }: CalendarFormProps)
                       onChange={(e) => {
                         onChange(e.target.value)
                       }}
-                      placeholder="selecione um prestador de serviço"
+                      placeholder="selecione a data do agendamento"
                     ></Calendar>
                   </div>
                 )
