@@ -23,14 +23,14 @@ export const CalendarPage = () => {
   const { mutateAsync: removeProducts } = deleteCalendar(rowSelected?.id)
 
   const columns = [
-    { field: 'customerUser', header: 'Nome do Cliente' },
-    { field: 'agendamento', header: 'Data do Agendamento' },
-    { field: 'systemUser', header: 'Prestador de Serviço' },
+    { field: 'customerName', header: 'Nome do Cliente' },
+    { field: 'appointmentDate', header: 'Data do Agendamento' },
+    { field: 'serviceProviderName', header: 'Prestador de Serviço' },
   ]
   const columnsSearch = [
-    { field: 'customerUser', header: 'Nome do Cliente' },
-    { field: 'agendamento', header: 'Data do Agendamento', type: 'date' },
-    { field: 'systemUser', header: 'Prestador de Serviço' },
+    { field: 'customerName', header: 'Nome do Cliente' },
+    { field: 'appointmentDate', header: 'Data do Agendamento', type: 'date' },
+    { field: 'serviceProviderName', header: 'Prestador de Serviço' },
   ]
 
   const handleOnDelete = async (_row: any) => {
